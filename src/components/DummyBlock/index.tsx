@@ -1,21 +1,14 @@
 import styled from 'styled-components';
 
-import Image from '../../assets/img/dummy.png';
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  height: 90vh;
-`;
+import LogoDark from '../../assets/img/dark-logo.png';
+import LogoLight from '../../assets/img/light-logo.png';
 
 const H1 = styled.h1`
   font-family: 'DanceFont';
   font-size: 56px;
   color: #555555;
   text-align: center;
+  transition: color .3s ease;
 
   @media (max-width: 767px) {
     font-size: 32px;
@@ -28,14 +21,17 @@ const Img = styled.img`
   }
 `;
 
-const DummyBlock = () => {
+const DummyBlock = ({theme}) => {
     return (
-        <Content>
+        <>
             <H1>
                 Мы находимся в разработке
             </H1>
-            <Img src={Image} alt="dummy-image" />
-        </Content>
+            <Img
+                src={theme === 'dark' ? LogoLight : LogoDark}
+                alt="dummy-image"
+            />
+        </>
     );
 };
 

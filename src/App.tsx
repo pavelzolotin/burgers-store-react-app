@@ -1,15 +1,12 @@
-import { createGlobalStyle } from 'styled-components';
+import { useState } from 'react';
 
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+
+import { darkTheme, lightTheme } from './utils/Theme';
+import Header from './components/Header';
 import DummyPage from './pages/DummyPage';
-import DanceFont from './assets/fonts/dance_partner.woff2';
 
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'DanceFont';
-    src: local('DanceFont'),
-    url(${DanceFont}) format('woff2');
-  }
-
   *,
   *::before,
   *::after {
@@ -23,18 +20,37 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #333333;
+    background-color: ${({theme}) => theme.backgroundColor};
+    transition: background-color .3s ease;
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+`;
+
 function App() {
+    const [theme, setTheme] = useState<string>(localStorage.getItem('theme') || 'dark');
+
     return (
-        <>
+        <ThemeProvider
+            theme={theme === 'dark' ? darkTheme : lightTheme}
+        >
             <GlobalStyle />
-            <div className="App">
-                <DummyPage />
-            </div>
-        </>
+            <Container>
+                <Header
+                    theme={theme}
+                    setTheme={setTheme}
+                />
+                <DummyPage
+                    theme={theme}
+                />
+            </Container>
+        </ThemeProvider>
     );
 }
 
