@@ -31,11 +31,14 @@ const H3 = styled.h3`
   margin-bottom: 2rem;
   color: ${({theme}) => theme.title};
   font-size: 2.4rem;
+  letter-spacing: 1.4px;
 `;
 
 const H4 = styled.h4`
   color: ${({theme}) => theme.links};
+  font-family: 'Helvetica Neue Light';
   font-size: 1.8rem;
+  letter-spacing: 1.2px;
   font-weight: 300;
   transition: all .3s;
 `;
@@ -50,22 +53,26 @@ const Info = styled.div`
 
 const Price = styled.div`
   color: ${({theme}) => theme.links};
+  font-family: 'Helvetica Neue Medium';
   font-weight: bold;
   font-size: 2.2rem;
+  letter-spacing: 1.2px;
   line-height: 2.7rem;
-  letter-spacing: 0.015em;
   transition: all .3s;
 
   span {
     color: ${({theme}) => theme.links};
     opacity: 0.5;
     transition: all .3s;
+    margin-left: -.2rem;
   }
 `;
 
 const Button = styled.button`
-  border: 2px solid #fbb040;
   color: ${({theme}) => theme.buttonText};
+  font-family: 'Helvetica Neue Medium';
+  letter-spacing: 1.2px;
+  border: 2px solid #fbb040;
   transition: all .3s;
 
   &:hover {
@@ -90,7 +97,7 @@ const ProductBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 11rem;
+  gap: 9rem;
   margin-top: 5rem;
   padding: 0 1.2rem;
 `;

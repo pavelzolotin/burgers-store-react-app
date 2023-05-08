@@ -8,7 +8,6 @@ import ProductBlock from '../components/ProductBlock';
 
 const Content = styled.div`
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   margin: 7rem auto;
   padding: 12rem 0;
@@ -23,9 +22,7 @@ const Content = styled.div`
   }
 `;
 
-const Categories = styled.div`
-
-`;
+const Categories = styled.div``;
 
 const Items = styled.div`
   display: flex;
@@ -34,7 +31,9 @@ const Items = styled.div`
 
 const H1 = styled.h1`
   color: ${({theme}) => theme.links};
+  font-family: 'Helvetica Neue Light';
   font-size: 6.2rem;
+  letter-spacing: 1.4px;
   margin-bottom: 5rem;
 `;
 
@@ -80,24 +79,25 @@ const Home = ({categories}: CategoriesProps) => {
     const skeletons = [...Array(8)].map((_, i) => (
         <Skeleton key={i} />
     ));
-    console.log(categories)
+
     return (
         <>
             <Content>
-                <Categories>
-                    {
-                        isLoading
-                            ? ''
-                            : <H1>{categories}</H1>
-                    }
-                </Categories>
-                <Items>
-                    {
-                        isLoading
-                            ? skeletons
-                            : items
-                    }
-                </Items>
+                {
+                    isLoading
+                        ? skeletons
+                        : (
+                            <>
+                                <Categories>
+                                    <H1>{categories}</H1>
+                                </Categories>
+                                <Items>
+                                    {items}
+                                </Items>
+                            </>
+
+                        )
+                }
             </Content>
         </>
     );

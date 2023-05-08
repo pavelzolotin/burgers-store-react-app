@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
 import { darkTheme, lightTheme } from './utils/Theme';
-import { headerLinks } from './utils/links';
 import Header from './components/Header';
 import Home from './pages/Home';
-import { log } from "util";
 
 const GlobalStyle = createGlobalStyle`
   ${Fonts}
@@ -26,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${({theme}) => theme.backgroundColor};
-    font-family: Helvetica Neue, sans-serif;
+    font-family: 'Helvetica Neue Medium';
     transition: background-color .3s ease;
   }
 
@@ -83,6 +81,7 @@ function App() {
                 <Header
                     theme={theme}
                     setTheme={setTheme}
+                    setCategories={setCategories}
                 />
                 <Routes>
                     <Route path="/" element={
