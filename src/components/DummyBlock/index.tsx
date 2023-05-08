@@ -5,13 +5,13 @@ import LogoLight from '../../assets/img/light-logo.png';
 
 const H1 = styled.h1`
   font-family: 'DanceFont';
-  font-size: 56px;
+  font-size: 5.6rem;
   color: #555555;
   text-align: center;
   transition: color .3s ease;
 
   @media (max-width: 767px) {
-    font-size: 32px;
+    font-size: 3.2rem;
   }
 `;
 

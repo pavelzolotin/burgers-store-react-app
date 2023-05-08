@@ -1,12 +1,17 @@
 import { useState } from 'react';
+import { Routes, Route, NavLink } from 'react-router-dom';
 
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
+import Fonts from './assets/fonts/fonts';
 import { darkTheme, lightTheme } from './utils/Theme';
+import { headerLinks } from './utils/links';
 import Header from './components/Header';
-import DummyPage from './pages/DummyPage';
+import Home from './pages/Home';
+import { log } from "util";
 
 const GlobalStyle = createGlobalStyle`
+  ${Fonts}
   *,
   *::before,
   *::after {
@@ -21,7 +26,39 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${({theme}) => theme.backgroundColor};
+    font-family: Helvetica Neue, sans-serif;
     transition: background-color .3s ease;
+  }
+
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: .5rem .5rem .5rem -.5rem rgba(34, 60, 80, 0.2) inset;
+    background-color: #16222a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${({theme}) => theme.scrollbarThumb};
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  button {
+    display: inline-block;
+    background-color: ${({theme}) => theme.button};
+    border-radius: 1rem;
+    padding: 1rem 2.5rem;
+    min-width: 10rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    border: .2rem solid transparent;
+    -webkit-user-select: none;
+    user-select: none;
   }
 `;
 
@@ -35,6 +72,7 @@ const Container = styled.div`
 
 function App() {
     const [theme, setTheme] = useState<string>(localStorage.getItem('theme') || 'dark');
+    const [categories, setCategories] = useState<string>('Бургеры');
 
     return (
         <ThemeProvider
@@ -46,9 +84,11 @@ function App() {
                     theme={theme}
                     setTheme={setTheme}
                 />
-                <DummyPage
-                    theme={theme}
-                />
+                <Routes>
+                    <Route path="/" element={
+                        <Home categories={categories} />
+                    } />
+                </Routes>
             </Container>
         </ThemeProvider>
     );
