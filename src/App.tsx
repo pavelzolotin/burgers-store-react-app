@@ -58,6 +58,13 @@ const GlobalStyle = createGlobalStyle`
     -webkit-user-select: none;
     user-select: none;
   }
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    margin-top: 0;
+    transition: all .3s;
+  }
 `;
 
 const Container = styled.div`

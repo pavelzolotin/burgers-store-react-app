@@ -7,11 +7,15 @@ import SunIcon from '../../assets/img/sun-warm-icon.svg';
 
 const ToggleBox = styled.div`
   @media (min-width: 1280px) {
-    margin-right: 100px;
+    margin-right: 5rem;
   }
 
   @media (min-width: 1450px) {
-    margin-right: 150px;
+    margin-right: 10rem;
+  }
+
+  @media (max-width: 767px) {
+    padding-left: 2.5rem;
   }
 `;
 

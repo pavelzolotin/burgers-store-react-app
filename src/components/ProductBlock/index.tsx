@@ -6,7 +6,7 @@ const Product = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 25%;
+  width: 33%;
   margin-bottom: 12rem;
   border-radius: 1rem;
   transition: all .3s;
@@ -16,6 +16,14 @@ const Product = styled.div`
   &:hover {
     background-color: rgba(129, 129, 129, .2);
     transform: translateY(-1rem);
+  }
+
+  @media (min-width: 1400px) {
+    width: 25%;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
   }
 `;
 
@@ -38,17 +46,28 @@ const H4 = styled.h4`
   color: ${({theme}) => theme.links};
   font-family: 'Helvetica Neue Light';
   font-size: 1.8rem;
-  letter-spacing: 1.2px;
   font-weight: 300;
+  white-space: pre-line;
+  letter-spacing: 1.2px;
   transition: all .3s;
 `;
 
 const Info = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  padding: 1.8rem;
+  padding: 1.4rem;
+
+  @media (min-width: 1500px) {
+    padding: 1.8rem;
+  }
+
+  @media (max-width: 1400px) {
+    width: 75%;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 const Price = styled.div`
@@ -72,7 +91,7 @@ const Button = styled.button`
   color: ${({theme}) => theme.buttonText};
   font-family: 'Helvetica Neue Medium';
   letter-spacing: 1.2px;
-  border: 2px solid #fbb040;
+  border: .2rem solid #fbb040;
   transition: all .3s;
 
   &:hover {
@@ -80,7 +99,7 @@ const Button = styled.button`
   }
 
   svg {
-    margin-right: 7px;
+    margin-right: .7rem;
   }
 
   span {
@@ -90,6 +109,9 @@ const Button = styled.button`
 `;
 
 const TextBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   height: 12rem;
 `;
 
@@ -97,7 +119,6 @@ const ProductBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 9rem;
   margin-top: 5rem;
   padding: 0 1.2rem;
 `;
