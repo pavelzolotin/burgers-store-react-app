@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import LogoDark from '../../assets/img/dark-logo-main.svg';
 import LogoLight from '../../assets/img/light-logo-main.svg';
+import LogoDarkMobile from '../../assets/img/light-logo-mobile.svg';
+import LogoLightMobile from '../../assets/img/light-logo-mobile.svg';
 import { headerLinks } from '../../utils/links';
 import useCheckMobileScreen from '../../hooks/useDeviceDetect';
 import ToggleTheme from '../../UI/ToggleTheme';
@@ -20,7 +22,7 @@ const Container = styled.div`
   height: 9rem;
   padding: 2rem 4rem 3rem 8rem;
   background-color: ${({theme}) => theme.backgroundColor};
-  transition: background-color .3s ease;
+  transition: all 1s ease;
   z-index: 10;
 
   @media (max-width: 1440px) {
@@ -81,6 +83,13 @@ const LogoImage = styled.img`
   }
 `;
 
+const LogoImageMobile = styled(LogoImage)`
+  @media (max-width: 767px) {
+    width: 7rem;
+    margin-top: -1rem;
+  }
+`;
+
 const LogoDescription = styled.p`
   padding: .7rem .7rem .7rem 0;
   margin-top: -.3rem;
@@ -130,16 +139,13 @@ const HeaderEndWrap = styled.div`
   }
 `;
 
-const CartWrapper = styled.div`
-  @media (max-width: 767px) {
-    width: auto;
-  }
-`;
+const CartWrapper = styled.div``;
 
 const CartButton = styled.button`
   background-color: transparent;
   outline: none;
   border: none;
+  padding: 1rem 2rem 1rem 0;
 
   a {
     display: flex;
@@ -193,6 +199,7 @@ type HeaderProps = {
 
 const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
     const [sticky, setSticky] = useState<boolean | string>(false);
+    const [logoMobile, setLogoMobile] = useState<boolean>(false);
     const {isMobile} = useCheckMobileScreen();
 
     const {pathname} = useLocation();
@@ -211,8 +218,14 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
 
     const isSticky = () => {
         const scrollTop = window.scrollY;
-        const stickyClass = scrollTop >= 50 ? 'sticky' : '';
+        let stickyClass = scrollTop >= 50 ? 'sticky' : '';
         setSticky(stickyClass);
+        setLogoMobile(true);
+
+        // @ts-ignore
+        if (stickyClass <= 10) {
+            setLogoMobile(false)
+        }
     };
 
     return (
@@ -247,6 +260,15 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
                         theme={theme}
                         setTheme={setTheme}
                     />
+                    {
+                        isMobile && logoMobile ? (
+                            <LogoImageMobile
+                                classname={logoMobile}
+                                src={theme === 'dark' ? LogoLightMobile : LogoDarkMobile}
+                                alt="Logo"
+                            />
+                        ) : ''
+                    }
                     <CartWrapper>
                         <CartButton>
                             {

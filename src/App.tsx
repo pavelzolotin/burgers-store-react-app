@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
@@ -7,6 +7,8 @@ import Fonts from './assets/fonts/fonts';
 import { darkTheme, lightTheme } from './utils/Theme';
 import Header from './components/Header';
 import Home from './pages/Home';
+import Loading from './UI/Loading';
+import SingleProductPage from './pages/SingleProductPage';
 
 const GlobalStyle = createGlobalStyle`
   ${Fonts}
@@ -58,12 +60,12 @@ const GlobalStyle = createGlobalStyle`
     -webkit-user-select: none;
     user-select: none;
   }
-  
+
   .sticky {
     position: fixed;
     top: 0;
     margin-top: 0;
-    transition: all .3s;
+    transition: all 1s ease;
   }
 `;
 
@@ -93,6 +95,11 @@ function App() {
                 <Routes>
                     <Route path="/" element={
                         <Home categories={categories} />
+                    } />
+                    <Route path="items/:id" element={
+                        <Suspense fallback={<Loading />}>
+                            <SingleProductPage />
+                        </Suspense>
                     } />
                 </Routes>
             </Container>
