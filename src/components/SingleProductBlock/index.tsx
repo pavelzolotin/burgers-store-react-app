@@ -1,6 +1,161 @@
+import { Link } from 'react-router-dom';
+
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+  height: 85vh;
+  gap: 8rem;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-top: 7rem;
+  }
+  
+  img {
+    width: 50%;
+  }
+`;
+
+const About = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
+
+const H2 = styled.h2`
+  width: 80%;
+  color: ${({theme}) => theme.title};
+  font-size: 3.6rem;
+  font-weight: 300;
+  letter-spacing: 1.4px;
+  margin-bottom: 4rem;
+`;
+
+const Description = styled.p`
+  width: 80%;
+  color: ${({theme}) => theme.links};
+  font-family: 'Helvetica Neue Light';
+  font-size: 1.8rem;
+  font-weight: 300;
+  white-space: pre-line;
+  letter-spacing: 1.2px;
+  line-height: 2.3rem;
+  margin-bottom: 4rem;
+  transition: all .3s;
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  gap: 3rem;
+
+  @media (max-width: 767px) {
+    flex-direction: column-reverse;
+  }
+`;
+
+const PriceBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 80%;
+`;
+
+const Price = styled.div`
+  color: ${({theme}) => theme.links};
+  font-weight: 300;
+  font-size: 3.2rem;
+  letter-spacing: 1.2px;
+  line-height: 2.7rem;
+  margin-bottom: 8rem;
+  transition: all .3s;
+
+  span {
+    color: ${({theme}) => theme.links};
+    opacity: 0.5;
+    transition: all .3s;
+    margin-left: .5rem;
+  }
+`;
+
+const Button = styled.button`
+  padding: 1.5rem 2.5rem;
+  color: ${({theme}) => theme.buttonText};
+  font-family: 'Helvetica Neue Medium';
+  letter-spacing: 1.2px;
+  border: .2rem solid #fbb040;
+  transition: all .3s;
+
+  &:hover {
+    background-color: #fbb040;
+  }
+
+  svg {
+    margin-right: .7rem;
+  }
+
+  span {
+    font-weight: 300;
+    font-size: 1.6rem;
+  }
+`;
+
 const SingleProductBlock = ({currentProduct}) => {
     return (
-        <></>
+        <Container>
+            <img
+                src={
+                    currentProduct && currentProduct.imageUrl
+                    && currentProduct.imageUrl
+                }
+                alt="single-product"
+            />
+            <About>
+                <H2>{currentProduct.title}</H2>
+                <Description>{currentProduct.descriptionFull}</Description>
+                <PriceBox>
+                    <Price>{currentProduct.price}<span>₽</span></Price>
+                </PriceBox>
+                <Bottom>
+                    <Link to="/">
+                        <Button>
+                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5"
+                                      strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            <span>Вернуться назад</span>
+                        </Button>
+                    </Link>
+                    <Button>
+                        <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
+                                fill="white"
+                            />
+                        </svg>
+                        <span>Добавить</span>
+                    </Button>
+                </Bottom>
+            </About>
+        </Container>
     );
 }
 

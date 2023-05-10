@@ -5,10 +5,12 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
 import { darkTheme, lightTheme } from './utils/Theme';
+import Loading from './UI/Loading';
 import Header from './components/Header';
 import Home from './pages/Home';
-import Loading from './UI/Loading';
+import PageNotFound from './pages/PageNotFound';
 import SingleProductPage from './pages/SingleProductPage';
+import Cart from './pages/Cart';
 
 const GlobalStyle = createGlobalStyle`
   ${Fonts}
@@ -27,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({theme}) => theme.backgroundColor};
     font-family: 'Helvetica Neue Medium';
+    font-weight: 300;
     transition: background-color .3s ease;
   }
 
@@ -51,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
     display: inline-block;
     background-color: ${({theme}) => theme.button};
     border-radius: 1rem;
-    padding: 1rem 2.5rem;
+    padding: 1.2rem 2.5rem;
     min-width: 10rem;
     text-align: center;
     cursor: pointer;
@@ -106,6 +109,14 @@ function App() {
                         <Suspense fallback={<Loading />}>
                             <SingleProductPage />
                         </Suspense>
+                    } />
+                    <Route path="/cart" element={
+                        <Suspense fallback={<Loading />}>
+                            <Cart setCategories={setCategories} />
+                        </Suspense>
+                    } />
+                    <Route path="*" element={
+                        <PageNotFound setCategories={setCategories} />
                     } />
                 </Routes>
             </Container>

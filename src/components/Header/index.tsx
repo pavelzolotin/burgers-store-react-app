@@ -231,7 +231,7 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
 
     return (
         <Container>
-            <LeftPart className={sectionHidden}>
+            <LeftPart className={isMobile ? sectionHidden : ''}>
                 <LogoBox>
                     <Link to="/">
                         <LogoImage
@@ -273,7 +273,7 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
                         <CartButton>
                             {
                                 pathname !== '/cart' && (
-                                    <Link to="/cart">
+                                    <Link to="#">
                                         <CartPrice>0 ₽</CartPrice>
                                         <ButtonDelimiter></ButtonDelimiter>
                                         <CartSvg

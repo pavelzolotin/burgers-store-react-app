@@ -27,7 +27,7 @@ const SingleProductPage = () => {
             setIsActive(true);
 
             try {
-                const {data} = await axios.get(`./burgers.json/${id}`);
+                const {data} = await axios.get(`https://645b40dda8f9e4d6e7636f96.mockapi.io/burgers/${id}`);
                 setCurrentProduct(data);
                 setIsActive(false);
             } catch (err) {

@@ -36,10 +36,11 @@ const Img = styled.img`
 `;
 
 const H3 = styled.h3`
-  margin-bottom: 2rem;
   color: ${({theme}) => theme.title};
   font-size: 2.4rem;
+  font-weight: 300;
   letter-spacing: 1.4px;
+  margin-bottom: 2rem;
 `;
 
 const H4 = styled.h4`
@@ -49,6 +50,7 @@ const H4 = styled.h4`
   font-weight: 300;
   white-space: pre-line;
   letter-spacing: 1.2px;
+  line-height: 2.3rem;
   transition: all .3s;
 `;
 
@@ -73,7 +75,7 @@ const Info = styled.div`
 const Price = styled.div`
   color: ${({theme}) => theme.links};
   font-family: 'Helvetica Neue Medium';
-  font-weight: bold;
+  font-weight: 300;
   font-size: 2.2rem;
   letter-spacing: 1.2px;
   line-height: 2.7rem;
@@ -103,7 +105,7 @@ const Button = styled.button`
   }
 
   span {
-    font-weight: 600;
+    font-weight: 300;
     font-size: 1.6rem;
   }
 `;
@@ -123,7 +125,7 @@ const ProductBottom = styled.div`
   padding: 0 1.2rem;
 `;
 
-const ProductBlock = ({id, title, imageUrl, description, price}) => {
+const ProductBlock = ({id, title, imageUrl, descriptionShort, price}) => {
     return (
         <Product>
             <ImageBox>
@@ -137,7 +139,7 @@ const ProductBlock = ({id, title, imageUrl, description, price}) => {
             <Info>
                 <TextBox>
                     <H3>{title}</H3>
-                    <H4>{description}</H4>
+                    <H4>{descriptionShort}</H4>
                 </TextBox>
                 <ProductBottom>
                     <Price>{price} <span>₽</span></Price>

@@ -5,7 +5,8 @@
       "../images/burger.png"
     ],
     "title": "Бадди Джелл",
-    "description": "С соусом Джек Дэниелс, сыром чеддер и моцарелла, салатом и овощами.",
+    "descriptionShort": "С соусом Джек Дэниелс, сыром чеддер и моцарелла, салатом и овощами.",
+    "descriptionFull": "булочка,\nсоус Джек Дэниелс,\nкотлета,\nгорчица,\nкетчуп,\nсыр чеддер и моцарелла,\nкрасный лук,\nпомидоры,\nогурцы,\nсалат",
     "price": 199
   },
   {
@@ -14,7 +15,8 @@
       "../images/burger.png"
     ],
     "title": "Цезарь Бургер",
-    "description": "Со стрипсами в панировке, соусом цезарь и майонез, пармезаном, салатом Ромэн \nи помидорками черри.",
+    "descriptionShort": "Со стрипсами в панировке, соусом цезарь и майонез, пармезаном, салатом Ромэн и помидорками черри.",
+    "descriptionFull": "булочка,\nстрипсы в панировке,\nсоусы цезарь и майонез,\nтёртый пармезан,\nсалат Ромэн, \nпомидорки черри.",
     "price": 199
   },
   {
@@ -23,7 +25,8 @@
       "../images/burger.png"
     ],
     "title": "Black Ray-ble",
-    "description": "С чёрной булочкой, \nсоусом Джек Дэниелс, карамелизированным луком, жареным беконом и овощами.",
+    "descriptionShort": "С чёрной булочкой, соусом Джек Дэниелс, карамелизированным луком, 2 ломтика сыра, жареным беконом и овощами.",
+    "descriptionFull": "чёрная булочка,\nсоус Джек Дэниелс,\nкотлета,\nгорчица,\n2 ломтика сыра,\nкарамелизированный лук,\nжареный бекон,\nпомидоры,\nогурцы,\nсалат Айсберг.",
     "price": 199
   },
   {
@@ -32,7 +35,8 @@
       "../images/burger.png"
     ],
     "title": "Банана-Рама",
-    "description": "С банановым кетчупом, жареным луком \nи салатом Айсберг.",
+    "descriptionShort": "С банановым кетчупом, жареным луком и салатом Айсберг.",
+    "descriptionFull": "булочка,\nбанановый соус,\nкотлета,\nжареный лук,\nсалат Айсберг",
     "price": 199
   },
   {
@@ -41,7 +45,8 @@
       "../images/burger.png"
     ],
     "title": "Фишбургер",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -50,7 +55,8 @@
       "../images/burger.png"
     ],
     "title": "Чикен бургер",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -59,7 +65,8 @@
       "../images/burger.png"
     ],
     "title": "Луи Армстронг",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -68,7 +75,8 @@
       "../images/burger.png"
     ],
     "title": "Чарльз Мингус",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -77,7 +85,8 @@
       "../images/burger.png"
     ],
     "title": "Арт Блейки",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -86,7 +95,8 @@
       "../images/burger.png"
     ],
     "title": "Дизи",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -95,7 +105,8 @@
       "../images/burger.png"
     ],
     "title": "Макс Роуч",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -104,7 +115,8 @@
       "../images/burger.png"
     ],
     "title": "Mr. Baysi",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -113,7 +125,8 @@
       "../images/burger.png"
     ],
     "title": "Колман Хокинс",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -122,7 +135,8 @@
       "../images/burger.png"
     ],
     "title": "Бенни Гудман",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -131,7 +145,8 @@
       "../images/burger.png"
     ],
     "title": "М. Дэйвис",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -140,7 +155,8 @@
       "../images/burger.png"
     ],
     "title": "Паркер",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   },
   {
@@ -149,7 +165,8 @@
       "../images/burger.png"
     ],
     "title": "Веган",
-    "description": "Какой-то текст",
+    "descriptionShort": "Какой-то текст",
+    "descriptionFull": "Какой-то текст",
     "price": 199
   }
 ]

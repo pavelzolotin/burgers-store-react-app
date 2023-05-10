@@ -10,12 +10,12 @@ const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 7rem auto;
-  padding: 12rem 3rem;
+  padding: 10rem 3rem;
   max-width: 140rem;
 
   @media (min-width: 1500px) {
     max-width: 150rem;
-    padding: 12rem 0;
+    padding: 10rem 0;
   }
 
   @media (max-width: 767px) {
@@ -51,7 +51,7 @@ const H1 = styled.h1`
 type Product = {
     id: string;
     title: string;
-    description: string;
+    descriptionShort: string;
     price: number;
     imageUrl: string[];
 };
@@ -68,7 +68,7 @@ const Home = ({categories}: CategoriesProps) => {
         const fetchProducts = () => {
             setIsLoading(true);
 
-            axios.get(`./burgers.json`)
+            axios.get('https://645b40dda8f9e4d6e7636f96.mockapi.io/burgers')
                 .then(res => {
                     setProducts(res.data);
                     setIsLoading(false);
