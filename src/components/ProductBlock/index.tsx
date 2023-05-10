@@ -76,7 +76,7 @@ const Price = styled.div`
   color: ${({theme}) => theme.links};
   font-family: 'Helvetica Neue Medium';
   font-weight: 300;
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   letter-spacing: 1.2px;
   line-height: 2.7rem;
   transition: all .3s;
