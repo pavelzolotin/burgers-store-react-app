@@ -5,10 +5,10 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 5rem;
+  width: 120rem;
   height: 85vh;
-  gap: 8rem;
 
   @media (max-width: 767px) {
     flex-direction: column;
@@ -18,7 +18,7 @@ const Container = styled.div`
   }
   
   img {
-    width: 50%;
+    width: 40%;
   }
 `;
 
@@ -31,6 +31,21 @@ const About = styled.div`
 
   @media (max-width: 767px) {
     width: 100%;
+  }
+
+  &:before {
+    content: '';
+    background-color: rgba(129, 129, 129, 0.2);
+    border-radius: 1rem 0 0 1rem;
+    width: 50%;
+    height: 70%;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
   }
 `;
 
