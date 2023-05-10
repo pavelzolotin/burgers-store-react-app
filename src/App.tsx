@@ -40,7 +40,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: ${({theme}) => theme.scrollbarThumb};
+    background-color: ${({theme}) => theme.scrollbarThumb};
   }
 
   a {
@@ -61,11 +61,17 @@ const GlobalStyle = createGlobalStyle`
     user-select: none;
   }
 
-  .sticky {
-    position: fixed;
-    top: 0;
-    margin-top: 0;
-    transition: all 1s ease;
+  .hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all .7s;
+  }
+  
+  .show {
+    opacity: 1;
+    height: 100%;
+    transition: all .7s;
   }
 `;
 

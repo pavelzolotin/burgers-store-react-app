@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import LogoDark from '../../assets/img/dark-logo-main.svg';
 import LogoLight from '../../assets/img/light-logo-main.svg';
-import LogoDarkMobile from '../../assets/img/light-logo-mobile.svg';
+import LogoDarkMobile from '../../assets/img/dark-logo-mobile.svg';
 import LogoLightMobile from '../../assets/img/light-logo-mobile.svg';
 import { headerLinks } from '../../utils/links';
 import useCheckMobileScreen from '../../hooks/useDeviceDetect';
@@ -16,13 +16,14 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  position: fixed;
+  position: sticky;
+  position: -webkit-sticky;
   top: 0;
   width: 100%;
   height: 9rem;
   padding: 2rem 4rem 3rem 8rem;
   background-color: ${({theme}) => theme.backgroundColor};
-  transition: all 1s ease;
+  transition: all .3s;
   z-index: 10;
 
   @media (max-width: 1440px) {
@@ -31,19 +32,20 @@ const Container = styled.div`
 
   @media (max-width: 767px) {
     flex-direction: column;
-    position: relative;
-    width: 100%;
-    height: auto;
     padding: 1rem;
+    height: auto;
   }
 `;
 
 const LeftPart = styled.div`
   display: flex;
   align-items: center;
+  transition: all .7s;
 
   @media (max-width: 767px) {
     flex-direction: column;
+    opacity: 1;
+    height: 100%;
   }
 `;
 
@@ -58,7 +60,6 @@ const RightPart = styled.div`
     flex-direction: column-reverse;
     justify-content: space-between;
     width: 100%;
-    margin-top: 2rem;
     background-color: ${({theme}) => theme.backgroundColor};
     z-index: 10;
   }
@@ -104,12 +105,10 @@ const Pages = styled.div`
   display: -webkit-flex;
   gap: 3rem;
   -webkit-column-gap: 3rem;
-  transition: all .3s;
 
   @media (max-width: 767px) {
     width: 100%;
     padding: 1.5rem;
-    margin: 2rem 0 0 0;
     overflow: auto;
   }
 
@@ -198,10 +197,9 @@ type HeaderProps = {
 };
 
 const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
-    const [sticky, setSticky] = useState<boolean | string>(false);
-    const [logoMobile, setLogoMobile] = useState<boolean>(false);
+    const [sectionHidden, setSectionHidden] = useState<string>('');
+    const [logoMobile, setLogoMobile] = useState<string | boolean>(false);
     const {isMobile} = useCheckMobileScreen();
-
     const {pathname} = useLocation();
 
     const onClickCategories = (link) => {
@@ -209,28 +207,31 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
     };
 
     useEffect(() => {
-        window.addEventListener('scroll', isSticky);
+        window.addEventListener('scroll', isStickyHeader);
 
         return () => {
-            window.removeEventListener('scroll', isSticky);
+            window.removeEventListener('scroll', isStickyHeader);
         };
     }, []);
 
-    const isSticky = () => {
+    const isStickyHeader = () => {
         const scrollTop = window.scrollY;
-        let stickyClass = scrollTop >= 50 ? 'sticky' : '';
-        setSticky(stickyClass);
-        setLogoMobile(true);
+        const stickyMobile: string | number = scrollTop;
 
-        // @ts-ignore
-        if (stickyClass <= 10) {
-            setLogoMobile(false)
+        if (stickyMobile > 100) {
+            setLogoMobile(true);
+            setSectionHidden('hidden');
+        }
+
+        if (stickyMobile < 30) {
+            setLogoMobile(false);
+            setSectionHidden('show');
         }
     };
 
     return (
         <Container>
-            <LeftPart>
+            <LeftPart className={sectionHidden}>
                 <LogoBox>
                     <Link to="/">
                         <LogoImage
@@ -241,7 +242,7 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
                     <LogoDescription>Пожалуй, лучшие бургеры в мире</LogoDescription>
                 </LogoBox>
             </LeftPart>
-            <RightPart className={isMobile ? sticky : ''}>
+            <RightPart>
                 <Pages>
                     {
                         headerLinks.map(link => (
@@ -263,7 +264,6 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
                     {
                         isMobile && logoMobile ? (
                             <LogoImageMobile
-                                classname={logoMobile}
                                 src={theme === 'dark' ? LogoLightMobile : LogoDarkMobile}
                                 alt="Logo"
                             />
