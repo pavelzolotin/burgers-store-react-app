@@ -18,7 +18,11 @@ const Container = styled.div`
   }
   
   img {
-    width: 50%;
+    width: 40%;
+
+    @media (max-width: 767px) {
+      width: 50%;
+    }
   }
 `;
 
