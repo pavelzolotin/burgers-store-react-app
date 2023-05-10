@@ -29,6 +29,7 @@ const Categories = styled.div``;
 const Items = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 
   @media (max-width: 767px) {
     flex-direction: column;

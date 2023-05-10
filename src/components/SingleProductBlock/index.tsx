@@ -18,7 +18,7 @@ const Container = styled.div`
   }
   
   img {
-    width: 40%;
+    width: 50%;
   }
 `;
 
@@ -55,7 +55,7 @@ const H2 = styled.h2`
   font-size: 3.6rem;
   font-weight: 300;
   letter-spacing: 1.4px;
-  margin-bottom: 4rem;
+  margin: 4rem 0 2rem 0;
 `;
 
 const Description = styled.p`

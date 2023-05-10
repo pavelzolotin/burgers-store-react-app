@@ -18,7 +18,7 @@ const Product = styled.div`
     transform: translateY(-1rem);
   }
 
-  @media (min-width: 1400px) {
+  @media (min-width: 1420px) {
     width: 25%;
   }
 
