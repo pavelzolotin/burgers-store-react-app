@@ -3,7 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
+import useCheckMobileScreen from '../hooks/useDeviceDetect';
 import SkeletonSingle from '../UI/Skeleton/SkeletonSingle';
+import SkeletonSingleMobile from '../UI/Skeleton/SkeletonSingleMobile';
 import SingleProductBlock from '../components/SingleProductBlock';
 
 type ProductState = {
@@ -18,6 +20,7 @@ type ProductState = {
 const SingleProductPage = () => {
     const [currentProduct, setCurrentProduct] = useState<ProductState>([] as any);
     const [isActive, setIsActive] = useState<boolean>(true);
+    const {isMobile} = useCheckMobileScreen();
 
     const {id} = useParams();
     const navigate = useNavigate();
@@ -47,7 +50,7 @@ const SingleProductPage = () => {
         <>
             {
                 isActive
-                    ? <SkeletonSingle />
+                    ? isMobile ? <SkeletonSingleMobile /> : <SkeletonSingle />
                     : (
                         <SingleProductBlock
                             currentProduct={currentProduct}

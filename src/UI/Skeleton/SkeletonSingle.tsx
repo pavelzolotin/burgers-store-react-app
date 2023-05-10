@@ -3,15 +3,15 @@ import ContentLoader from 'react-content-loader';
 const Skeleton = () => (
     <ContentLoader
         speed={2}
-        width={800}
+        width={600}
         height={600}
-        viewBox="0 0 800 600"
+        viewBox="0 0 600 600"
         backgroundColor="#bdbdbd"
         foregroundColor="#c9c9c9"
     >
-        <rect x="290" y="121" rx="5" ry="5" width="300" height="120" />
-        <rect x="365" y="276" rx="5" ry="5" width="223" height="50" />
-        <rect x="0" y="120" rx="5" ry="5" width="266" height="254" />
+        <rect x="0" y="55" rx="5" ry="5" width="300" height="300" />
+        <rect x="350" y="55" rx="5" ry="5" width="216" height="35" />
+        <rect x="351" y="118" rx="5" ry="5" width="249" height="146" />
     </ContentLoader>
 );
 
