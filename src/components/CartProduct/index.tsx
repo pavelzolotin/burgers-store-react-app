@@ -95,29 +95,6 @@ const Count = styled.div`
   }
 `;
 
-const ButtonMinus = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  min-width: 3.2rem;
-  padding: 0;
-  border-width: .2rem;
-  background-color: #f5f5f5;
-
-  &,
-  span {
-    color: #333333;
-  }
-
-  svg {
-    path {
-      fill: #333333;
-    }
-  }
-`;
-
 const ButtonPlus = styled.button`
   display: flex;
   align-items: center;
@@ -138,6 +115,16 @@ const ButtonPlus = styled.button`
     path {
       fill: #333333;
     }
+  }
+
+  &:hover {
+    background-color: #fbb040;
+  }
+`;
+
+const ButtonMinus = styled(ButtonPlus)`
+  &.disabled {
+    background-color: #ffffff73;
   }
 `;
 
@@ -192,6 +179,10 @@ const Circle = styled.button`
     path {
       fill: #333333;
     }
+  }
+
+  &:hover {
+    background-color: #fbb040;
   }
 `;
 

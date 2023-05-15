@@ -11,6 +11,7 @@ const Cart = styled.div`
 
   @media (max-width: 767px) {
     width: 100%;
+    padding: 0 2rem 0 2rem;
   }
 `;
 

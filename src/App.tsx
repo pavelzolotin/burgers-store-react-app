@@ -74,10 +74,6 @@ const GlobalStyle = createGlobalStyle`
       background-color: darken(#333333, 12%);
     }
   }
-
-  .disabled {
-    background-color: #ffffff73;
-  }
   
   .hidden {
     opacity: 0;

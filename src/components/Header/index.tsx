@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
@@ -204,12 +204,21 @@ const Header = ({setCategories}: HeaderProps) => {
     const [logoMobile, setLogoMobile] = useState<string | boolean>(false);
     const {isMobile} = useCheckMobileScreen();
     const {pathname} = useLocation();
+    const isMounted = useRef(false);
 
     const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
     const onClickCategories = (link) => {
         setCategories(link.title);
     };
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const json = JSON.stringify(items);
+            localStorage.setItem('cart', json);
+        }
+        isMounted.current = true;
+    }, [items]);
 
     useEffect(() => {
         window.addEventListener('scroll', isStickyHeader);

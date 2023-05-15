@@ -94,6 +94,7 @@ const Price = styled.div`
 `;
 
 const Button = styled.button`
+  height: 5.2rem;
   color: ${({theme}) => theme.buttonText};
   font-family: 'Helvetica Neue Medium';
   letter-spacing: 1.2px;

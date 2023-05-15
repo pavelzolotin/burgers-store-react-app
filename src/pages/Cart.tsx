@@ -11,6 +11,11 @@ import CartEmpty from './CartEmpty';
 const Container = styled.div`
   width: 150rem;
   padding: 15rem 0;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 const Content = styled.div`
@@ -115,7 +120,7 @@ const CashCount = styled.div`
 const CartButtons = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 4rem;
+  margin-top: 7rem;
 
   @media (max-width: 767px) {
     flex-direction: column;
