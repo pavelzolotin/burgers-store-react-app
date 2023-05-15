@@ -1,6 +1,9 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
+
+import { addItem } from '../../redux/cart/slice';
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +19,7 @@ const Container = styled.div`
     height: 100%;
     margin-top: 7rem;
   }
-  
+
   img {
     width: 40%;
 
@@ -128,9 +131,48 @@ const Button = styled.button`
     font-weight: 300;
     font-size: 1.6rem;
   }
+
+  i {
+    display: inline-block;
+    border-radius: 30px;
+    background-color: #fbb040;
+    border: 1px solid #333;
+    color: #333;
+    font-weight: 300;
+    width: 2.3rem;
+    height: 2.4rem;
+    font-style: normal;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    position: relative;
+    top: 0;
+    left: .7rem;
+  }
 `;
 
-const SingleProductBlock = ({currentProduct}) => {
+const SingleProductBlock = ({cartItem, currentProduct}) => {
+    const dispatch = useDispatch();
+
+    const addedCount = cartItem ? cartItem.count : 0;
+
+    const onClickAdd = () => {
+        const id = currentProduct.id;
+        const title = currentProduct.title;
+        const price = currentProduct.price;
+        const imageUrl = currentProduct.imageUrl;
+        const count = currentProduct.count;
+
+        const item = {
+            id,
+            title,
+            price,
+            imageUrl,
+            count
+        };
+
+        dispatch(addItem(item));
+    };
+
     return (
         <Container>
             <img
@@ -157,7 +199,7 @@ const SingleProductBlock = ({currentProduct}) => {
                             <span>Вернуться назад</span>
                         </Button>
                     </Link>
-                    <Button>
+                    <Button onClick={() => onClickAdd()}>
                         <svg
                             width="12"
                             height="12"
@@ -171,6 +213,9 @@ const SingleProductBlock = ({currentProduct}) => {
                             />
                         </svg>
                         <span>Добавить</span>
+                        {
+                            addedCount > 0 && <i>{addedCount}</i>
+                        }
                     </Button>
                 </Bottom>
             </About>

@@ -1,67 +1,176 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-const Container = styled.div`
+import { cartSelector } from '../redux/cart/selectors';
+import { clearItems } from '../redux/cart/slice';
+import CartItem from '../components/CartProduct';
+import CartEmpty from './CartEmpty';
 
+const Container = styled.div`
+  width: 150rem;
+  padding: 15rem 0;
 `;
 
 const Content = styled.div`
-
+  max-width: 82rem;
+  margin: 9rem auto;
 `;
 
-const Clear = styled.div`
+const Top = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 3rem;
+  }
 `;
 
 const H2 = styled.h2`
+  display: flex;
+  align-items: center;
+  font-size: 3.2rem;
+  color: ${({theme}) => theme.links};
 
+  svg {
+    position: relative;
+    top: -.2rem;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+
+    path {
+      stroke: ${({theme}) => theme.links};
+      stroke-width: 1.9;
+    }
+  }
 `;
 
-const Items = styled.div`
+const Clear = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
 
+  span {
+    display: inline-block;
+    margin: .4rem 0 0 .7rem;
+    font-size: 1.8rem;
+    color: ${({theme}) => theme.links};
+  }
+
+  span,
+  svg,
+  path {
+    transition: all 0.15s ease-in-out;
+  }
 `;
 
-const CartBottom = styled.div`
+const Items = styled.div``;
 
+const Bottom = styled.div`
+  margin: 5rem 0;
 `;
 
 const Details = styled.div`
+  display: flex;
+  justify-content: space-between;
 
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  div {
+    font-size: 2.2rem;
+
+    @media (max-width: 767px) {
+      margin: .5rem 0 .5rem 0;
+    }
+
+    span {
+      &:first-child {
+        margin-left: 1.2rem;
+      }
+
+      &:last-child {
+        margin-left: .5rem;
+        opacity: .5;
+      }
+    }
+  }
 `;
 
 const ProductCount = styled.div`
-
+  color: ${({theme}) => theme.links};
 `;
 
 const CashCount = styled.div`
-
+  color: ${({theme}) => theme.links};
 `;
 
 const CartButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
 
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
 `;
 
-const ButtonPay = styled.button`
+const Button = styled.button`
+  padding: 1.5rem 2.5rem;
+  color: ${({theme}) => theme.buttonText};
+  font-family: 'Helvetica Neue Medium';
+  letter-spacing: 1.2px;
+  border: .2rem solid #fbb040;
+  transition: all .3s;
 
+  &:hover {
+    background-color: #fbb040;
+  }
+
+  svg {
+    margin-right: .7rem;
+  }
+
+  span {
+    font-weight: 300;
+    font-size: 1.6rem;
+    color: ${({theme}) => theme.buttonText};
+  }
 `;
 
 const Cart = ({setCategories}) => {
+    const dispatch = useDispatch();
+    const {items, totalPrice} = useSelector(cartSelector);
 
-    const onClickClear = () => {
-        if (window.confirm('Вы хотите очистить корзину?')) {
-
-        }
-    };
+    const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
     const onClickCategories = () => {
         setCategories('Бургеры');
     };
 
+    const onClickClear = () => {
+        if (window.confirm('Вы хотите очистить корзину?')) {
+            dispatch(clearItems());
+        }
+    };
+
+    if (!totalPrice) {
+        return <CartEmpty />
+    }
+
     return (
         <Container>
             <Content>
-                <Clear>
+                <Top>
                     <H2>
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -96,29 +205,38 @@ const Cart = ({setCategories}) => {
                         </svg>
                         <span onClick={onClickClear}>Очистить корзину</span>
                     </Clear>
-                </Clear>
+                </Top>
                 <Items>
-
+                    {
+                        items.map(item => (
+                            <CartItem
+                                key={item.id}
+                                {...item}
+                            />
+                        ))
+                    }
                 </Items>
-                <CartBottom>
+                <Bottom>
                     <Details>
-                        <ProductCount>Всего товаров:<span>0</span><span>шт.</span></ProductCount>
-                        <CashCount>Сумма заказа:<span>0</span><span>₽</span></CashCount>
+                        <ProductCount>Всего товаров:<span>{itemsTotalCount}</span><span>шт.</span></ProductCount>
+                        <CashCount>Сумма заказа:<span>{totalPrice}</span><span>₽</span></CashCount>
                     </Details>
                     <CartButtons>
-                        <Link to="/" className="button button--add go-back-btn">
-                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5"
-                                      strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            <span onClick={onClickCategories}>Вернуться назад</span>
-                        </Link>
-                        <ButtonPay>
+                        <Button>
+                            <Link to="/">
+                                <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5"
+                                          strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                                <span onClick={onClickCategories}>Вернуться назад</span>
+                            </Link>
+                        </Button>
+                        <Button>
                             <span>Оплатить</span>
-                        </ButtonPay>
+                        </Button>
                     </CartButtons>
-                </CartBottom>
+                </Bottom>
             </Content>
         </Container>
     );

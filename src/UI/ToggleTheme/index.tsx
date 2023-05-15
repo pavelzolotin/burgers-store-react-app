@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 
+import {themeSelector} from '../../redux/themeMode/selectors';
+import {setTheme} from '../../redux/themeMode/slice';
 import MoonIcon from '../../assets/img/moon-icon.svg';
 import SunIcon from '../../assets/img/sun-warm-icon.svg';
 
@@ -71,19 +74,17 @@ const Icon = styled.img`
   height: 1.5rem;
 `;
 
-type ToggleThemeProps = {
-    theme: string;
-    setTheme: any;
-};
+const ToggleTheme = () => {
+    const dispatch = useDispatch();
+    const {theme} = useSelector(themeSelector);
 
-const ToggleTheme = ({theme, setTheme}: ToggleThemeProps) => {
     const toggleIsClicked = theme === 'light' ? true : '';
 
     const toggleTheme = () => {
         if (theme === 'dark') {
-            setTheme('light');
+            dispatch(setTheme('light'));
         } else {
-            setTheme('dark');
+            dispatch(setTheme('dark'));
         }
     };
 

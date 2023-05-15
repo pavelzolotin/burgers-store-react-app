@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
+import { cartItemSelectorById } from '../redux/cart/selectors';
 import useCheckMobileScreen from '../hooks/useDeviceDetect';
 import SkeletonSingle from '../UI/Skeleton/SkeletonSingle';
 import SkeletonSingleMobile from '../UI/Skeleton/SkeletonSingleMobile';
@@ -20,8 +22,8 @@ type ProductState = {
 const SingleProductPage = () => {
     const [currentProduct, setCurrentProduct] = useState<ProductState>([] as any);
     const [isActive, setIsActive] = useState<boolean>(true);
+    const cartItem = useSelector(cartItemSelectorById(currentProduct.id));
     const {isMobile} = useCheckMobileScreen();
-
     const {id} = useParams();
     const navigate = useNavigate();
 
@@ -54,6 +56,7 @@ const SingleProductPage = () => {
                     : (
                         <SingleProductBlock
                             currentProduct={currentProduct}
+                            cartItem={cartItem}
                         />
                     )
             }

@@ -1,16 +1,19 @@
-import { useState, Suspense } from 'react';
+import { lazy, useState, Suspense } from 'react';
+import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
+import {themeSelector} from './redux/themeMode/selectors';
 import { darkTheme, lightTheme } from './utils/Theme';
 import Loading from './UI/Loading';
 import Header from './components/Header';
 import Home from './pages/Home';
 import PageNotFound from './pages/PageNotFound';
 import SingleProductPage from './pages/SingleProductPage';
-import Cart from './pages/Cart';
+
+const Cart = lazy(() => import('./pages/Cart'));
 
 const GlobalStyle = createGlobalStyle`
   ${Fonts}
@@ -62,8 +65,20 @@ const GlobalStyle = createGlobalStyle`
     border: .2rem solid transparent;
     -webkit-user-select: none;
     user-select: none;
+
+    &:hover {
+      background-color: darken(#333333, 8%);
+    }
+
+    &:active {
+      background-color: darken(#333333, 12%);
+    }
   }
 
+  .disabled {
+    background-color: #ffffff73;
+  }
+  
   .hidden {
     opacity: 0;
     height: 0;
@@ -87,7 +102,7 @@ const Container = styled.div`
 `;
 
 function App() {
-    const [theme, setTheme] = useState<string>(localStorage.getItem('theme') || 'dark');
+    const {theme} = useSelector(themeSelector);
     const [categories, setCategories] = useState<string>('Бургеры');
 
     return (
@@ -97,8 +112,6 @@ function App() {
             <GlobalStyle />
             <Container>
                 <Header
-                    theme={theme}
-                    setTheme={setTheme}
                     setCategories={setCategories}
                 />
                 <Routes>

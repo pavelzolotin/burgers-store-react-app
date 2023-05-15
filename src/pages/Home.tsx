@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
-import axios from 'axios';
 
+import { useAppDispatch } from '../redux/store';
+import { fetchProducts } from '../redux/product/asyncActions';
+import { productSelector } from '../redux/product/selectors';
 import Skeleton from '../UI/Skeleton';
 import ProductBlock from '../components/ProductBlock';
 
@@ -49,37 +52,45 @@ const H1 = styled.h1`
   }
 `;
 
-type Product = {
-    id: string;
-    title: string;
-    descriptionShort: string;
-    price: number;
-    imageUrl: string[];
-};
+const Error = styled.div`
+  width: 65rem;
+  text-align: center;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 2rem;
+    line-height: 145.4%;
+    letter-spacing: 0.01em;
+    color: #777777;
+  }
+`;
 
 type CategoriesProps = {
     categories: string;
 };
 
 const Home = ({categories}: CategoriesProps) => {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [isLoading, setIsLoading] = useState<Boolean>(true);
+    const dispatch = useAppDispatch();
+
+    const {products, status} = useSelector(productSelector);
 
     useEffect(() => {
-        const fetchProducts = () => {
-            setIsLoading(true);
-
-            axios.get('https://645b40dda8f9e4d6e7636f96.mockapi.io/burgers')
-                .then(res => {
-                    setProducts(res.data);
-                    setIsLoading(false);
-                })
-                .catch(err => console.warn(err));
+        const getProducts = () => {
+            dispatch(fetchProducts());
         };
 
-        fetchProducts();
+        getProducts();
         window.scrollTo(0, 0);
-    }, []);
+    }, [dispatch]);
 
     const items = products.map(item => (
         <ProductBlock
@@ -95,18 +106,30 @@ const Home = ({categories}: CategoriesProps) => {
     return (
         <Content>
             {
-                isLoading
-                    ? skeletons
-                    : (
+                status === 'error'
+                    ? (
+                        <Error>
+                            <h2>Произошла ошибка.</h2>
+                            <p>К сожалению, не удалось получить товары.</p>
+                        </Error>
+                    ) : (
                         <>
-                            <Categories>
-                                <H1>{categories}</H1>
-                            </Categories>
-                            <Items>
-                                {items}
-                            </Items>
-                        </>
+                            {
+                                status === 'loading'
+                                    ? skeletons
+                                    : (
+                                        <>
+                                            <Categories>
+                                                <H1>{categories}</H1>
+                                            </Categories>
+                                            <Items>
+                                                {items}
+                                            </Items>
+                                        </>
 
+                                    )
+                            }
+                        </>
                     )
             }
         </Content>

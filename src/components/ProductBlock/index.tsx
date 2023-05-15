@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styled from 'styled-components';
+
+import { addItem } from '../../redux/cart/slice';
+import { cartItemSelectorById } from '../../redux/cart/selectors';
 
 const Product = styled.div`
   display: flex;
@@ -108,6 +112,23 @@ const Button = styled.button`
     font-weight: 300;
     font-size: 1.6rem;
   }
+  
+  i {
+    display: inline-block;
+    border-radius: 30px;
+    background-color: #fbb040;
+    border: 1px solid #333;
+    color: #333;
+    font-weight: 300;
+    width: 2.3rem;
+    height: 2.4rem;
+    font-style: normal;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    position: relative;
+    top: 0;
+    left: .7rem;
+  }
 `;
 
 const TextBox = styled.div`
@@ -126,6 +147,23 @@ const ProductBottom = styled.div`
 `;
 
 const ProductBlock = ({id, title, imageUrl, descriptionShort, price}) => {
+    const dispatch = useDispatch();
+    const cartItem = useSelector(cartItemSelectorById(id));
+
+    const addedCount = cartItem ? cartItem.count : 0;
+
+    const onClickAdd = () => {
+        const item = {
+            id,
+            title,
+            price,
+            imageUrl,
+            count: 0
+        };
+
+        dispatch(addItem(item));
+    };
+
     return (
         <Product>
             <ImageBox>
@@ -144,8 +182,7 @@ const ProductBlock = ({id, title, imageUrl, descriptionShort, price}) => {
                 <ProductBottom>
                     <Price>{price} <span>₽</span></Price>
                     <Button
-                        //onClick={() => onClickAdd()}
-                        className="button button--outline button--add"
+                        onClick={() => onClickAdd()}
                     >
                         <svg
                             width="12"
@@ -160,6 +197,9 @@ const ProductBlock = ({id, title, imageUrl, descriptionShort, price}) => {
                             />
                         </svg>
                         <span>Выбрать</span>
+                        {
+                            addedCount > 0 && <i>{addedCount}</i>
+                        }
                     </Button>
                 </ProductBottom>
             </Info>

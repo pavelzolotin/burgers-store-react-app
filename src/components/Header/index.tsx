@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+import {themeSelector} from '../../redux/themeMode/selectors';
+import { cartSelector } from '../../redux/cart/selectors';
 import LogoDark from '../../assets/img/dark-logo-main.svg';
 import LogoLight from '../../assets/img/light-logo-main.svg';
 import LogoDarkMobile from '../../assets/img/dark-logo-mobile.svg';
@@ -191,16 +194,18 @@ const CartSvg = styled.svg`
 
 
 type HeaderProps = {
-    theme: string;
-    setTheme: any;
     setCategories: any;
 };
 
-const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
+const Header = ({setCategories}: HeaderProps) => {
+    const {theme} = useSelector(themeSelector);
+    const {items, totalPrice} = useSelector(cartSelector);
     const [sectionHidden, setSectionHidden] = useState<string>('');
     const [logoMobile, setLogoMobile] = useState<string | boolean>(false);
     const {isMobile} = useCheckMobileScreen();
     const {pathname} = useLocation();
+
+    const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
     const onClickCategories = (link) => {
         setCategories(link.title);
@@ -257,10 +262,7 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
                     }
                 </Pages>
                 <HeaderEndWrap>
-                    <ToggleTheme
-                        theme={theme}
-                        setTheme={setTheme}
-                    />
+                    <ToggleTheme />
                     {
                         isMobile && logoMobile ? (
                             <LogoImageMobile
@@ -273,8 +275,8 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
                         <CartButton>
                             {
                                 pathname !== '/cart' && (
-                                    <Link to="#">
-                                        <CartPrice>0 ₽</CartPrice>
+                                    <Link to="/cart">
+                                        <CartPrice>{totalPrice} ₽</CartPrice>
                                         <ButtonDelimiter></ButtonDelimiter>
                                         <CartSvg
                                             width="18"
@@ -305,7 +307,7 @@ const Header = ({theme, setTheme, setCategories}: HeaderProps) => {
                                                 strokeLinejoin="round"
                                             />
                                         </CartSvg>
-                                        <CartCount>0</CartCount>
+                                        <CartCount>{itemsTotalCount}</CartCount>
                                     </Link>
                                 )
                             }
