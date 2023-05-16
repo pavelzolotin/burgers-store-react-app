@@ -13,17 +13,17 @@ const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 7rem auto;
-  padding: 10rem 3rem;
+  padding: 0 3rem;
   max-width: 140rem;
 
   @media (min-width: 1500px) {
     max-width: 150rem;
-    padding: 10rem 0 0 0;
+    padding: 3rem 0 0 0;
   }
 
   @media (max-width: 767px) {
     padding: 3rem 1rem;
-    margin: 5rem auto;
+    margin: 2rem auto;
   }
 `;
 

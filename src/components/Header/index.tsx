@@ -138,6 +138,7 @@ const HeaderEndWrap = styled.div`
 
   @media (max-width: 767px) {
     width: 100%;
+    justify-content: space-around;
   }
 `;
 
@@ -147,7 +148,7 @@ const CartButton = styled.button`
   background-color: transparent;
   outline: none;
   border: none;
-  padding: 1rem 2rem 1rem 0;
+  padding: 1rem 0;
 
   a {
     display: flex;

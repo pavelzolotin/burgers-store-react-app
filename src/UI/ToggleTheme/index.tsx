@@ -16,10 +16,6 @@ const ToggleBox = styled.div`
   @media (min-width: 1450px) {
     margin-right: 10rem;
   }
-
-  @media (max-width: 767px) {
-    padding-left: 2.5rem;
-  }
 `;
 
 const Toggle = styled.span`
