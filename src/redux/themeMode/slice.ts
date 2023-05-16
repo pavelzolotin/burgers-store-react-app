@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ThemeSliceState } from './types';
 
 const initialState: ThemeSliceState = {
-    theme: localStorage.getItem('theme') || 'light'
+    theme: localStorage.getItem('theme') || 'dark'
 };
 
 export const themeSlice = createSlice({
