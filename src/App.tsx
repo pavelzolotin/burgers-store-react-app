@@ -1,11 +1,11 @@
-import { lazy, useState, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
-import {themeSelector} from './redux/themeMode/selectors';
+import { themeSelector } from './redux/themeMode/selectors';
 import { darkTheme, lightTheme } from './utils/Theme';
 import Loading from './UI/Loading';
 import Header from './components/Header';
@@ -74,14 +74,14 @@ const GlobalStyle = createGlobalStyle`
       background-color: darken(#333333, 12%);
     }
   }
-  
+
   .hidden {
     opacity: 0;
     height: 0;
     overflow: hidden;
     transition: all .7s;
   }
-  
+
   .show {
     opacity: 1;
     height: 100%;
@@ -99,7 +99,6 @@ const Container = styled.div`
 
 function App() {
     const {theme} = useSelector(themeSelector);
-    const [categories, setCategories] = useState<string>('Бургеры');
 
     return (
         <ThemeProvider
@@ -107,12 +106,10 @@ function App() {
         >
             <GlobalStyle />
             <Container>
-                <Header
-                    setCategories={setCategories}
-                />
+                <Header />
                 <Routes>
                     <Route path="/" element={
-                        <Home categories={categories} />
+                        <Home />
                     } />
                     <Route path="items/:id" element={
                         <Suspense fallback={<Loading />}>
@@ -121,11 +118,11 @@ function App() {
                     } />
                     <Route path="/cart" element={
                         <Suspense fallback={<Loading />}>
-                            <Cart setCategories={setCategories} />
+                            <Cart />
                         </Suspense>
                     } />
                     <Route path="*" element={
-                        <PageNotFound setCategories={setCategories} />
+                        <PageNotFound />
                     } />
                 </Routes>
             </Container>

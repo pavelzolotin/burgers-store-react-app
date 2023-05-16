@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { cartSelector } from '../redux/cart/selectors';
+import { setCategories } from '../redux/categories/slice';
 import { clearItems } from '../redux/cart/slice';
 import CartItem from '../components/CartProduct';
 import CartEmpty from './CartEmpty';
@@ -152,14 +153,14 @@ const Button = styled.button`
   }
 `;
 
-const Cart = ({setCategories}) => {
+const Cart = () => {
     const dispatch = useDispatch();
     const {items, totalPrice} = useSelector(cartSelector);
 
     const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
     const onClickCategories = () => {
-        setCategories('Бургеры');
+        dispatch(setCategories('Бургеры'));
     };
 
     const onClickClear = () => {

@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import {themeSelector} from '../../redux/themeMode/selectors';
+import { themeSelector } from '../../redux/themeMode/selectors';
+import { setCategories } from '../../redux/categories/slice';
 import { cartSelector } from '../../redux/cart/selectors';
 import LogoDark from '../../assets/img/dark-logo-main.svg';
 import LogoLight from '../../assets/img/light-logo-main.svg';
@@ -152,7 +153,7 @@ const CartButton = styled.button`
 
   @media (max-width: 767px) {
     padding: 1rem 0;
-}
+  }
 
   a {
     display: flex;
@@ -197,12 +198,8 @@ const CartSvg = styled.svg`
   margin-bottom: .1rem;
 `;
 
-
-type HeaderProps = {
-    setCategories: any;
-};
-
-const Header = ({setCategories}: HeaderProps) => {
+const Header = () => {
+    const dispatch = useDispatch();
     const {theme} = useSelector(themeSelector);
     const {items, totalPrice} = useSelector(cartSelector);
     const [sectionHidden, setSectionHidden] = useState<string>('');
@@ -214,7 +211,7 @@ const Header = ({setCategories}: HeaderProps) => {
     const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
     const onClickCategories = (link) => {
-        setCategories(link.title);
+        dispatch(setCategories(link.title));
     };
 
     useEffect(() => {

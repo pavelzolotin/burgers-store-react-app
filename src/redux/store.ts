@@ -3,12 +3,14 @@ import { useDispatch } from 'react-redux';
 
 import themeSlice from './themeMode/slice';
 import productSlice from './product/slice';
+import categoriesSlice from './categories/slice';
 import cartSlice from './cart/slice';
 
 export const store = configureStore({
     reducer: {
         theme: themeSlice,
         product: productSlice,
+        categories: categoriesSlice,
         cart: cartSlice
     },
 });

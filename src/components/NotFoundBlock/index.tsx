@@ -1,6 +1,9 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
+
+import { setCategories } from '../../redux/categories/slice';
 
 const Container = styled.div`
   padding: 15rem;
@@ -47,10 +50,11 @@ const Button = styled.button`
   }
 `;
 
-const NotFound = ({setCategories}) => {
+const NotFound = () => {
+    const dispatch = useDispatch();
 
     const onClickCategories = () => {
-        setCategories('Бургеры');
+        dispatch(setCategories('Бургеры'));
     };
 
     return (

@@ -6,8 +6,10 @@ import styled from 'styled-components';
 import { useAppDispatch } from '../redux/store';
 import { fetchProducts } from '../redux/product/asyncActions';
 import { productSelector } from '../redux/product/selectors';
+import { categoriesSelector } from '../redux/categories/selectors';
 import Skeleton from '../UI/Skeleton';
 import ProductBlock from '../components/ProductBlock';
+import { log } from "util";
 
 const Content = styled.div`
   display: flex;
@@ -74,14 +76,11 @@ const Error = styled.div`
   }
 `;
 
-type CategoriesProps = {
-    categories: string;
-};
-
-const Home = ({categories}: CategoriesProps) => {
+const Home = () => {
     const dispatch = useAppDispatch();
 
     const {products, status} = useSelector(productSelector);
+    const {categories} = useSelector(categoriesSelector);
 
     useEffect(() => {
         const getProducts = () => {

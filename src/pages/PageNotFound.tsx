@@ -1,7 +1,7 @@
 import NotFound from '../components/NotFoundBlock';
 
-const PageNotFound = ({setCategories}) => {
-    return <NotFound setCategories={setCategories} />
+const PageNotFound = () => {
+    return <NotFound />
 };
 
 export default PageNotFound;
