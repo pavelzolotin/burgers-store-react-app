@@ -34,6 +34,12 @@ const Icons = styled.div`
   }
 `;
 
+const NavIconImg = styled.img`
+  width: 100%;
+  border-radius: 1.2rem;
+  transition: background-color .3s;
+`;
+
 const NavIcon = styled.button`
   display: flex;
   align-items: center;
@@ -43,10 +49,13 @@ const NavIcon = styled.button`
   margin: 0 2rem 0 1.5rem;
   padding: 0;
   background-color: transparent;
-`;
 
-const NavIconImg = styled.img`
-  width: 100%;
+  &:hover {
+    ${NavIconImg} {
+      background-color: #81818133;
+      transition: background-color .3s;
+    }
+  }
 `;
 
 const Copyright = styled.div`
