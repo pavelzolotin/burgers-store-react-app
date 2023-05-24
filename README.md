@@ -8,4 +8,5 @@ React\
 React Router v6\
 Redux-toolkit\
 TypeScript\
-Axios
+Axios\
+Styled components
