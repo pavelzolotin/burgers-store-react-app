@@ -3,34 +3,68 @@ import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+import PrivacyPolicy from '../../assets/privacy-policy.pdf';
+import DataAgreement from '../../assets/agreement-to-personal-data.pdf';
 import { themeSelector } from '../../redux/themeMode/selectors';
 import { iconsNav } from '../../utils/data';
 
 const Container = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   width: 100%;
-  padding: 2rem 4rem 0;
+  padding: 8rem 4rem 0;
 
   @media (max-width: 1440px) {
-    padding: 2rem 0 3rem 2rem;
+    padding: 6rem 0 3rem 2rem;
   }
 
   @media (max-width: 767px) {
     flex-direction: column;
     justify-content: center;
-    padding: 2rem 0 10rem 2rem;
+    padding: 4rem 0 10rem 2rem;
+  }
+`;
+
+const LinksAndIcons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+`;
+
+const Links = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+
+  @media (max-width: 767px) {
+    text-align: center;
+  }
+
+  a {
+    margin-bottom: .7rem;
+    font-size: 1.8rem;
+    color: ${({theme}) => theme.links};
+    transition: color .3s;
+
+    &:hover {
+      color: #ada9a9;
+    }
   }
 `;
 
 const Icons = styled.div`
   display: flex;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 
   @media (max-width: 767px) {
-    margin-bottom: 0;
+    justify-content: center;
   }
 `;
 
@@ -77,23 +111,29 @@ const Footer = () => {
 
     return (
         <Container>
+            <LinksAndIcons>
+                <Links>
+                    <Link to={PrivacyPolicy} target="_blank">Политика конфиденциальности</Link>
+                    <Link to={DataAgreement} target="_blank">Согласие на обработку ПД</Link>
+                </Links>
+                <Icons>
+                    {
+                        iconsNav.map(icon => (
+                            <Link to={icon.link} key={icon.id} target="_blank">
+                                <NavIcon key={icon.id}>
+                                    <NavIconImg
+                                        src={theme === 'dark' ? icon.imageLight : icon.imageDark}
+                                        alt={icon.alt}
+                                    />
+                                </NavIcon>
+                            </Link>
+                        ))
+                    }
+                </Icons>
+            </LinksAndIcons>
             <Copyright>
                 <CopyDescription>© 2023 Jazz&Burg's</CopyDescription>
             </Copyright>
-            <Icons>
-                {
-                    iconsNav.map(icon => (
-                        <Link to={icon.link} key={icon.id} target="_blank">
-                            <NavIcon key={icon.id}>
-                                <NavIconImg
-                                    src={theme === 'dark' ? icon.imageLight : icon.imageDark}
-                                    alt={icon.alt}
-                                />
-                            </NavIcon>
-                        </Link>
-                    ))
-                }
-            </Icons>
         </Container>
     );
 };
