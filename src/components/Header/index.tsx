@@ -101,7 +101,7 @@ const Pages = styled.div`
     transition: color .3s;
 
     &.active {
-      color: #ada9a9;
+      color: #fbb040;
     }
 
     &:hover {
