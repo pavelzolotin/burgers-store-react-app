@@ -4,22 +4,17 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { themeSelector } from '../../redux/themeMode/selectors';
 import { setCategories } from '../../redux/categories/slice';
 import { cartSelector } from '../../redux/cart/selectors';
-import LogoDark from '../../assets/img/dark-logo-main.svg';
-import LogoLight from '../../assets/img/light-logo-main.svg';
-import LogoDarkMobile from '../../assets/img/dark-logo-mobile.svg';
-import LogoLightMobile from '../../assets/img/light-logo-mobile.svg';
-import { headerLinks } from '../../utils/links';
 import useCheckMobileScreen from '../../hooks/useDeviceDetect';
+import LogoLight from '../../assets/img/logo-dark-theme.png';
+import { headerLinks } from '../../utils/links';
 import ToggleTheme from '../../UI/ToggleTheme';
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
@@ -36,7 +31,7 @@ const Container = styled.div`
 
   @media (max-width: 767px) {
     flex-direction: column;
-    padding: 1rem;
+    padding: .5rem 1rem 1rem 1rem;
     height: auto;
   }
 `;
@@ -71,8 +66,7 @@ const RightPart = styled.div`
 
 const LogoBox = styled.div`
   display: flex;
-  align-items: start;
-  flex-direction: column;
+  margin-top: 14rem;
 
   @media (max-width: 767px) {
     align-items: center;
@@ -80,28 +74,12 @@ const LogoBox = styled.div`
 `;
 
 const LogoImage = styled.img`
-  width: 20rem;
+  width: 14rem;
 
   @media (max-width: 767px) {
-    width: 18rem;
+    width: 10rem;
     margin-top: -3rem;
   }
-`;
-
-const LogoImageMobile = styled(LogoImage)`
-  @media (max-width: 767px) {
-    width: 7rem;
-    margin-top: -1rem;
-  }
-`;
-
-const LogoDescription = styled.p`
-  padding: .7rem .7rem .7rem 0;
-  margin-top: -.3rem;
-  font-size: 1.6rem;
-  letter-spacing: .2px;
-  color: #7b7b7b;
-  transition: color .3s;
 `;
 
 const Pages = styled.div`
@@ -198,15 +176,22 @@ const CartSvg = styled.svg`
   margin-bottom: .1rem;
 `;
 
+const LogoImageMobile = styled(LogoImage)`
+  @media (max-width: 767px) {
+    width: 7rem;
+    margin-top: 0;
+  }
+`;
+
 const Header = () => {
     const dispatch = useDispatch();
-    const {theme} = useSelector(themeSelector);
     const {items, totalPrice} = useSelector(cartSelector);
-    const [sectionHidden, setSectionHidden] = useState<string>('');
-    const [logoMobile, setLogoMobile] = useState<string | boolean>(false);
-    const {isMobile} = useCheckMobileScreen();
     const {pathname} = useLocation();
     const isMounted = useRef(false);
+    const [stickyLogo, setStickyLogo] = useState<string>('');
+    const [stickyLogoBox, setStickyLogoBox] = useState<string>('');
+    const [logoMobile] = useState<string | boolean>(true);
+    const {isMobile} = useCheckMobileScreen();
 
     const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
@@ -223,41 +208,44 @@ const Header = () => {
     }, [items]);
 
     useEffect(() => {
-        window.addEventListener('scroll', isStickyHeader);
+        window.addEventListener('scroll', isStickyLogo);
 
         return () => {
-            window.removeEventListener('scroll', isStickyHeader);
+            window.removeEventListener('scroll', isStickyLogo);
         };
     }, []);
 
-    const isStickyHeader = () => {
+    const isStickyLogo = () => {
         const scrollTop = window.scrollY;
-        const stickyMobile: string | number = scrollTop;
+        const stickyLogo: string | number = scrollTop;
 
-        if (stickyMobile > 100) {
-            setLogoMobile(true);
-            setSectionHidden('hidden');
+        if (stickyLogo > 50) {
+            setStickyLogo('small');
+            setStickyLogoBox('without-margin');
         }
 
-        if (stickyMobile < 30) {
-            setLogoMobile(false);
-            setSectionHidden('show');
+        if (stickyLogo < 30) {
+            setStickyLogo('large');
+            setStickyLogoBox('with-margin');
         }
     };
 
     return (
         <Container>
-            <LeftPart className={isMobile ? sectionHidden : ''}>
-                <LogoBox>
-                    <Link to="/">
-                        <LogoImage
-                            src={theme === 'dark' ? LogoLight : LogoDark}
-                            alt="Logo"
-                        />
-                    </Link>
-                    <LogoDescription>Пожалуй, лучшие бургеры в мире</LogoDescription>
-                </LogoBox>
-            </LeftPart>
+            {
+                !isMobile &&
+                <LeftPart>
+                    <LogoBox className={stickyLogoBox}>
+                        <Link to="/">
+                            <LogoImage
+                                className={stickyLogo}
+                                src={LogoLight}
+                                alt="Logo"
+                            />
+                        </Link>
+                    </LogoBox>
+                </LeftPart>
+            }
             <RightPart>
                 <Pages>
                     {
@@ -277,7 +265,7 @@ const Header = () => {
                     {
                         isMobile && logoMobile ? (
                             <LogoImageMobile
-                                src={theme === 'dark' ? LogoLightMobile : LogoDarkMobile}
+                                src={LogoLight}
                                 alt="Logo"
                             />
                         ) : ''

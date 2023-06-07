@@ -14,7 +14,7 @@ const useCheckMobileScreen = () => {
         setMobile(mobile);
     }, []);
 
-    return { isMobile };
+    return {isMobile};
 };
 
 export default useCheckMobileScreen;

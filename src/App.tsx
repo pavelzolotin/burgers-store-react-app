@@ -75,6 +75,24 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .small {
+    width: 9rem;
+    transition: all .7s;
+  }
+
+  .large {
+    width: 14rem;
+    transition: all .7s;
+  }
+
+  .with-margin {
+    margin-top: 14rem;
+  }
+
+  .without-margin {
+    margin-top: 6rem;
+  }
+
   .hidden {
     opacity: 0;
     height: 0;

@@ -14,7 +14,7 @@ import ProductBlock from '../components/ProductBlock';
 const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 7rem auto 0 auto;
+  margin: 14rem auto 0 auto;
   padding: 0 3rem;
   max-width: 140rem;
 
