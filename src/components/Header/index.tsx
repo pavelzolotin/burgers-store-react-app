@@ -5,9 +5,11 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { setCategories } from '../../redux/categories/slice';
+import { themeSelector } from '../../redux/themeMode/selectors';
 import { cartSelector } from '../../redux/cart/selectors';
 import useCheckMobileScreen from '../../hooks/useDeviceDetect';
 import LogoLight from '../../assets/img/logo-dark-theme.png';
+import LogoDark from '../../assets/img/logo-light-theme.png';
 import { headerLinks } from '../../utils/links';
 import ToggleTheme from '../../UI/ToggleTheme';
 
@@ -185,6 +187,7 @@ const LogoImageMobile = styled(LogoImage)`
 
 const Header = () => {
     const dispatch = useDispatch();
+    const {theme} = useSelector(themeSelector);
     const {items, totalPrice} = useSelector(cartSelector);
     const {pathname} = useLocation();
     const isMounted = useRef(false);
@@ -214,7 +217,7 @@ const Header = () => {
                     <LogoBox>
                         <Link to="/">
                             <LogoImage
-                                src={LogoLight}
+                                src={theme === 'dark' ? LogoLight : LogoDark}
                                 alt="Logo"
                             />
                         </Link>
