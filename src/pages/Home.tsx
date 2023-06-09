@@ -25,7 +25,7 @@ const Content = styled.div`
 
   @media (max-width: 767px) {
     padding: 3rem 1rem;
-    margin: 2rem auto;
+    margin: 1rem auto;
   }
 `;
 
