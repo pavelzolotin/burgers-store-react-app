@@ -185,7 +185,7 @@ const LogoImageMobile = styled(LogoImage)`
   }
 `;
 
-const Header = () => {
+const Header = ({setPage}) => {
     const dispatch = useDispatch();
     const {theme} = useSelector(themeSelector);
     const {items, totalPrice} = useSelector(cartSelector);
@@ -198,7 +198,7 @@ const Header = () => {
 
     const onClickCategories = (link) => {
         dispatch(setCategories(link.title));
-        //setPage(link.item);
+        setPage(link.item);
     };
 
     useEffect(() => {

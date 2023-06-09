@@ -60,11 +60,12 @@ type Product = {
     descriptionShort: string;
 };
 
-const Home = () => {
+const Home = (page) => {
     const {categories} = useSelector(categoriesSelector);
     const [products, setItems] = useState<Product[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     console.log(categories)
+    console.log(page)
     useEffect(() => {
         const getProducts = async () => {
             try {

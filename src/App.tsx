@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
@@ -116,19 +116,19 @@ const Container = styled.div`
 `;
 
 function App() {
-    //const [page, setPage] = useState('burgers');
+    const [page, setPage] = useState('burgers');
     const {theme} = useSelector(themeSelector);
-
+    console.log(page)
     return (
         <ThemeProvider
             theme={theme === 'dark' ? darkTheme : lightTheme}
         >
             <GlobalStyle />
             <Container>
-                <Header />
+                <Header setPage={setPage} />
                 <Routes>
                     <Route path="/" element={
-                        <Home />
+                        <Home page={page} />
                     } />
                     <Route path="items/:id" element={
                         <Suspense fallback={<Loading />}>
