@@ -66,7 +66,7 @@ const RightPart = styled.div`
 
 const LogoBox = styled.div`
   display: flex;
-  margin-top: 14rem;
+  margin-top: 1.3rem;
 
   @media (max-width: 767px) {
     align-items: center;
@@ -74,7 +74,7 @@ const LogoBox = styled.div`
 `;
 
 const LogoImage = styled.img`
-  width: 14rem;
+  width: 24rem;
 
   @media (max-width: 767px) {
     width: 10rem;
@@ -178,8 +178,8 @@ const CartSvg = styled.svg`
 
 const LogoImageMobile = styled(LogoImage)`
   @media (max-width: 767px) {
-    width: 7rem;
-    margin-top: 0;
+    width: 12rem;
+    margin-top: 5px;
   }
 `;
 
@@ -188,8 +188,6 @@ const Header = () => {
     const {items, totalPrice} = useSelector(cartSelector);
     const {pathname} = useLocation();
     const isMounted = useRef(false);
-    const [stickyLogo, setStickyLogo] = useState<string>('');
-    const [stickyLogoBox, setStickyLogoBox] = useState<string>('');
     const [logoMobile] = useState<string | boolean>(true);
     const {isMobile} = useCheckMobileScreen();
 
@@ -197,6 +195,7 @@ const Header = () => {
 
     const onClickCategories = (link) => {
         dispatch(setCategories(link.title));
+        //setPage(link.item);
     };
 
     useEffect(() => {
@@ -207,38 +206,14 @@ const Header = () => {
         isMounted.current = true;
     }, [items]);
 
-    useEffect(() => {
-        window.addEventListener('scroll', isStickyLogo);
-
-        return () => {
-            window.removeEventListener('scroll', isStickyLogo);
-        };
-    }, []);
-
-    const isStickyLogo = () => {
-        const scrollTop = window.scrollY;
-        const stickyLogo: string | number = scrollTop;
-
-        if (stickyLogo > 50) {
-            setStickyLogo('small');
-            setStickyLogoBox('without-margin');
-        }
-
-        if (stickyLogo < 30) {
-            setStickyLogo('large');
-            setStickyLogoBox('with-margin');
-        }
-    };
-
     return (
         <Container>
             {
                 !isMobile &&
                 <LeftPart>
-                    <LogoBox className={stickyLogoBox}>
+                    <LogoBox>
                         <Link to="/">
                             <LogoImage
-                                className={stickyLogo}
                                 src={LogoLight}
                                 alt="Logo"
                             />

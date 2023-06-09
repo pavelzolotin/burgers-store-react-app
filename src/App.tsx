@@ -116,6 +116,7 @@ const Container = styled.div`
 `;
 
 function App() {
+    //const [page, setPage] = useState('burgers');
     const {theme} = useSelector(themeSelector);
 
     return (
