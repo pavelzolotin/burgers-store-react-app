@@ -243,7 +243,7 @@ const Header = () => {
                     {
                         isMobile && logoMobile ? (
                             <LogoImageMobile
-                                src={LogoLight}
+                                src={theme === 'dark' ? LogoLight : LogoDark}
                                 alt="Logo"
                             />
                         ) : ''
