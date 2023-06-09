@@ -1,12 +1,13 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
-import { themeSelector } from './redux/themeMode/selectors';
 import { darkTheme, lightTheme } from './utils/Theme';
+import { productSelector } from './redux/product/selectors';
+import { themeSelector } from './redux/themeMode/selectors';
 import Loading from './UI/Loading';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -116,19 +117,19 @@ const Container = styled.div`
 `;
 
 function App() {
-    const [page, setPage] = useState('burgers');
     const {theme} = useSelector(themeSelector);
-    console.log(page)
+    const {page} = useSelector(productSelector);
+
     return (
         <ThemeProvider
             theme={theme === 'dark' ? darkTheme : lightTheme}
         >
             <GlobalStyle />
             <Container>
-                <Header setPage={setPage} />
+                <Header />
                 <Routes>
-                    <Route path="/" element={
-                        <Home page={page} />
+                    <Route path={page} element={
+                        <Home />
                     } />
                     <Route path="items/:id" element={
                         <Suspense fallback={<Loading />}>

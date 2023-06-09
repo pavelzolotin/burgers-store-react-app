@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+import { setPage } from '../../redux/product/slice';
 import { setCategories } from '../../redux/categories/slice';
 import { themeSelector } from '../../redux/themeMode/selectors';
 import { cartSelector } from '../../redux/cart/selectors';
@@ -185,7 +186,7 @@ const LogoImageMobile = styled(LogoImage)`
   }
 `;
 
-const Header = ({setPage}) => {
+const Header = () => {
     const dispatch = useDispatch();
     const {theme} = useSelector(themeSelector);
     const {items, totalPrice} = useSelector(cartSelector);
@@ -198,7 +199,7 @@ const Header = ({setPage}) => {
 
     const onClickCategories = (link) => {
         dispatch(setCategories(link.title));
-        setPage(link.item);
+        dispatch(setPage(link.item));
     };
 
     useEffect(() => {
@@ -215,7 +216,7 @@ const Header = ({setPage}) => {
                 !isMobile &&
                 <LeftPart>
                     <LogoBox>
-                        <Link to="/">
+                        <Link to="/burgers">
                             <LogoImage
                                 src={theme === 'dark' ? LogoLight : LogoDark}
                                 alt="Logo"

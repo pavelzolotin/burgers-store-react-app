@@ -1,7 +1,7 @@
 export const headerLinks = [
     {
         id: 0,
-        item: '',
+        item: 'burgers',
         title: 'Бургеры'
     },
     {

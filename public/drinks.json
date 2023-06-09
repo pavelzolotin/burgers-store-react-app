@@ -1,0 +1,52 @@
+[
+  {
+    "id": "0",
+    "imageUrl": [
+      "../images/burger.png"
+    ],
+    "title": "Какой-то напиток",
+    "descriptionShort": "Что-то есть в этом напитке",
+    "descriptionFull": "Что-то есть в этом напитке",
+    "price": 199
+  },
+  {
+    "id": "1",
+    "imageUrl": [
+      "../images/burger.png"
+    ],
+    "title": "Какой-то напиток",
+    "descriptionShort": "Что-то есть в этом напитке",
+    "descriptionFull": "Что-то есть в этом напитке",
+    "price": 199
+  },
+  {
+    "id": "2",
+    "imageUrl": [
+      "../images/burger.png"
+    ],
+    "title": "Какой-то напиток",
+    "descriptionShort": "Что-то есть в этом напитке",
+    "descriptionFull": "Что-то есть в этом напитке",
+    "price": 199
+  },
+  {
+    "id": "3",
+    "imageUrl": [
+      "../images/burger.png"
+    ],
+    "title": "Какой-то напиток",
+    "descriptionShort": "Что-то есть в этом напитке",
+    "descriptionFull": "Что-то есть в этом напитке",
+    "price": 199
+  },
+  {
+    "id": "4",
+    "imageUrl": [
+      "../images/burger.png"
+    ],
+    "title": "Какой-то напиток",
+    "descriptionShort": "Что-то есть в этом напитке",
+    "descriptionFull": "Что-то есть в этом напитке",
+    "price": 199
+  }
+]

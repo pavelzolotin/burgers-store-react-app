@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
-import axios from 'axios';
 
+import { useAppDispatch } from '../redux/store';
+import { fetchProducts } from '../redux/product/asyncActions';
+import { productSelector } from '../redux/product/selectors';
 import { categoriesSelector } from '../redux/categories/selectors';
 import Footer from '../components/Footer';
 import Skeleton from '../UI/Skeleton';
@@ -52,34 +54,41 @@ const H1 = styled.h1`
   }
 `;
 
-type Product = {
-    id: string;
-    title: string;
-    price: number;
-    imageUrl: string[];
-    descriptionShort: string;
-};
+const Error = styled.div`
+  width: 65rem;
+  text-align: center;
 
-const Home = (page) => {
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 2rem;
+    line-height: 145.4%;
+    letter-spacing: 0.01em;
+    color: #777777;
+  }
+`;
+
+const Home = () => {
+    const dispatch = useAppDispatch();
     const {categories} = useSelector(categoriesSelector);
-    const [products, setItems] = useState<Product[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    console.log(categories)
-    console.log(page)
-    useEffect(() => {
-        const getProducts = async () => {
-            try {
-                const res = await axios.get(`https://645b40dda8f9e4d6e7636f96.mockapi.io/burgers`)
-                setItems(res.data);
-                setIsLoading(false);
-            } catch (err) {
-                console.warn('Error', err);
-            }
-        };
+    const {products, page, status} = useSelector(productSelector);
 
-        getProducts();
+    useEffect(() => {
+        localStorage.setItem('page', page);
+        localStorage.setItem('category', categories);
+
+        dispatch(fetchProducts({page}));
+
         window.scrollTo(0, 0);
-    }, [setItems]);
+    }, [dispatch, page, categories]);
 
     const items = products.map(item => (
         <ProductBlock
@@ -96,16 +105,31 @@ const Home = (page) => {
         <>
             <Content>
                 {
-                    isLoading ?
-                        skeletons
-                        : <>
-                            <Categories>
-                                <H1>{categories}</H1>
-                            </Categories>
-                            <Items>
-                                {items}
-                            </Items>
-                        </>
+                    status === 'error'
+                        ? (
+                            <Error>
+                                <h2>Произошла ошибка.</h2>
+                                <p>К сожалению, не удалось получить товары.</p>
+                            </Error>
+                        ) : (
+                            <>
+                                {
+                                    status === 'loading'
+                                        ? skeletons
+                                        : (
+                                            <>
+                                                <Categories>
+                                                    <H1>{categories}</H1>
+                                                </Categories>
+                                                <Items>
+                                                    {items}
+                                                </Items>
+                                            </>
+
+                                        )
+                                }
+                            </>
+                        )
                 }
             </Content>
             <Footer />

@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CategoriesSliceState } from './types';
 
 const initialState: CategoriesSliceState = {
-    categories: 'Бургеры'
+    categories: localStorage.getItem('category') || 'Бургеры',
 };
 
 export const themeSlice = createSlice({
