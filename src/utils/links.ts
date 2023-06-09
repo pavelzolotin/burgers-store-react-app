@@ -1,10 +1,5 @@
 export const headerLinks = [
     {
-        id: 0,
-        item: 'burgers',
-        title: 'Бургеры'
-    },
-    {
         id: 1,
         item: 'soups',
         title: 'Супы'

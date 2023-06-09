@@ -197,6 +197,11 @@ const Header = () => {
 
     const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
+    const onClickHome = () => {
+        dispatch(setCategories('Бургеры'));
+        dispatch(setPage('burgers'));
+    };
+
     const onClickCategories = (link) => {
         dispatch(setCategories(link.title));
         dispatch(setPage(link.item));
@@ -216,7 +221,7 @@ const Header = () => {
                 !isMobile &&
                 <LeftPart>
                     <LogoBox>
-                        <Link to="/burgers">
+                        <Link to="/">
                             <LogoImage
                                 src={theme === 'dark' ? LogoLight : LogoDark}
                                 alt="Logo"
@@ -227,6 +232,12 @@ const Header = () => {
             }
             <RightPart>
                 <Pages>
+                    <NavLink
+                        to="/"
+                        onClick={() => onClickHome()}
+                    >
+                        Бургеры
+                    </NavLink>
                     {
                         headerLinks.map(link => (
                             <NavLink

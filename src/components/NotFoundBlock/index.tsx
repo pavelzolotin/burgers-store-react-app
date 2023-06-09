@@ -61,7 +61,7 @@ const NotFound = () => {
         <Container>
             <H1>Ничего не найдено</H1>
             <Description>К сожалению, данная страница отсутствует.</Description>
-            <Link to="/burgers">
+            <Link to="/">
                 <Button>
                     <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
