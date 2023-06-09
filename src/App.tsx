@@ -128,6 +128,9 @@ function App() {
             <Container>
                 <Header />
                 <Routes>
+                    <Route path="/" element={
+                        <Home />
+                    } />
                     <Route path={page} element={
                         <Home />
                     } />

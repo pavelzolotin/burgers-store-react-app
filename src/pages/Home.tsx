@@ -80,7 +80,7 @@ const Home = () => {
     const dispatch = useAppDispatch();
     const {categories} = useSelector(categoriesSelector);
     const {products, page, status} = useSelector(productSelector);
-    console.log(page)
+
     useEffect(() => {
         localStorage.setItem('page', page);
         localStorage.setItem('category', categories);
