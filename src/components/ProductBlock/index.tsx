@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { addItem } from '../../redux/cart/slice';
 import { cartItemSelectorById } from '../../redux/cart/selectors';
 import { productSelector } from '../../redux/product/selectors';
+import useCheckMobileScreen from '../../hooks/useDeviceDetect';
 
 const Product = styled.div`
   display: flex;
@@ -114,7 +115,7 @@ const Button = styled.button`
     font-weight: 300;
     font-size: 1.6rem;
   }
-  
+
   i {
     display: inline-block;
     border-radius: 30px;
@@ -152,10 +153,11 @@ const ProductBottom = styled.div`
   margin-top: 3rem;
 `;
 
-const ProductBlock = ({id, title, imageUrl, descriptionShort, price, weight}) => {
+const ProductBlock = ({id, title, imageUrl, descriptionFull, descriptionShort, price, weight}) => {
     const dispatch = useDispatch();
     const {page} = useSelector(productSelector);
     const cartItem = useSelector(cartItemSelectorById(id));
+    const {isMobile} = useCheckMobileScreen();
 
     const addedCount = cartItem ? cartItem.count : 0;
 
@@ -183,9 +185,13 @@ const ProductBlock = ({id, title, imageUrl, descriptionShort, price, weight}) =>
                 </Link>
             </ImageBox>
             <Info>
-                <TextBox>
+                <TextBox style={ !isMobile ? { height:'17rem'} : {}}>
                     <H3>{title}</H3>
-                    <H4>{descriptionShort}</H4>
+                    {
+                        isMobile
+                            ? <H4>{descriptionFull}</H4>
+                            : <H4>{descriptionShort}</H4>
+                    }
                     <Span>{weight}</Span>
                 </TextBox>
                 <ProductBottom>
