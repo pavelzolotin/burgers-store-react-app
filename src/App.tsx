@@ -2,17 +2,25 @@ import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
-import { darkTheme, lightTheme } from './utils/Theme';
-import { productSelector } from './redux/product/selectors';
-import { themeSelector } from './redux/themeMode/selectors';
 import Loading from './UI/Loading';
 import Header from './components/Header';
-import Home from './pages/Home';
+import Footer from './components/Footer';
+import Burgers from './pages/Home';
+import Snacks from './pages/Snacks';
+import Salads from './pages/Salads';
+import Sauses from './pages/Sauses';
+import Drinks from './pages/Drinks';
 import PageNotFound from './pages/PageNotFound';
 import SingleProductPage from './pages/SingleProductPage';
+import SingleSalad from './pages/SingleSalad';
+import SingleSnack from './pages/SingleSnack';
+import SingleSause from './pages/SingleSause';
+import SingleDrink from './pages/SingleDrink';
+import QRPage from './pages/QR';
+import { productSelector } from './redux/product/selectors';
 
 const Cart = lazy(() => import('./pages/Cart'));
 
@@ -31,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${({theme}) => theme.backgroundColor};
+    background-color: #212426;
     font-family: 'Helvetica Neue Medium';
     font-weight: 300;
     transition: background-color .3s ease;
@@ -47,7 +55,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: ${({theme}) => theme.scrollbarThumb};
+    background-color: #3a3a3a;
   }
 
   a {
@@ -56,7 +64,7 @@ const GlobalStyle = createGlobalStyle`
 
   button {
     display: inline-block;
-    background-color: ${({theme}) => theme.button};
+    background-color: #81818133;
     border-radius: 1rem;
     padding: 1.2rem 2.5rem;
     min-width: 10rem;
@@ -117,26 +125,55 @@ const Container = styled.div`
 `;
 
 function App() {
-    const {theme} = useSelector(themeSelector);
     const {page} = useSelector(productSelector);
 
     return (
-        <ThemeProvider
-            theme={theme === 'dark' ? darkTheme : lightTheme}
-        >
+        <>
             <GlobalStyle />
             <Container>
                 <Header />
                 <Routes>
                     <Route path="/" element={
-                        <Home />
+                        <Burgers />
                     } />
-                    <Route path={page} element={
-                        <Home />
+                    <Route path="/burgers" element={
+                        <Burgers />
                     } />
-                    <Route path="items/:id" element={
+                    <Route path="/salads" element={
+                        <Salads />
+                    } />
+                    <Route path="/snacks" element={
+                        <Snacks />
+                    } />
+                    <Route path="/sauses" element={
+                        <Sauses />
+                    } />
+                    <Route path="/drinks" element={
+                        <Drinks />
+                    } />
+                    <Route path="/burgers/:productId" element={
                         <Suspense fallback={<Loading />}>
                             <SingleProductPage />
+                        </Suspense>
+                    } />
+                    <Route path="/salads/:productId" element={
+                        <Suspense fallback={<Loading />}>
+                            <SingleSalad />
+                        </Suspense>
+                    } />
+                    <Route path="/sauses/:productId" element={
+                        <Suspense fallback={<Loading />}>
+                            <SingleSause />
+                        </Suspense>
+                    } />
+                    <Route path="/snacks/:productId" element={
+                        <Suspense fallback={<Loading />}>
+                            <SingleSnack />
+                        </Suspense>
+                    } />
+                    <Route path="/drinks/:productId" element={
+                        <Suspense fallback={<Loading />}>
+                            <SingleDrink />
                         </Suspense>
                     } />
                     <Route path="/cart" element={
@@ -144,12 +181,16 @@ function App() {
                             <Cart />
                         </Suspense>
                     } />
+                    <Route path="/qr" element={
+                        <QRPage />
+                    } />
                     <Route path="*" element={
                         <PageNotFound />
                     } />
                 </Routes>
+                <Footer />
             </Container>
-        </ThemeProvider>
+        </>
     );
 }
 

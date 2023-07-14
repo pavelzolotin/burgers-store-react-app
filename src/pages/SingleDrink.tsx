@@ -3,14 +3,13 @@ import { useSelector } from 'react-redux';
 
 import SingleProductBlock from '../components/SingleProductBlock';
 import { productSelector } from '../redux/product/selectors';
-import burgers from '../utils/burgers.json';
+import drinks from '../utils/drinks.json';
 
 const SingleProductPage = () => {
     const {productId} = useParams();
     const {page} = useSelector(productSelector);
-    //const currentPage = `${page}.json`
 
-    const currentProduct = burgers.find(prod => prod.id === productId);
+    const currentProduct = drinks.find(prod => prod.id === productId);
 
     if (!currentProduct) {
         return <>Загрузка...</>;

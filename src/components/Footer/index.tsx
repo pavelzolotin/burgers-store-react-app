@@ -1,11 +1,9 @@
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 import PrivacyPolicy from '../../assets/privacy-policy.pdf';
 import DataAgreement from '../../assets/agreement-to-personal-data.pdf';
-import { themeSelector } from '../../redux/themeMode/selectors';
 import { iconsNav } from '../../utils/data';
 
 const Container = styled.div`
@@ -50,7 +48,7 @@ const Links = styled.div`
   a {
     margin-bottom: .7rem;
     font-size: 1.8rem;
-    color: ${({theme}) => theme.links};
+    color: #f5f5f5;
     transition: color .3s;
 
     &:hover {
@@ -103,12 +101,10 @@ const Copyright = styled.div`
 const CopyDescription = styled.p`
   font-size: 1.6rem;
   text-align: center;
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
 `;
 
 const Footer = () => {
-    const {theme} = useSelector(themeSelector);
-
     return (
         <Container>
             <LinksAndIcons>
@@ -122,7 +118,7 @@ const Footer = () => {
                             <Link to={icon.link} key={icon.id} target="_blank">
                                 <NavIcon key={icon.id}>
                                     <NavIconImg
-                                        src={theme === 'dark' ? icon.imageLight : icon.imageDark}
+                                        src={icon.imageLight}
                                         alt={icon.alt}
                                     />
                                 </NavIcon>

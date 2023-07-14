@@ -30,7 +30,7 @@ const Description = styled.p`
 const Button = styled.button`
   padding: 1.5rem 2.5rem;
   margin-top: 5rem;
-  color: ${({theme}) => theme.buttonText};
+  color: #f5f5f5;
   font-family: 'Helvetica Neue Medium';
   letter-spacing: 1.2px;
   border: .2rem solid #fbb040;

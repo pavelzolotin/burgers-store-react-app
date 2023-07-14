@@ -54,7 +54,7 @@ const Info = styled.div`
     font-size: 2.2rem;
     line-height: 2.7rem;
     letter-spacing: 0.01em;
-    color: ${({theme}) => theme.links};
+    color: #f5f5f5;
   }
 
   p {
@@ -91,7 +91,7 @@ const Count = styled.div`
 
   b {
     font-size: 2.2rem;
-    color: ${({theme}) => theme.links};
+    color: #f5f5f5;
   }
 `;
 
@@ -134,7 +134,7 @@ const Price = styled.div`
   justify-content: center;
   width: 33%;
   font-size: 2.2rem;
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
 
   @media (max-width: 767px) {
     justify-content: center;

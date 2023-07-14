@@ -1,0 +1,112 @@
+[
+  {
+    "id": "0",
+    "imageUrl": [
+      "../images/d1.png"
+    ],
+    "title": "Морс из облепихи",
+    "descriptionShort": "Вода, ягоды облепихи, сахар.",
+    "descriptionFull": "вода,\nягоды облепихи,\nсахар.",
+    "price": 149,
+    "weight": "500 мл."
+  },
+  {
+    "id": "1",
+    "imageUrl": [
+      "../images/d2.png"
+    ],
+    "title": "Морс из Вишни",
+    "descriptionShort": "Вода, ягоды вишни, сахар.",
+    "descriptionFull": "вода,\nягоды вишни,\nсахар.",
+    "price": 149,
+    "weight": "500 мл."
+  },
+  {
+    "id": "2",
+    "imageUrl": [
+      "../images/d3.png"
+    ],
+    "title": "Морс из Клюквы",
+    "descriptionShort": "Вода, ягоды клюквы, сахар.",
+    "descriptionFull": "вода,\nягоды клюквы,\nсахар.",
+    "price": 149,
+    "weight": "500 мл."
+  },
+  {
+    "id": "3",
+    "imageUrl": [
+      "../images/d4.png"
+    ],
+    "title": "Молочный клубничный коктейль.",
+    "descriptionShort": "Мороженное, молоко, сливки, топпинг.",
+    "descriptionFull": "мороженное,\nмолоко,\nсливки,\nтоппинг.",
+    "price": 249,
+    "weight": "400 мл."
+  },
+  {
+    "id": "4",
+    "imageUrl": [
+      "../images/d5.png"
+    ],
+    "title": "Молочный коктейль «Орео»",
+    "descriptionShort": "Мороженное, молоко, сливки, печенье орео.",
+    "descriptionFull": "мороженное,\nмолоко,\nсливки,\nпеченье орео.",
+    "price": 249,
+    "weight": "400 мл."
+  },
+  {
+    "id": "5",
+    "imageUrl": [
+      "../images/d6.png"
+    ],
+    "title": "Шоколадный молочный коктейль",
+    "descriptionShort": "Мороженное, молоко, сливки, топпинг.",
+    "descriptionFull": "мороженное,\nмолоко,\nсливки,\nтоппинг.",
+    "price": 249,
+    "weight": "400 мл."
+  },
+  {
+    "id": "6",
+    "imageUrl": [
+      "../images/d7.png"
+    ],
+    "title": "Карамельный молочный коктейль",
+    "descriptionShort": "Мороженное, молоко, сливки, топпинг.",
+    "descriptionFull": "мороженное,\nмолоко,\nсливки,\nтоппинг.",
+    "price": 249,
+    "weight": "400 мл."
+  },
+  {
+    "id": "7",
+    "imageUrl": [
+      "../images/d8.png"
+    ],
+    "title": "Ванильный молочный коктейль",
+    "descriptionShort": "Мороженное, молоко, сливки, топпинг.",
+    "descriptionFull": "мороженное,\nмолоко,\nсливки,\nтоппинг.",
+    "price": 249,
+    "weight": "400 мл."
+  },
+  {
+    "id": "8",
+    "imageUrl": [
+      "../images/d9.png"
+    ],
+    "title": "Классический лимонад",
+    "descriptionShort": "Лимоны, сахар, вода.",
+    "descriptionFull": "Лимоны,\nсахар,\nвода.",
+    "price": 199,
+    "weight": "500 мл."
+  },
+  {
+    "id": "9",
+    "imageUrl": [
+      "../images/d10.png"
+    ],
+    "title": "Лимонад из Манго-Маракуи",
+    "descriptionShort": "Манго, маракуя, сахар, вода, лимонный сок.",
+    "descriptionFull": "манго,\nмаракуя,\nсахар,\nвода,\nлимонный сок.",
+    "price": 199,
+    "weight": "500 мл."
+  }
+]

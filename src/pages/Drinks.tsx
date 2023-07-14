@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { categoriesSelector } from '../redux/categories/selectors';
 import { productSelector } from '../redux/product/selectors';
 import ProductBlock from '../components/ProductBlock';
-import burgers from '../utils/burgers.json';
+import drinks from '../utils/drinks.json';
 
 const Content = styled.div`
   display: flex;
@@ -60,11 +60,11 @@ export type Product = {
     imageUrl: string[];
 };
 
-const Home = () => {
+const Drinks = () => {
     const {categories} = useSelector(categoriesSelector);
     const {page} = useSelector(productSelector);
 
-    const items = burgers.map(item => (
+    const items = drinks.map(item => (
         <ProductBlock
             key={item.id}
             {...item}
@@ -94,4 +94,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Drinks;

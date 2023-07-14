@@ -39,7 +39,7 @@ const H2 = styled.h2`
   display: flex;
   align-items: center;
   font-size: 3.2rem;
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
 
   svg {
     position: relative;
@@ -49,7 +49,7 @@ const H2 = styled.h2`
     margin-right: 1rem;
 
     path {
-      stroke: ${({theme}) => theme.links};
+      stroke: #f5f5f5;
       stroke-width: 1.9;
     }
   }
@@ -65,7 +65,7 @@ const Clear = styled.div`
     display: inline-block;
     margin: .4rem 0 0 .7rem;
     font-size: 1.8rem;
-    color: ${({theme}) => theme.links};
+    color: #f5f5f5;
   }
 
   span,
@@ -111,11 +111,11 @@ const Details = styled.div`
 `;
 
 const ProductCount = styled.div`
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
 `;
 
 const CashCount = styled.div`
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
 `;
 
 const CartButtons = styled.div`
@@ -132,7 +132,7 @@ const CartButtons = styled.div`
 
 const Button = styled.button`
   padding: 1.5rem 2.5rem;
-  color: ${({theme}) => theme.buttonText};
+  color: #f5f5f5;
   font-family: 'Helvetica Neue Medium';
   letter-spacing: 1.2px;
   border: .2rem solid #fbb040;
@@ -149,7 +149,7 @@ const Button = styled.button`
   span {
     font-weight: 300;
     font-size: 1.6rem;
-    color: ${({theme}) => theme.buttonText};
+    color: #f5f5f5;
   }
 `;
 

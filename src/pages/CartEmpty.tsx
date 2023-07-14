@@ -18,7 +18,7 @@ const Cart = styled.div`
 const H2 = styled.h2`
   font-size: 3.6rem;
   font-weight: 700;
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
   margin-bottom: 1.5rem;
 `;
 
@@ -37,7 +37,7 @@ const Img = styled.img`
 
 const Button = styled.button`
   padding: 1.5rem 2.5rem;
-  color: ${({theme}) => theme.buttonText};
+  color: #f5f5f5;
   font-family: 'Helvetica Neue Medium';
   letter-spacing: 1.2px;
   border: .2rem solid #fbb040;

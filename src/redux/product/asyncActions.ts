@@ -8,7 +8,6 @@ export const fetchProducts = createAsyncThunk<Product[], FetchProductsArgs> (
     async (params: any) => {
         const {page} = params;
         const {data} = await axios.get<Product[]>(`${page}.json`);
-
         return data;
     }
 );

@@ -5,12 +5,13 @@ import styled from 'styled-components';
 
 import { addItem } from '../../redux/cart/slice';
 import { cartItemSelectorById } from '../../redux/cart/selectors';
+import { productSelector } from '../../redux/product/selectors';
 
 const Product = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 33%;
+  padding: 1rem 2rem;
   margin-bottom: 12rem;
   border-radius: 1rem;
   transition: all .3s;
@@ -28,29 +29,29 @@ const Product = styled.div`
 
   @media (max-width: 767px) {
     width: 100%;
+    margin-bottom: 8rem;
   }
 `;
 
 const ImageBox = styled.div``;
 
 const Img = styled.img`
-  width: 22rem;
-  height: 22rem;
-  object-fit: contain;
+  width: 100%;
+  border-radius: .5rem;
 `;
 
 const H3 = styled.h3`
-  color: ${({theme}) => theme.title};
+  color: #fbb040;
   font-size: 2.4rem;
   font-weight: 300;
   letter-spacing: 1.4px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
 `;
 
 const H4 = styled.h4`
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
   font-family: 'Helvetica Neue Light';
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 300;
   white-space: pre-line;
   letter-spacing: 1.2px;
@@ -64,7 +65,7 @@ const Info = styled.div`
   padding: 1.4rem;
 
   @media (min-width: 1500px) {
-    padding: 1.8rem;
+    padding: 1.5rem;
   }
 
   @media (max-width: 1400px) {
@@ -77,7 +78,7 @@ const Info = styled.div`
 `;
 
 const Price = styled.div`
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
   font-family: 'Helvetica Neue Medium';
   font-weight: 300;
   font-size: 2.6rem;
@@ -86,7 +87,7 @@ const Price = styled.div`
   transition: all .3s;
 
   span {
-    color: ${({theme}) => theme.links};
+    color: #f5f5f5;
     opacity: 0.5;
     transition: all .3s;
     margin-left: -.2rem;
@@ -95,7 +96,7 @@ const Price = styled.div`
 
 const Button = styled.button`
   height: 5.2rem;
-  color: ${({theme}) => theme.buttonText};
+  color: #f5f5f5;
   font-family: 'Helvetica Neue Medium';
   letter-spacing: 1.2px;
   border: .2rem solid #fbb040;
@@ -136,19 +137,28 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  height: 12rem;
+
+  @media (min-width: 1336px) {
+    height: 17rem;
+  }
+`;
+
+const Span = styled(H4)`
+  margin-top: 1rem;
+  color: #fbb040;
 `;
 
 const ProductBottom = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 5rem;
   padding: 0 1.2rem;
+  margin-top: 3rem;
 `;
 
-const ProductBlock = ({id, title, imageUrl, descriptionShort, price}) => {
+const ProductBlock = ({id, title, imageUrl, descriptionShort, price, weight}) => {
     const dispatch = useDispatch();
+    const {page} = useSelector(productSelector);
     const cartItem = useSelector(cartItemSelectorById(id));
 
     const addedCount = cartItem ? cartItem.count : 0;
@@ -158,6 +168,7 @@ const ProductBlock = ({id, title, imageUrl, descriptionShort, price}) => {
             id,
             title,
             price,
+            weight,
             imageUrl,
             count: 0
         };
@@ -168,7 +179,7 @@ const ProductBlock = ({id, title, imageUrl, descriptionShort, price}) => {
     return (
         <Product>
             <ImageBox>
-                <Link to={`/items/${id}`}>
+                <Link to={`/${page}/${id}`}>
                     <Img
                         src={imageUrl}
                         alt="product"
@@ -179,6 +190,7 @@ const ProductBlock = ({id, title, imageUrl, descriptionShort, price}) => {
                 <TextBox>
                     <H3>{title}</H3>
                     <H4>{descriptionShort}</H4>
+                    <Span>{weight}</Span>
                 </TextBox>
                 <ProductBottom>
                     <Price>{price} <span>₽</span></Price>

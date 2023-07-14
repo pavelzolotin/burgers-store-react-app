@@ -5,14 +5,11 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { setPage } from '../../redux/product/slice';
-import { setCategories } from '../../redux/categories/slice';
-import { themeSelector } from '../../redux/themeMode/selectors';
 import { cartSelector } from '../../redux/cart/selectors';
+import { setCategories } from '../../redux/categories/slice';
 import useCheckMobileScreen from '../../hooks/useDeviceDetect';
 import LogoLight from '../../assets/img/logo-dark-theme.png';
-import LogoDark from '../../assets/img/logo-light-theme.png';
 import { headerLinks } from '../../utils/links';
-import ToggleTheme from '../../UI/ToggleTheme';
 
 const Container = styled.div`
   display: flex;
@@ -24,7 +21,7 @@ const Container = styled.div`
   width: 100%;
   height: 9rem;
   padding: 2rem 4rem 3rem 8rem;
-  background-color: ${({theme}) => theme.backgroundColor};
+  background-color: #212426;
   transition: all .3s;
   z-index: 10;
 
@@ -55,14 +52,14 @@ const RightPart = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 70%;
+  width: 65%;
   transition: all .3s;
 
   @media (max-width: 767px) {
     flex-direction: column-reverse;
     justify-content: space-between;
     width: 100%;
-    background-color: ${({theme}) => theme.backgroundColor};
+    background-color: #212426;
     z-index: 10;
   }
 `;
@@ -100,7 +97,7 @@ const Pages = styled.div`
   a {
     font-size: 1.8rem;
     letter-spacing: 1.2px;
-    color: ${({theme}) => theme.links};
+    color: #f5f5f5;
     transition: color .3s;
 
     &.active {
@@ -141,7 +138,7 @@ const CartButton = styled.button`
     align-items: center;
     line-height: 2.3rem;
     color: #ffffff;
-    background-color: ${({theme}) => theme.button};
+    background-color: #81818133;
     border: .2rem solid #fbb040;
     border-radius: 1rem;
     padding: 1rem 2.5rem;
@@ -188,7 +185,6 @@ const LogoImageMobile = styled(LogoImage)`
 
 const Header = () => {
     const dispatch = useDispatch();
-    const {theme} = useSelector(themeSelector);
     const {items, totalPrice} = useSelector(cartSelector);
     const {pathname} = useLocation();
     const isMounted = useRef(false);
@@ -197,14 +193,14 @@ const Header = () => {
 
     const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
-    const onClickHome = () => {
-        dispatch(setCategories('Бургеры'));
-        dispatch(setPage('burgers'));
-    };
-
     const onClickCategories = (link) => {
         dispatch(setCategories(link.title));
         dispatch(setPage(link.item));
+    };
+
+    const onClickLogo = () => {
+        dispatch(setCategories('Бургеры'));
+        dispatch(setPage('burgers'));
     };
 
     useEffect(() => {
@@ -221,12 +217,15 @@ const Header = () => {
                 !isMobile &&
                 <LeftPart>
                     <LogoBox>
-                        <Link to="/">
+                        <NavLink
+                            to="/"
+                            onClick={() => onClickLogo()}
+                        >
                             <LogoImage
-                                src={theme === 'dark' ? LogoLight : LogoDark}
+                                src={LogoLight}
                                 alt="Logo"
                             />
-                        </Link>
+                        </NavLink>
                     </LogoBox>
                 </LeftPart>
             }
@@ -234,7 +233,7 @@ const Header = () => {
                 <Pages>
                     <NavLink
                         to="/"
-                        onClick={() => onClickHome()}
+                        onClick={() => onClickLogo()}
                     >
                         Бургеры
                     </NavLink>
@@ -251,13 +250,14 @@ const Header = () => {
                     }
                 </Pages>
                 <HeaderEndWrap>
-                    <ToggleTheme />
                     {
                         isMobile && logoMobile ? (
-                            <LogoImageMobile
-                                src={theme === 'dark' ? LogoLight : LogoDark}
-                                alt="Logo"
-                            />
+                            <Link to="/">
+                                <LogoImageMobile
+                                    src={LogoLight}
+                                    alt="Logo"
+                                />
+                            </Link>
                         ) : ''
                     }
                     <CartWrapper>

@@ -1,0 +1,60 @@
+[
+  {
+    "id": "0",
+    "imageUrl": [
+      "../images/sn1.png"
+    ],
+    "title": "Куриные стрипсы",
+    "descriptionShort": "Куринное филе, кляр и панировочные сухари, специи.",
+    "descriptionFull": "куринное филе,\nкляр и панировочные сухари,\nспеции.",
+    "itemsCount": 6,
+    "price": 149,
+    "weight": "120 гр."
+  },
+  {
+    "id": "1",
+    "imageUrl": [
+      "../images/sn2.png"
+    ],
+    "title": "Чиз-Да-Болы",
+    "descriptionShort": "Кляр и панировочные сухари, сыр моцарелла.",
+    "descriptionFull": "кляр и панировочные сухари, сыр моцарелла.",
+    "itemsCount": 9,
+    "price": 149,
+    "weight": "120 гр."
+  },
+  {
+    "id": "2",
+    "imageUrl": [
+      "../images/sn3.png"
+    ],
+    "title": "Картофель фри",
+    "descriptionShort": "Картофель фри, соль.",
+    "descriptionFull": "Картофель фри,\nсоль.",
+    "price": 149,
+    "weight": "120 гр."
+  },
+  {
+    "id": "3",
+    "imageUrl": [
+      "../images/sn4.png"
+    ],
+    "title": "Луковые колечки",
+    "descriptionShort": "Лук репчатый, кляр и панировочные сухари.",
+    "descriptionFull": "лук репчатый,\nкляр и панировочные сухари.",
+    "itemsCount": 9,
+    "price": 149,
+    "weight": "120 гр."
+  },
+  {
+    "id": "4",
+    "imageUrl": [
+      "../images/sn5.png"
+    ],
+    "title": "Картофель Айдахо",
+    "descriptionShort": "Картофель, оливковое масло, итальянские травы, специи.",
+    "descriptionFull": "картофель,\nоливковое масло,\nитальянские травы,\nспеции.",
+    "price": 149,
+    "weight": "120 гр."
+  }
+]

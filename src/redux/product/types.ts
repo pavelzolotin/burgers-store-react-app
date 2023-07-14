@@ -7,6 +7,7 @@ export type Product = {
     title: string;
     descriptionShort: string;
     price: number;
+    weight: number;
     imageUrl: string[];
 };
 
@@ -18,6 +19,6 @@ export enum Status {
 
 export interface ProductSliceState {
     products: Product[];
-    page: string;
+    page: any;
     status: Status;
 }

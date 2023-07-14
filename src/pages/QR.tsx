@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import DummyBlock from '../components/DummyBlock';
+import QRBlock from '../components/QR';
 
 const Container = styled.div`
   display: flex;
@@ -12,16 +12,12 @@ const Container = styled.div`
   max-width: 1400px;
 `;
 
-type DummyPageProps = {
-    theme: string;
-};
-
-const DummyPage = ({theme}: DummyPageProps) => {
+const QRPage = () => {
     return (
         <Container>
-            <DummyBlock theme={theme} />
+            <QRBlock />
         </Container>
     );
 };
 
-export default DummyPage;
+export default QRPage;

@@ -1,0 +1,101 @@
+[
+  {
+    "id": "0",
+    "imageUrl": [
+      "../images/sa1.png"
+    ],
+    "title": "Горчица",
+    "descriptionShort": "",
+    "descriptionFull": "",
+    "price": 79,
+    "weight": "70 мл."
+  },
+  {
+    "id": "1",
+    "imageUrl": [
+      "../images/sa2.png"
+    ],
+    "title": "Кетчуп",
+    "descriptionShort": "",
+    "descriptionFull": "",
+    "price": 79,
+    "weight": "70 мл."
+  },
+  {
+    "id": "2",
+    "imageUrl": [
+      "../images/sa3.png"
+    ],
+    "title": "Соус BBQ",
+    "descriptionShort": "",
+    "descriptionFull": "",
+    "price": 79,
+    "weight": "70 мл."
+  },
+  {
+    "id": "3",
+    "imageUrl": [
+      "../images/sa4.png"
+    ],
+    "title": "Соус Блючиз",
+    "descriptionShort": "",
+    "descriptionFull": "",
+    "price": 99,
+    "weight": "70 мл."
+  },
+  {
+    "id": "4",
+    "imageUrl": [
+      "../images/sa5.png"
+    ],
+    "title": "Фирменный соус",
+    "descriptionShort": "",
+    "descriptionFull": "",
+    "price": 99,
+    "weight": "70 мл."
+  },
+  {
+    "id": "5",
+    "imageUrl": [
+      "../images/sa6.png"
+    ],
+    "title": "Соус Джек Дэниэлс",
+    "descriptionShort": "",
+    "descriptionFull": "",
+    "price": 99,
+    "weight": "70 мл."
+  },
+  {
+    "id": "6",
+    "imageUrl": [
+      "../images/sa7.png"
+    ],
+    "title": "Сырный Соус",
+    "descriptionShort": "",
+    "descriptionFull": "",
+    "price": 79,
+    "weight": "70 мл."
+  },
+  {
+    "id": "7",
+    "imageUrl": [
+      "../images/sa8.png"
+    ],
+    "title": "Соус Ранч",
+    "descriptionShort": "",
+    "descriptionFull": "",
+    "price": 79,
+    "weight": "70 мл."
+  },
+  {
+    "id": "8",
+    "imageUrl": [
+      "../images/sa9.png"
+    ],
+    "title": "Соус Тар-Тар",
+    "descriptionShort": "",
+    "descriptionFull": "",
+    "price": 79,
+    "weight": "70 мл."
+  }
+]

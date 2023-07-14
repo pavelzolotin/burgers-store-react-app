@@ -1,9 +1,10 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 import { addItem } from '../../redux/cart/slice';
+import { cartItemSelectorById } from '../../redux/cart/selectors';
 
 const Container = styled.div`
   display: flex;
@@ -22,9 +23,10 @@ const Container = styled.div`
 
   img {
     width: 40%;
+    border-radius: .5rem;
 
     @media (max-width: 767px) {
-      width: 55%;
+      width: 85%;
     }
   }
 `;
@@ -58,8 +60,8 @@ const About = styled.div`
 
 const H2 = styled.h2`
   width: 80%;
-  color: ${({theme}) => theme.title};
-  font-size: 3.6rem;
+  color: #fbb040;
+  font-size: 2.6rem;
   font-weight: 300;
   letter-spacing: 1.4px;
   margin: 4rem 0 2rem 0;
@@ -67,7 +69,7 @@ const H2 = styled.h2`
 
 const Description = styled.p`
   width: 80%;
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
   font-family: 'Helvetica Neue Light';
   font-size: 1.8rem;
   font-weight: 300;
@@ -81,6 +83,7 @@ const Description = styled.p`
 const Bottom = styled.div`
   display: flex;
   gap: 3rem;
+  margin-top: 5rem;
 
   @media (max-width: 767px) {
     flex-direction: column-reverse;
@@ -90,21 +93,20 @@ const Bottom = styled.div`
 const PriceBox = styled.div`
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   width: 80%;
 `;
 
 const Price = styled.div`
-  color: ${({theme}) => theme.links};
+  color: #f5f5f5;
   font-weight: 300;
   font-size: 3.2rem;
   letter-spacing: 1.2px;
   line-height: 2.7rem;
-  margin-bottom: 8rem;
   transition: all .3s;
 
   span {
-    color: ${({theme}) => theme.links};
+    color: #f5f5f5;
     opacity: 0.5;
     transition: all .3s;
     margin-left: .5rem;
@@ -113,7 +115,7 @@ const Price = styled.div`
 
 const Button = styled.button`
   padding: 1.5rem 2.5rem;
-  color: ${({theme}) => theme.buttonText};
+  color: #f5f5f5;
   font-family: 'Helvetica Neue Medium';
   letter-spacing: 1.2px;
   border: .2rem solid #fbb040;
@@ -150,8 +152,15 @@ const Button = styled.button`
   }
 `;
 
-const SingleProductBlock = ({cartItem, currentProduct}) => {
+const Span = styled.h4`
+  color: #fbb040;
+  font-size: 1.8rem;
+  font-weight: 100;
+`;
+
+const SingleProductBlock = ({currentProduct}) => {
     const dispatch = useDispatch();
+    const cartItem = useSelector(cartItemSelectorById(currentProduct.id));
 
     const addedCount = cartItem ? cartItem.count : 0;
 
@@ -186,6 +195,7 @@ const SingleProductBlock = ({cartItem, currentProduct}) => {
                 <H2>{currentProduct.title}</H2>
                 <Description>{currentProduct.descriptionFull}</Description>
                 <PriceBox>
+                    <Span>{currentProduct.weight}</Span>
                     <Price>{currentProduct.price}<span>₽</span></Price>
                 </PriceBox>
                 <Bottom>
