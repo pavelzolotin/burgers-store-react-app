@@ -22,9 +22,13 @@ const Container = styled.div`
   }
 
   img {
-    width: 40%;
+    width: 45%;
     border-radius: .5rem;
 
+    @media (max-width: 1440px) {
+      width: 40%;
+    }
+    
     @media (max-width: 767px) {
       width: 85%;
     }
