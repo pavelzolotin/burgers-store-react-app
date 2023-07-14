@@ -137,10 +137,6 @@ const TextBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-
-  @media (min-width: 1336px) {
-    height: 17rem;
-  }
 `;
 
 const Span = styled(H4)`
