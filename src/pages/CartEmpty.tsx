@@ -1,8 +1,11 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 import cartEmpty from '../assets/img/empty-cart.png';
+import { setCategories } from '../redux/categories/slice';
+import { setPage } from '../redux/product/slice';
 
 const Cart = styled.div`
   margin: 8rem auto;
@@ -59,6 +62,13 @@ const Button = styled.button`
 `;
 
 const CartEmpty = () => {
+    const dispatch = useDispatch();
+
+    const onClickReturn = () => {
+        dispatch(setCategories('Бургеры'));
+        dispatch(setPage('burgers'));
+    };
+
     return (
         <Cart>
             <H2>Корзина пустая 😕</H2>
@@ -71,7 +81,7 @@ const CartEmpty = () => {
                 src={cartEmpty}
                 alt="empty-cart"
             />
-            <Link to="/">
+            <Link to="/" onClick={onClickReturn}>
                 <Button>
                     <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
                          xmlns="http://www.w3.org/2000/svg">

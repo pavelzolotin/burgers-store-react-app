@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { cartSelector } from '../redux/cart/selectors';
+import { productSelector } from '../redux/product/selectors';
 import { setCategories } from '../redux/categories/slice';
 import { clearItems } from '../redux/cart/slice';
+import { setPage } from '../redux/product/slice';
+import { categoriesSelector } from '../redux/categories/selectors';
 import CartItem from '../components/CartProduct';
 import CartEmpty from './CartEmpty';
 
@@ -156,11 +159,14 @@ const Button = styled.button`
 const Cart = () => {
     const dispatch = useDispatch();
     const {items, totalPrice} = useSelector(cartSelector);
+    const {page} = useSelector(productSelector);
+    const {categories} = useSelector(categoriesSelector);
 
     const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
     const onClickCategories = () => {
-        dispatch(setCategories('Бургеры'));
+        dispatch(setCategories(`${categories}`));
+        dispatch(setPage(`${page}`));
     };
 
     const onClickClear = () => {
@@ -229,7 +235,7 @@ const Cart = () => {
                     </Details>
                     <CartButtons>
                         <Button>
-                            <Link to="/">
+                            <Link to={`/${page}`}>
                                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5"
