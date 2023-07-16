@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { addItem } from '../../redux/cart/slice';
 import { cartItemSelectorById } from '../../redux/cart/selectors';
+import { productSelector } from '../../redux/product/selectors';
 
 const Container = styled.div`
   display: flex;
@@ -165,6 +166,7 @@ const Span = styled.h4`
 const SingleProductBlock = ({currentProduct}) => {
     const dispatch = useDispatch();
     const cartItem = useSelector(cartItemSelectorById(currentProduct.id));
+    const {page} = useSelector(productSelector);
 
     const addedCount = cartItem ? cartItem.count : 0;
 
@@ -203,7 +205,7 @@ const SingleProductBlock = ({currentProduct}) => {
                     <Price>{currentProduct.price}<span>₽</span></Price>
                 </PriceBox>
                 <Bottom>
-                    <Link to="/">
+                    <Link to={`/${page}`}>
                         <Button>
                             <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
