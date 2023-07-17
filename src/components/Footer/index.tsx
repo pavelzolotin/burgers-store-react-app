@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import PrivacyPolicy from '../../assets/privacy-policy.pdf';
 import DataAgreement from '../../assets/agreement-to-personal-data.pdf';
-import { iconsNav } from '../../utils/data';
+import { iconsNav } from '../../utils/icons';
 
 const Container = styled.div`
   display: flex;

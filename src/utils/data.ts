@@ -1,23 +1,370 @@
-export const iconsNav = [
+type Products = {
+    id: number | undefined;
+    imageUrl: string;
+    title: string;
+    descriptionShort: string;
+    descriptionFull: string;
+    itemsCount?: number;
+    price: number;
+    weight: string;
+}
+
+export const burgers: Products[] = [
     {
         id: 1,
-        imageLight: require('../assets/img/instagram-light-icon.png'),
-        imageDark: require('../assets/img/instagram-dark-icon.png'),
-        alt: 'footer-instagram-icon',
-        link: 'https://instagram.com'
+        imageUrl: require('../assets/img/b1.png'),
+        title: 'Просто Рэй (10’)',
+        descriptionShort: 'Котлета из мраморной говядины, сыр чеддер, овощи',
+        descriptionFull: 'булочка бриошь, котлета из 100% мраморной говядины, салат айсберг, ломтик плавленного сыра чеддер, красный лук, маринованный огурчик, горчица, кетчуп',
+        price: 149,
+        weight: '200 гр',
     },
     {
         id: 2,
-        imageLight: require('../assets/img/vk-light-icon.png'),
-        imageDark: require('../assets/img/vk-dark-icon.png'),
-        alt: 'footer-vk-icon',
-        link: 'https://vk.com'
+        imageUrl: require('../assets/img/b2.png'),
+        title: 'Сырный Луи (12,5’)',
+        descriptionShort: 'Котлета мраморной говядины, фирменный соус, сыр чеддер и гауда, овощи',
+        descriptionFull: 'булочка бриошь, котлета из 100% мраморной говядины, салат айсберг, фирменный соус, 2 ломтика сыра чеддер и гауда, ломтик помидора, маринованный огурчик, сырный соус, фритюрный лук',
+        price: 349,
+        weight: '350 гр',
     },
     {
         id: 3,
-        imageLight: require('../assets/img/telegram-light-icon.png'),
-        imageDark: require('../assets/img/telegram-dark-icon.png'),
-        alt: 'footer-telegram-icon',
-        link: 'https://telegram.org'
+        imageUrl: require('../assets/img/b3.png'),
+        title: 'Джек Дэниэлс (12.5’)',
+        descriptionShort: 'Котлета из мраморной говядины, соус джек дэниэлс и блючиз, сыр чеддер и гауда, овощи',
+        descriptionFull: 'булочка бриошь, котлета из 100% мраморной говядины, салат айсберг, руккола, соусами джек дэниэлс и блючиз, ломтик помидора, маринованные огурчики, сырный соус, фритюрный лук',
+        price: 349,
+        weight: '306 гр',
+    },
+    {
+        id: 4,
+        imageUrl: require('../assets/img/b4.png'),
+        title: 'Барри Q (12,5’)',
+        descriptionShort: 'Котлета из мраморной говядины, соус барбекю, сыр чеддер и гауда, карамелизированный лук, перец халапеньо, овощи',
+        descriptionFull: 'булочка бриошь, котлета из 100% мраморной говядины, салат айсберг, соус барбекю, 2 ломтика сыра гауда и чеддер, карамелизированный лук, горчица, ломтик помидора, огурчик маринованный, перчик халапеньо',
+        price: 349,
+        weight: '350 гр',
+    },
+    {
+        id: 5,
+        imageUrl: require('../assets/img/b5.png'),
+        title: 'Острый Фрэнк (12,5’)',
+        descriptionShort: 'Котлета из мраморной говядины, соус чипотле и табаско, сыр гауда, перец халапеньо, овощи',
+        descriptionFull: 'булочка бриошь, котлета из 100% мраморной говядины, соус чипотле, салат айсберг, соус табаско, ломтик сыра гауда, ломтик помидора, красный лук, перчик халапеньо, кетчуп',
+        price: 349,
+        weight: '330 гр',
+    },
+    {
+        id: 6,
+        imageUrl: require('../assets/img/b6.png'),
+        title: 'Вишнёвый Бэйси (12,5’)',
+        descriptionShort: 'Котлета из мраморной говядины, бекон, соус тонкацу, блючиз и вишневый, сыр чеддер',
+        descriptionFull: 'булочка бриошь, котлета из 100% мраморной говядины, соус тонкацу, салат айсберг, соус блючиз, 2 ломтика плавленного сыра чеддер, бекон, вишневый соус',
+        price: 399,
+        weight: '330 гр',
+    },
+    {
+        id: 7,
+        imageUrl: require('../assets/img/b7.png'),
+        title: 'Корейский Роуч (12,5’)',
+        descriptionShort: 'Котлета из мраморной говядины, фирменный соус, сыр чеддер и гауда, морковь по-корейски',
+        descriptionFull: 'булочка бриошь, котлета из 100% мраморной говядины, фирменный соус, 2 ломтика сыра чеддер и гауда, морковь по-корейски',
+        price: 349,
+        weight: '320 гр',
+    },
+    {
+        id: 8,
+        imageUrl: require('../assets/img/b8.png'),
+        title: 'Манго Митчел (12,5’)',
+        descriptionShort: 'Котлета из мраморной говядины, соус манго и ореховый, сыр гауда, карамелизированная груша',
+        descriptionFull: 'булочка бриошь, котлета из 100% мраморной говядины, ореховый соус, салат айсберг, редис, сыр гауда, карамелизированная груша, соус манго',
+        price: 499,
+        weight: '330 гр',
+    },
+    {
+        id: 9,
+        imageUrl: require('../assets/img/b9.png'),
+        title: 'Чикен Фэроу (12,5’)',
+        descriptionShort: 'Куриное филе в панировке, соус фирменный и карри, соус: (шрирача или табаско, на выбор), сыр чеддер, ломтик помидора',
+        descriptionFull: 'булочка бриошь, куриное филе в панировке, карри соус, салат айсберг, соус: (шрирача или табаско на выбор), горчица, 2 ломтика плавленного сыра чеддер, фирменный соус, ломтик помидора',
+        price: 349,
+        weight: '330 гр',
+    },
+    {
+        id: 10,
+        imageUrl: require('../assets/img/b10.png'),
+        title: 'Цезарь Дэвис',
+        descriptionShort: 'Кусочки куриного филе, обжаренные на гриле, соус цезарь, салат айсберг, сыр пармезан, ломтик помидора',
+        descriptionFull: 'булочка бриошь, обжаренные на гриле кусоки куриного филе, соус цезарь, салат айсберг, сыр пармезан, ломтик помидора',
+        price: 399,
+        weight: '290 гр',
+    },
+    {
+        id: 11,
+        imageUrl: require('../assets/img/b11.png'),
+        title: 'Фиш Хокинс (10’)',
+        descriptionShort: 'Котлета из филе хека, булочка бриошь, соус тар-тар, салат айсберг, сыр чеддер',
+        descriptionFull: 'булочка бриошь, соус тар-тар, котлета из филе хека, салат айсберг, ломтик плавленного сыра чеддер',
+        price: 299,
+        weight: '220 гр'
+    }
+];
+
+export const salads: Products[] = [
+    {
+        id: 12,
+        imageUrl: require('../assets/img/s1.png'),
+        title: 'Салат Клоу-Слоу',
+        descriptionShort: 'Капуста белокочанная и краснокочанная, морковь по-корейски, фирменная заправка, специи',
+        descriptionFull: 'капуста белокочанная и краснокочанная, морковь по-корейски, фирменная заправка, специи',
+        price: 169,
+        weight: '200 гр',
+    },
+    {
+        id: 13,
+        imageUrl: require('../assets/img/s2.png'),
+        title: 'Цезарь с курицей',
+        descriptionShort: 'Обжаренные кусочки куриного филе на гриле, сыр пармезан, соус цезарь, салат айсберг, помидоры черри, сухарики',
+        descriptionFull: 'обжаренные кусочки куриного филе на гриле, сыр пармезан, соус цезарь, салат айсберг, помидоры черри, сухарики',
+        price: 249,
+        weight: '230 гр',
+    },
+    {
+        id: 14,
+        imageUrl: require('../assets/img/s3.png'),
+        title: 'Цезарь с креветками',
+        descriptionShort: 'Обжаренные креветки на гриле, сыр пармезан, соус цезарь, салат айсберг, помидоры черри, сухарики',
+        descriptionFull: 'обжаренные креветки на гриле, сыр пармезан, соус цезарь, салат айсберг, помидоры черри, сухарики',
+        price: 349,
+        weight: '230 гр'
+    }
+];
+
+export const drinks: Products[] = [
+    {
+        id: 15,
+        imageUrl: require('../assets/img/d1.png'),
+        title: 'Морс из облепихи',
+        descriptionShort: 'Вода, ягоды облепихи, сахар',
+        descriptionFull: 'вода, ягоды облепихи, сахар',
+        price: 149,
+        weight: '500 мл',
+    },
+    {
+        id: 16,
+        imageUrl: require('../assets/img/d2.png'),
+        title: 'Морс из Вишни',
+        descriptionShort: 'Вода, ягоды вишни, сахар',
+        descriptionFull: 'вода, ягоды вишни, сахар',
+        price: 149,
+        weight: '500 мл',
+    },
+    {
+        id: 17,
+        imageUrl: require('../assets/img/d3.png'),
+        title: 'Морс из Клюквы',
+        descriptionShort: 'Вода, ягоды клюквы, сахар',
+        descriptionFull: 'вода, ягоды клюквы, сахар',
+        price: 149,
+        weight: '500 мл',
+    },
+    {
+        id: 18,
+        imageUrl: require('../assets/img/d4.png'),
+        title: 'Молочный клубничный коктейль',
+        descriptionShort: 'Мороженное, молоко, сливки, топпинг',
+        descriptionFull: 'мороженное, молоко, сливки, топпинг',
+        price: 249,
+        weight: '400 мл',
+    },
+    {
+        id: 19,
+        imageUrl: require('../assets/img/d5.png'),
+        title: 'Молочный коктейль «Орео»',
+        descriptionShort: 'Мороженное, молоко, сливки, печенье орео',
+        descriptionFull: 'мороженное, молоко, сливки, печенье орео',
+        price: 249,
+        weight: '400 мл',
+    },
+    {
+        id: 20,
+        imageUrl: require('../assets/img/d6.png'),
+        title: 'Шоколадный молочный коктейль',
+        descriptionShort: 'Мороженное, молоко, сливки, топпинг',
+        descriptionFull: 'мороженное, молоко, сливки, топпинг',
+        price: 249,
+        weight: '400 мл',
+    },
+    {
+        id: 21,
+        imageUrl: require('../assets/img/d7.png'),
+        title: 'Карамельный молочный коктейль',
+        descriptionShort: 'Мороженное, молоко, сливки, топпинг',
+        descriptionFull: 'мороженное, молоко, сливки, топпинг',
+        price: 249,
+        weight: '400 мл',
+    },
+    {
+        id: 22,
+        imageUrl: require('../assets/img/d8.png'),
+        title: 'Ванильный молочный коктейль',
+        descriptionShort: 'Мороженное, молоко, сливки, топпинг',
+        descriptionFull: 'мороженное, молоко, сливки, топпинг',
+        price: 249,
+        weight: '400 мл',
+    },
+    {
+        id: 23,
+        imageUrl: require('../assets/img/d9.png'),
+        title: 'Классический лимонад',
+        descriptionShort: 'Лимоны, сахар, вода',
+        descriptionFull: 'лимоны, сахар, вода',
+        price: 199,
+        weight: '500 мл',
+    },
+    {
+        id: 24,
+        imageUrl: require('../assets/img/d10.png'),
+        title: 'Лимонад из Манго-Маракуи',
+        descriptionShort: 'Манго, маракуя, сахар, вода, лимонный сок',
+        descriptionFull: 'анго, маракуя, сахар, вода, лимонный сок',
+        price: 199,
+        weight: '500 мл'
+    }
+];
+
+export const sauses: Products[] = [
+    {
+        id: 25,
+        imageUrl: require('../assets/img/sa1.png'),
+        title: 'Горчица',
+        descriptionShort: '',
+        descriptionFull: '',
+        price: 79,
+        weight: '70 гр',
+    },
+    {
+        id: 26,
+        imageUrl: require('../assets/img/sa2.png'),
+        title: 'Кетчуп',
+        descriptionShort: '',
+        descriptionFull: '',
+        price: 79,
+        weight: '70 гр',
+    },
+    {
+        id: 27,
+        imageUrl: require('../assets/img/sa3.png'),
+        title: 'Соус BBQ',
+        descriptionShort: '',
+        descriptionFull: '',
+        price: 79,
+        weight: '70 гр',
+    },
+    {
+        id: 28,
+        imageUrl: require('../assets/img/sa4.png'),
+        title: 'Соус Блючиз',
+        descriptionShort: '',
+        descriptionFull: '',
+        price: 99,
+        weight: '70 гр',
+    },
+    {
+        id: 29,
+        imageUrl: require('../assets/img/sa5.png'),
+        title: 'Фирменный соус',
+        descriptionShort: '',
+        descriptionFull: '',
+        price: 99,
+        weight: '70 гр',
+    },
+    {
+        id: 30,
+        imageUrl: require('../assets/img/sa6.png'),
+        title: 'Соус Джек Дэниэлс',
+        descriptionShort: '',
+        descriptionFull: '',
+        price: 99,
+        weight: '70 гр',
+    },
+    {
+        id: 31,
+        imageUrl: require('../assets/img/sa7.png'),
+        title: 'Сырный Соус',
+        descriptionShort: '',
+        descriptionFull: '',
+        price: 79,
+        weight: '70 гр',
+    },
+    {
+        id: 32,
+        imageUrl: require('../assets/img/sa8.png'),
+        title: 'Соус Ранч',
+        descriptionShort: '',
+        descriptionFull: '',
+        price: 79,
+        weight: '70 гр',
+    },
+    {
+        id: 33,
+        imageUrl: require('../assets/img/sa9.png'),
+        title: 'Соус Тар-Тар',
+        descriptionShort: '',
+        descriptionFull: '',
+        price: 79,
+        weight: '70 гр'
+    }
+];
+
+export const snacks: Products[] = [
+    {
+        id: 34,
+        imageUrl: require('../assets/img/sn1.png'),
+        title: 'Куриные стрипсы',
+        descriptionShort: 'Куринное филе, кляр и панировочные сухари, специи',
+        descriptionFull: 'куринное филе, кляр и панировочные сухари, специи',
+        itemsCount: 6,
+        price: 149,
+        weight: '120 гр',
+    },
+    {
+        id: 35,
+        imageUrl: require('../assets/img/sn2.png'),
+        title: 'Чиз-Да-Болы',
+        descriptionShort: 'Кляр и панировочные сухари, сыр моцарелла',
+        descriptionFull: 'кляр и панировочные сухари, сыр моцарелла',
+        itemsCount: 9,
+        price: 149,
+        weight: '120 гр',
+    },
+    {
+        id: 36,
+        imageUrl: require('../assets/img/sn3.png'),
+        title: 'Картофель фри',
+        descriptionShort: 'Картофель фри, соль',
+        descriptionFull: 'картофель фри, соль',
+        price: 149,
+        weight: '120 гр',
+    },
+    {
+        id: 37,
+        imageUrl: require('../assets/img/sn4.png'),
+        title: 'Луковые колечки',
+        descriptionShort: 'Лук репчатый, кляр и панировочные сухари',
+        descriptionFull: 'лук репчатый, кляр и панировочные сухари',
+        itemsCount: 9,
+        price: 149,
+        weight: '120 гр',
+    },
+    {
+        id: 38,
+        imageUrl: require('../assets/img/sn5.png'),
+        title: 'Картофель Айдахо',
+        descriptionShort: 'Картофель, оливковое масло, итальянские травы, специи',
+        descriptionFull: 'картофель, оливковое масло, итальянские травы, специи',
+        price: 149,
+        weight: '120 гр'
     }
 ];

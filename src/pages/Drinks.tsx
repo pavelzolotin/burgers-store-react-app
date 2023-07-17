@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { categoriesSelector } from '../redux/categories/selectors';
 import { productSelector } from '../redux/product/selectors';
 import ProductBlock from '../components/ProductBlock';
-import drinks from '../utils/drinks.json';
+import { drinks } from '../utils/data';
 
 const Content = styled.div`
   display: flex;

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import SingleProductBlock from '../components/SingleProductBlock';
-import drinks from '../utils/drinks.json';
+import { drinks } from '../utils/data';
 
 const SingleProductPage = () => {
     const {productId} = useParams();
