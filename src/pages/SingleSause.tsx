@@ -7,7 +7,7 @@ import { sauses } from '../utils/data';
 const SingleProductPage = () => {
     const {productId} = useParams();
 
-    const currentProduct = sauses.find(prod => prod.id === productId);
+    const currentProduct = sauses.find(prod => prod.id?.toString() === productId);
 
     useEffect(() => {
         window.scrollTo(0, 0);

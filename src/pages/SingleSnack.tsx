@@ -7,7 +7,7 @@ import { snacks } from '../utils/data';
 const SingleProductPage = () => {
     const {productId} = useParams();
 
-    const currentProduct = snacks.find(prod => prod.id === productId);
+    const currentProduct = snacks.find(prod => prod.id?.toString() === productId);
 
     useEffect(() => {
         window.scrollTo(0, 0);
