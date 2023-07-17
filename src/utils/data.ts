@@ -1,5 +1,5 @@
 type Products = {
-    id: number | undefined;
+    id: string | undefined;
     imageUrl: string;
     title: string;
     descriptionShort: string;
@@ -11,7 +11,7 @@ type Products = {
 
 export const burgers: Products[] = [
     {
-        id: 1,
+        id: '1',
         imageUrl: require('../assets/img/b1.png'),
         title: 'Просто Рэй (10’)',
         descriptionShort: 'Котлета из мраморной говядины, сыр чеддер, овощи',
@@ -20,7 +20,7 @@ export const burgers: Products[] = [
         weight: '200 гр',
     },
     {
-        id: 2,
+        id: '2',
         imageUrl: require('../assets/img/b2.png'),
         title: 'Сырный Луи (12,5’)',
         descriptionShort: 'Котлета мраморной говядины, фирменный соус, сыр чеддер и гауда, овощи',
@@ -29,7 +29,7 @@ export const burgers: Products[] = [
         weight: '350 гр',
     },
     {
-        id: 3,
+        id: '3',
         imageUrl: require('../assets/img/b3.png'),
         title: 'Джек Дэниэлс (12.5’)',
         descriptionShort: 'Котлета из мраморной говядины, соус джек дэниэлс и блючиз, сыр чеддер и гауда, овощи',
@@ -38,7 +38,7 @@ export const burgers: Products[] = [
         weight: '306 гр',
     },
     {
-        id: 4,
+        id: '4',
         imageUrl: require('../assets/img/b4.png'),
         title: 'Барри Q (12,5’)',
         descriptionShort: 'Котлета из мраморной говядины, соус барбекю, сыр чеддер и гауда, карамелизированный лук, перец халапеньо, овощи',
@@ -47,7 +47,7 @@ export const burgers: Products[] = [
         weight: '350 гр',
     },
     {
-        id: 5,
+        id: '5',
         imageUrl: require('../assets/img/b5.png'),
         title: 'Острый Фрэнк (12,5’)',
         descriptionShort: 'Котлета из мраморной говядины, соус чипотле и табаско, сыр гауда, перец халапеньо, овощи',
@@ -56,7 +56,7 @@ export const burgers: Products[] = [
         weight: '330 гр',
     },
     {
-        id: 6,
+        id: '6',
         imageUrl: require('../assets/img/b6.png'),
         title: 'Вишнёвый Бэйси (12,5’)',
         descriptionShort: 'Котлета из мраморной говядины, бекон, соус тонкацу, блючиз и вишневый, сыр чеддер',
@@ -65,7 +65,7 @@ export const burgers: Products[] = [
         weight: '330 гр',
     },
     {
-        id: 7,
+        id: '7',
         imageUrl: require('../assets/img/b7.png'),
         title: 'Корейский Роуч (12,5’)',
         descriptionShort: 'Котлета из мраморной говядины, фирменный соус, сыр чеддер и гауда, морковь по-корейски',
@@ -74,7 +74,7 @@ export const burgers: Products[] = [
         weight: '320 гр',
     },
     {
-        id: 8,
+        id: '8',
         imageUrl: require('../assets/img/b8.png'),
         title: 'Манго Митчел (12,5’)',
         descriptionShort: 'Котлета из мраморной говядины, соус манго и ореховый, сыр гауда, карамелизированная груша',
@@ -83,7 +83,7 @@ export const burgers: Products[] = [
         weight: '330 гр',
     },
     {
-        id: 9,
+        id: '9',
         imageUrl: require('../assets/img/b9.png'),
         title: 'Чикен Фэроу (12,5’)',
         descriptionShort: 'Куриное филе в панировке, соус фирменный и карри, соус: (шрирача или табаско, на выбор), сыр чеддер, ломтик помидора',
@@ -92,7 +92,7 @@ export const burgers: Products[] = [
         weight: '330 гр',
     },
     {
-        id: 10,
+        id: '10',
         imageUrl: require('../assets/img/b10.png'),
         title: 'Цезарь Дэвис',
         descriptionShort: 'Кусочки куриного филе, обжаренные на гриле, соус цезарь, салат айсберг, сыр пармезан, ломтик помидора',
@@ -101,7 +101,7 @@ export const burgers: Products[] = [
         weight: '290 гр',
     },
     {
-        id: 11,
+        id: '11',
         imageUrl: require('../assets/img/b11.png'),
         title: 'Фиш Хокинс (10’)',
         descriptionShort: 'Котлета из филе хека, булочка бриошь, соус тар-тар, салат айсберг, сыр чеддер',
@@ -113,7 +113,7 @@ export const burgers: Products[] = [
 
 export const salads: Products[] = [
     {
-        id: 12,
+        id: '12',
         imageUrl: require('../assets/img/s1.png'),
         title: 'Салат Клоу-Слоу',
         descriptionShort: 'Капуста белокочанная и краснокочанная, морковь по-корейски, фирменная заправка, специи',
@@ -122,7 +122,7 @@ export const salads: Products[] = [
         weight: '200 гр',
     },
     {
-        id: 13,
+        id: '13',
         imageUrl: require('../assets/img/s2.png'),
         title: 'Цезарь с курицей',
         descriptionShort: 'Обжаренные кусочки куриного филе на гриле, сыр пармезан, соус цезарь, салат айсберг, помидоры черри, сухарики',
@@ -131,7 +131,7 @@ export const salads: Products[] = [
         weight: '230 гр',
     },
     {
-        id: 14,
+        id: '14',
         imageUrl: require('../assets/img/s3.png'),
         title: 'Цезарь с креветками',
         descriptionShort: 'Обжаренные креветки на гриле, сыр пармезан, соус цезарь, салат айсберг, помидоры черри, сухарики',
@@ -143,7 +143,7 @@ export const salads: Products[] = [
 
 export const drinks: Products[] = [
     {
-        id: 15,
+        id: '15',
         imageUrl: require('../assets/img/d1.png'),
         title: 'Морс из облепихи',
         descriptionShort: 'Вода, ягоды облепихи, сахар',
@@ -152,7 +152,7 @@ export const drinks: Products[] = [
         weight: '500 мл',
     },
     {
-        id: 16,
+        id: '16',
         imageUrl: require('../assets/img/d2.png'),
         title: 'Морс из Вишни',
         descriptionShort: 'Вода, ягоды вишни, сахар',
@@ -161,7 +161,7 @@ export const drinks: Products[] = [
         weight: '500 мл',
     },
     {
-        id: 17,
+        id: '17',
         imageUrl: require('../assets/img/d3.png'),
         title: 'Морс из Клюквы',
         descriptionShort: 'Вода, ягоды клюквы, сахар',
@@ -170,7 +170,7 @@ export const drinks: Products[] = [
         weight: '500 мл',
     },
     {
-        id: 18,
+        id: '18',
         imageUrl: require('../assets/img/d4.png'),
         title: 'Молочный клубничный коктейль',
         descriptionShort: 'Мороженное, молоко, сливки, топпинг',
@@ -179,7 +179,7 @@ export const drinks: Products[] = [
         weight: '400 мл',
     },
     {
-        id: 19,
+        id: '19',
         imageUrl: require('../assets/img/d5.png'),
         title: 'Молочный коктейль «Орео»',
         descriptionShort: 'Мороженное, молоко, сливки, печенье орео',
@@ -188,7 +188,7 @@ export const drinks: Products[] = [
         weight: '400 мл',
     },
     {
-        id: 20,
+        id: '20',
         imageUrl: require('../assets/img/d6.png'),
         title: 'Шоколадный молочный коктейль',
         descriptionShort: 'Мороженное, молоко, сливки, топпинг',
@@ -197,7 +197,7 @@ export const drinks: Products[] = [
         weight: '400 мл',
     },
     {
-        id: 21,
+        id: '21',
         imageUrl: require('../assets/img/d7.png'),
         title: 'Карамельный молочный коктейль',
         descriptionShort: 'Мороженное, молоко, сливки, топпинг',
@@ -206,7 +206,7 @@ export const drinks: Products[] = [
         weight: '400 мл',
     },
     {
-        id: 22,
+        id: '22',
         imageUrl: require('../assets/img/d8.png'),
         title: 'Ванильный молочный коктейль',
         descriptionShort: 'Мороженное, молоко, сливки, топпинг',
@@ -215,7 +215,7 @@ export const drinks: Products[] = [
         weight: '400 мл',
     },
     {
-        id: 23,
+        id: '23',
         imageUrl: require('../assets/img/d9.png'),
         title: 'Классический лимонад',
         descriptionShort: 'Лимоны, сахар, вода',
@@ -224,7 +224,7 @@ export const drinks: Products[] = [
         weight: '500 мл',
     },
     {
-        id: 24,
+        id: '24',
         imageUrl: require('../assets/img/d10.png'),
         title: 'Лимонад из Манго-Маракуи',
         descriptionShort: 'Манго, маракуя, сахар, вода, лимонный сок',
@@ -236,7 +236,7 @@ export const drinks: Products[] = [
 
 export const sauses: Products[] = [
     {
-        id: 25,
+        id: '25',
         imageUrl: require('../assets/img/sa1.png'),
         title: 'Горчица',
         descriptionShort: '',
@@ -245,7 +245,7 @@ export const sauses: Products[] = [
         weight: '70 гр',
     },
     {
-        id: 26,
+        id: '26',
         imageUrl: require('../assets/img/sa2.png'),
         title: 'Кетчуп',
         descriptionShort: '',
@@ -254,7 +254,7 @@ export const sauses: Products[] = [
         weight: '70 гр',
     },
     {
-        id: 27,
+        id: '27',
         imageUrl: require('../assets/img/sa3.png'),
         title: 'Соус BBQ',
         descriptionShort: '',
@@ -263,7 +263,7 @@ export const sauses: Products[] = [
         weight: '70 гр',
     },
     {
-        id: 28,
+        id: '28',
         imageUrl: require('../assets/img/sa4.png'),
         title: 'Соус Блючиз',
         descriptionShort: '',
@@ -272,7 +272,7 @@ export const sauses: Products[] = [
         weight: '70 гр',
     },
     {
-        id: 29,
+        id: '29',
         imageUrl: require('../assets/img/sa5.png'),
         title: 'Фирменный соус',
         descriptionShort: '',
@@ -281,7 +281,7 @@ export const sauses: Products[] = [
         weight: '70 гр',
     },
     {
-        id: 30,
+        id: '30',
         imageUrl: require('../assets/img/sa6.png'),
         title: 'Соус Джек Дэниэлс',
         descriptionShort: '',
@@ -290,7 +290,7 @@ export const sauses: Products[] = [
         weight: '70 гр',
     },
     {
-        id: 31,
+        id: '31',
         imageUrl: require('../assets/img/sa7.png'),
         title: 'Сырный Соус',
         descriptionShort: '',
@@ -299,7 +299,7 @@ export const sauses: Products[] = [
         weight: '70 гр',
     },
     {
-        id: 32,
+        id: '32',
         imageUrl: require('../assets/img/sa8.png'),
         title: 'Соус Ранч',
         descriptionShort: '',
@@ -308,7 +308,7 @@ export const sauses: Products[] = [
         weight: '70 гр',
     },
     {
-        id: 33,
+        id: '33',
         imageUrl: require('../assets/img/sa9.png'),
         title: 'Соус Тар-Тар',
         descriptionShort: '',
@@ -320,7 +320,7 @@ export const sauses: Products[] = [
 
 export const snacks: Products[] = [
     {
-        id: 34,
+        id: '34',
         imageUrl: require('../assets/img/sn1.png'),
         title: 'Куриные стрипсы',
         descriptionShort: 'Куринное филе, кляр и панировочные сухари, специи',
@@ -330,7 +330,7 @@ export const snacks: Products[] = [
         weight: '120 гр',
     },
     {
-        id: 35,
+        id: '35',
         imageUrl: require('../assets/img/sn2.png'),
         title: 'Чиз-Да-Болы',
         descriptionShort: 'Кляр и панировочные сухари, сыр моцарелла',
@@ -340,7 +340,7 @@ export const snacks: Products[] = [
         weight: '120 гр',
     },
     {
-        id: 36,
+        id: '36',
         imageUrl: require('../assets/img/sn3.png'),
         title: 'Картофель фри',
         descriptionShort: 'Картофель фри, соль',
@@ -349,7 +349,7 @@ export const snacks: Products[] = [
         weight: '120 гр',
     },
     {
-        id: 37,
+        id: '37',
         imageUrl: require('../assets/img/sn4.png'),
         title: 'Луковые колечки',
         descriptionShort: 'Лук репчатый, кляр и панировочные сухари',
@@ -359,7 +359,7 @@ export const snacks: Products[] = [
         weight: '120 гр',
     },
     {
-        id: 38,
+        id: '38',
         imageUrl: require('../assets/img/sn5.png'),
         title: 'Картофель Айдахо',
         descriptionShort: 'Картофель, оливковое масло, итальянские травы, специи',

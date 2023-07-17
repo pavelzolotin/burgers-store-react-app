@@ -19,9 +19,11 @@ const Product = styled.div`
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover {
-    background-color: rgba(129, 129, 129, .2);
-    transform: translateY(-1rem);
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgba(129, 129, 129, .2);
+      transform: translateY(-1rem);
+    }
   }
 
   @media (min-width: 1420px) {
@@ -103,8 +105,10 @@ const Button = styled.button`
   border: .2rem solid #fbb040;
   transition: all .3s;
 
-  &:hover {
-    background-color: #fbb040;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #fbb040;
+    }
   }
 
   svg {
