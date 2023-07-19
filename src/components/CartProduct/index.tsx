@@ -117,8 +117,10 @@ const ButtonPlus = styled.button`
     }
   }
 
-  &:hover {
-    background-color: #fbb040;
+  @media (hover: hover) {
+    &:hover {
+      background-color: #fbb040;
+    }
   }
 `;
 
