@@ -30,13 +30,23 @@ const Product = styled.div`
     width: 25%;
   }
 
+  @media (min-width: 1200px) and (max-width: 1440px) {
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
   @media (max-width: 767px) {
     width: 100%;
     margin-bottom: 8rem;
   }
 `;
 
-const ImageBox = styled.div``;
+const ImageBox = styled.div`
+  @media (min-width: 1200px) and (max-width: 1440px) {
+    width: 85%;
+  }
+`;
 
 const Img = styled.img`
   width: 100%;
@@ -72,7 +82,7 @@ const Info = styled.div`
   }
 
   @media (max-width: 1400px) {
-    width: 75%;
+    width: 85%;
   }
 
   @media (max-width: 767px) {
@@ -155,6 +165,10 @@ const ProductBottom = styled.div`
   justify-content: space-between;
   padding: 0 1.2rem;
   margin-top: 3rem;
+
+  @media (min-width: 1200px) and (max-width: 1440px) {
+    padding: 0;
+  }
 `;
 
 const ProductBlock = ({id, title, imageUrl, descriptionFull, descriptionShort, price, weight}) => {

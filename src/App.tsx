@@ -1,5 +1,4 @@
 import { lazy, Suspense } from 'react';
-import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import styled, { createGlobalStyle } from 'styled-components';
@@ -20,7 +19,6 @@ import SingleSnack from './pages/SingleSnack';
 import SingleSause from './pages/SingleSause';
 import SingleDrink from './pages/SingleDrink';
 import QRPage from './pages/QR';
-import { productSelector } from './redux/product/selectors';
 
 const Cart = lazy(() => import('./pages/Cart'));
 
@@ -125,8 +123,6 @@ const Container = styled.div`
 `;
 
 function App() {
-    const {page} = useSelector(productSelector);
-
     return (
         <>
             <GlobalStyle />
