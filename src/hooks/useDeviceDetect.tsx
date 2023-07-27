@@ -7,7 +7,7 @@ const useCheckMobileScreen = () => {
         const userAgent = typeof window.navigator === 'undefined' ? '' : navigator.userAgent;
         const mobile = Boolean(
             userAgent.match(
-                /Android|iPhone|iPad/i
+                /Android|iPhone/i
             )
         );
 
