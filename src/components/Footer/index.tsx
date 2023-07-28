@@ -19,47 +19,41 @@ const Container = styled.div`
   }
 
   @media (max-width: 767px) {
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem 0 10rem 2rem;
-  }
-`;
-
-const LinksAndIcons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  
-  @media (max-width: 767px) {
-    display: flex;
     flex-direction: column-reverse;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 0 2rem 2rem;
   }
 `;
 
 const Links = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 5rem;
+  gap: .7rem;
 
   @media (max-width: 767px) {
     text-align: center;
   }
 
   a {
-    margin-bottom: .7rem;
     font-size: 1.8rem;
     color: #f5f5f5;
-    transition: color .3s;
+    opacity: .4;
+    transition: all .3s;
 
-    &:hover {
-      color: #ada9a9;
+    @media (hover: hover) {
+      &:hover {
+        opacity: 1;
+        color: #ada9a9;
+        transition: all .3s;
+      }
     }
   }
 `;
 
 const Icons = styled.div`
   display: flex;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 
   @media (max-width: 767px) {
     justify-content: center;
@@ -90,46 +84,115 @@ const NavIcon = styled.button`
   }
 `;
 
+const LinksCopyrightBox = styled.div`
+  display: flex;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 5rem;
+  }
+`;
+
 const Copyright = styled.div`
-  position: absolute;
-  width: 100%;
-  bottom: 1rem;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+
+  @media (min-width: 1200px) {
+    position: absolute;
+    width: 100%;
+    bottom: 1rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  
+`;
+
+const Text = styled.div`
+  display: flex;
+  gap: .7rem;
+
+  span {
+    font-size: 1.6rem;
+    color: #f5f5f5;
+    opacity: .4;
+  }
+
+  span:last-child {
+    opacity: .4;
+    transition: opacity .3s;
+  }
+`;
+
+const LinkDev = styled.div`
+  display: flex;
+  gap: .7rem;
+
+  span {
+    font-size: 1.6rem;
+    color: #f5f5f5;
+    opacity: .4;
+  }
+
+  a {
+    font-size: 1.6rem;
+    color: #f5f5f5;
+    opacity: .4;
+    transition: all .3s;
+
+    @media (hover: hover) {
+      &:hover {
+        color: #fbb040;
+        opacity: 1;
+        transition: all .3s;
+      }
+    }
+  }
 `;
 
 const CopyDescription = styled.p`
   font-size: 1.6rem;
   text-align: center;
   color: #f5f5f5;
+  opacity: .4;
 `;
 
 const Footer = () => {
     return (
         <Container>
-            <LinksAndIcons>
+            <LinksCopyrightBox>
                 <Links>
                     <Link to={PrivacyPolicy} target="_blank">Политика конфиденциальности</Link>
                     <Link to={DataAgreement} target="_blank">Согласие на обработку ПД</Link>
                 </Links>
-                <Icons>
-                    {
-                        iconsNav.map(icon => (
-                            <Link to={icon.link} key={icon.id} target="_blank">
-                                <NavIcon key={icon.id}>
-                                    <NavIconImg
-                                        src={icon.imageLight}
-                                        alt={icon.alt}
-                                    />
-                                </NavIcon>
-                            </Link>
-                        ))
-                    }
-                </Icons>
-            </LinksAndIcons>
-            <Copyright>
-                <CopyDescription>© 2023 Jazz&Burg's</CopyDescription>
-            </Copyright>
+                <Copyright>
+                    <Text>
+                        <CopyDescription>© 2023 Jazz&Burg's</CopyDescription>
+                    </Text>
+                    <LinkDev>
+                        <span>
+                            разработано
+                        </span>
+                        <a href="https://pashadev.ru/" target="_blank" rel="noreferrer">PASHADEV</a>
+                    </LinkDev>
+                </Copyright>
+            </LinksCopyrightBox>
+            <Icons>
+                {
+                    iconsNav.map(icon => (
+                        <Link to={icon.link} key={icon.id} target="_blank">
+                            <NavIcon key={icon.id}>
+                                <NavIconImg
+                                    src={icon.imageLight}
+                                    alt={icon.alt}
+                                />
+                            </NavIcon>
+                        </Link>
+                    ))
+                }
+            </Icons>
         </Container>
     );
 };

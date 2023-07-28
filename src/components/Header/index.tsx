@@ -74,7 +74,7 @@ const LogoBox = styled.div`
 `;
 
 const LogoImage = styled.img`
-  width: 24rem;
+  width: 22rem;
 
   @media (max-width: 1440px) {
     width: 20rem;
