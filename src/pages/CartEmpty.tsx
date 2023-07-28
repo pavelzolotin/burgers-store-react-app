@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import cartEmpty from '../assets/img/empty-cart.png';
 import { setCategories } from '../redux/categories/slice';
 import { setPage } from '../redux/product/slice';
-import { useEffect } from "react";
 
 const Cart = styled.div`
   margin: 8rem auto;
@@ -64,10 +63,6 @@ const Button = styled.button`
 
 const CartEmpty = () => {
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     const onClickReturn = () => {
         dispatch(setCategories('Бургеры'));
