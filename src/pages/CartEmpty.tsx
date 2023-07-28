@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -68,6 +69,10 @@ const CartEmpty = () => {
         dispatch(setCategories('Бургеры'));
         dispatch(setPage('burgers'));
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <Cart>
