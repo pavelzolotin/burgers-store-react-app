@@ -180,7 +180,7 @@ const Cart = () => {
         }
     };
 
-    if (!totalPrice) {
+    if (!totalPrice || items.length < 1) {
         return <CartEmpty />
     }
 
