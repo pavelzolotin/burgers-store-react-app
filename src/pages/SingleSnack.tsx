@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import SingleProductBlock from '../components/SingleProductBlock';
+import SingleProductBlock from '../components/SingleProduct';
 import { snacks } from '../utils/data';
 
 const SingleProductPage = () => {
@@ -24,6 +24,6 @@ const SingleProductPage = () => {
             />
         </>
     );
-}
+};
 
 export default SingleProductPage;

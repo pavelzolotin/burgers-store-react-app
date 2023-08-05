@@ -2,8 +2,8 @@ import { useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
 
-import { addItem, minusItem, removeItem } from '../../redux/cart/slice';
-import { CartItem } from '../../redux/cart/types';
+import { addItem, minusItem, removeItem } from '../redux/cart/slice';
+import { CartItem } from '../redux/cart/types';
 
 const Product = styled.div`
   display: flex;

@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 
-import { addItem } from '../../redux/cart/slice';
-import { cartItemSelectorById } from '../../redux/cart/selectors';
-import { productSelector } from '../../redux/product/selectors';
-import useCheckMobileScreen from '../../hooks/useDeviceDetect';
+import { addItem } from '../redux/cart/slice';
+import { cartItemSelectorById } from '../redux/cart/selectors';
+import { productSelector } from '../redux/product/selectors';
+import useCheckMobileScreen from '../hooks/useDeviceDetect';
 
 const Product = styled.div`
   display: flex;

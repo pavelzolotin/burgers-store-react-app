@@ -19,6 +19,7 @@ import SingleSnack from './pages/SingleSnack';
 import SingleSause from './pages/SingleSause';
 import SingleDrink from './pages/SingleDrink';
 import QRPage from './pages/QR';
+import Payment from './pages/Payment';
 
 const Cart = lazy(() => import('./pages/Cart'));
 
@@ -50,10 +51,19 @@ const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: .5rem .5rem .5rem -.5rem rgba(34, 60, 80, 0.2) inset;
     background-color: #16222a;
+
+    @media (max-width: 767px) {
+      border-radius: .5rem;
+    }
   }
 
   ::-webkit-scrollbar-thumb {
     background-color: #3a3a3a;
+
+    @media (max-width: 767px) {
+      background-color: #fbb040;
+      border-radius: .5rem;
+    }
   }
 
   a {
@@ -176,6 +186,9 @@ function App() {
                         <Suspense fallback={<Loading />}>
                             <Cart />
                         </Suspense>
+                    } />
+                    <Route path="/payment" element={
+                        <Payment />
                     } />
                     <Route path="/qr" element={
                         <QRPage />

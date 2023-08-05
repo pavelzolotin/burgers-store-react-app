@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { setCategories } from '../../redux/categories/slice';
+import { setCategories } from '../redux/categories/slice';
 
 const Container = styled.div`
   padding: 15rem;

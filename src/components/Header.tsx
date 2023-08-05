@@ -4,12 +4,12 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { setPage } from '../../redux/product/slice';
-import { cartSelector } from '../../redux/cart/selectors';
-import { setCategories } from '../../redux/categories/slice';
-import useCheckMobileScreen from '../../hooks/useDeviceDetect';
-import LogoLight from '../../assets/img/logo-dark-theme.png';
-import { headerLinks } from '../../utils/links';
+import { setPage } from '../redux/product/slice';
+import { cartSelector } from '../redux/cart/selectors';
+import { setCategories } from '../redux/categories/slice';
+import useCheckMobileScreen from '../hooks/useDeviceDetect';
+import LogoLight from '../assets/img/logo-dark-theme.png';
+import { headerLinks } from '../utils/links';
 
 const Container = styled.div`
   display: flex;
