@@ -75,7 +75,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: #81818133;
     border-radius: 1rem;
     padding: 1.2rem 2.5rem;
-    min-width: 10rem;
     text-align: center;
     cursor: pointer;
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
