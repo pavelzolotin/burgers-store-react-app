@@ -8,11 +8,8 @@ import { setPage } from '../redux/product/slice';
 import { cartSelector } from '../redux/cart/selectors';
 import { setCategories } from '../redux/categories/slice';
 import useCheckMobileScreen from '../hooks/useDeviceDetect';
-import { useOnClickOutSide } from '../hooks/useOnClickOutSide';
 import LogoLight from '../assets/img/logo-dark-theme.png';
 import { headerLinks } from '../utils/links';
-import Burger from './MobileMenu/Burger';
-import Menu from './MobileMenu/Menu';
 
 const Container = styled.div`
   display: flex;
@@ -98,7 +95,7 @@ const Pages = styled.div`
   @media (max-width: 767px) {
     width: 100%;
     padding: 1.5rem;
-    height: .5rem;
+    overflow: auto;
   }
 
   a {
@@ -192,15 +189,10 @@ const LogoImageMobile = styled(LogoImage)`
 const Header = () => {
     const dispatch = useDispatch();
     const {items, totalPrice} = useSelector(cartSelector);
-    const {isMobile} = useCheckMobileScreen();
     const {pathname} = useLocation();
     const isMounted = useRef(false);
-    const node = useRef();
-
     const [logoMobile] = useState<string | boolean>(true);
-    const [open, setOpen] = useState<any>(false);
-
-    useOnClickOutSide(node, () => setOpen(false));
+    const {isMobile} = useCheckMobileScreen();
 
     const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
@@ -241,34 +233,25 @@ const Header = () => {
                 </LeftPart>
             }
             <RightPart>
-                {
-                    isMobile ? (
-                        <Pages ref={node}>
-                            <Burger open={open} setOpen={setOpen} />
-                            <Menu open={open} setOpen={setOpen} onClickCategories={onClickCategories}/>
-                        </Pages>
-                    ) : (
-                        <Pages>
+                <Pages>
+                    <NavLink
+                        to="/"
+                        onClick={() => onClickLogo()}
+                    >
+                        Бургеры
+                    </NavLink>
+                    {
+                        headerLinks.map(link => (
                             <NavLink
-                                to="/"
-                                onClick={() => onClickLogo()}
+                                to={`/${link.item}`}
+                                key={link.id}
+                                onClick={() => onClickCategories(link)}
                             >
-                                Бургеры
+                                {link.title}
                             </NavLink>
-                            {
-                                headerLinks.map(link => (
-                                    <NavLink
-                                        to={`/${link.item}`}
-                                        key={link.id}
-                                        onClick={() => onClickCategories(link)}
-                                    >
-                                        {link.title}
-                                    </NavLink>
-                                ))
-                            }
-                        </Pages>
-                    )
-                }
+                        ))
+                    }
+                </Pages>
                 <HeaderEndWrap>
                     {
                         isMobile && logoMobile ? (
