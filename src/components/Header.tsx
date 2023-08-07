@@ -108,8 +108,10 @@ const Pages = styled.div`
       color: #fbb040;
     }
 
-    &:hover {
-      color: #ada9a9;
+    @media (hover: hover) {
+      &:hover {
+        color: #ada9a9;
+      }
     }
   }
 `;
