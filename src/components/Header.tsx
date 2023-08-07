@@ -272,12 +272,15 @@ const Header = () => {
                 <HeaderEndWrap>
                     {
                         isMobile && logoMobile ? (
-                            <Link to="/">
+                            <NavLink
+                                to="/"
+                                onClick={() => onClickLogo()}
+                            >
                                 <LogoImageMobile
                                     src={LogoLight}
                                     alt="Logo"
                                 />
-                            </Link>
+                            </NavLink>
                         ) : ''
                     }
                     <CartWrapper>

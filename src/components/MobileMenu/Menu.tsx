@@ -52,7 +52,7 @@ const MobileMenu = ({open, setOpen, onClickCategories}) => {
         setOpen(false);
     };
 
-    const onClickLogo = () => {
+    const onClickBurgers = () => {
         dispatch(setCategories('Бургеры'));
         dispatch(setPage('burgers'));
         setOpen(false);
@@ -63,7 +63,7 @@ const MobileMenu = ({open, setOpen, onClickCategories}) => {
             <Links>
                 <NavLink
                     to="/"
-                    onClick={() => onClickLogo()}
+                    onClick={() => onClickBurgers()}
                 >
                     Бургеры
                 </NavLink>
