@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Payment = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
