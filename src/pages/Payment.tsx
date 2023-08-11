@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Helmet } from 'react-helmet';
@@ -118,6 +118,10 @@ const Payment = () => {
         e.preventDefault();
         w.pay(form.current);
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <Content>
