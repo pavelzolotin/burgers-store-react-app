@@ -22,7 +22,7 @@ const Container = styled.div`
     flex-direction: column-reverse;
     justify-content: center;
     gap: 2rem;
-    padding: 4rem 0 2rem 2rem;
+    padding: 4rem 0 2rem 0;
   }
 `;
 
@@ -106,8 +106,6 @@ const Copyright = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
-  
 `;
 
 const Text = styled.div`

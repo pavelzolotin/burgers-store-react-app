@@ -14,6 +14,8 @@ const Product = styled.div`
 
   @media (max-width: 767px) {
     flex-direction: column;
+    margin-top: 2rem;
+    padding-top: 2rem;
   }
 `;
 
@@ -24,7 +26,7 @@ const Image = styled.div`
 
   @media (max-width: 767px) {
     justify-content: center;
-    margin-bottom: 5rem;
+    margin: 0 0 2rem 0;
   }
 
   img {
@@ -32,7 +34,7 @@ const Image = styled.div`
 
     @media (max-width: 767px) {
       width: 60%;
-      height: 100%;
+      border-radius: .5rem;
     }
   }
 `;
@@ -47,11 +49,11 @@ const Info = styled.div`
   @media (max-width: 767px) {
     width: 100%;
     align-items: center;
-    margin-bottom: 4rem;
   }
 
   h3 {
     font-size: 2.2rem;
+    font-weight: 300;
     line-height: 2.7rem;
     letter-spacing: 0.01em;
     color: #f5f5f5;
@@ -69,10 +71,9 @@ const Action = styled.div`
   justify-content: space-between;
 
   @media (max-width: 767px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
+    margin-top: 3rem;
+    padding: 0 2rem;
   }
 `;
 
@@ -84,13 +85,13 @@ const Count = styled.div`
   width: 15%;
 
   @media (max-width: 767px) {
-    align-items: center;
-    position: absolute;
-    left: 1.5rem;
+    width: 33%;
+    justify-content: normal;
   }
 
   b {
     font-size: 2.2rem;
+    font-weight: 300;
     color: #f5f5f5;
   }
 `;
@@ -135,12 +136,20 @@ const Price = styled.div`
   align-items: center;
   justify-content: center;
   width: 33%;
-  font-size: 2.2rem;
-  color: #f5f5f5;
 
   @media (max-width: 767px) {
-    justify-content: center;
-    margin: 4rem 0 4rem .5rem;
+    justify-content: end;
+    width: 33%;
+  }
+  
+  h3 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: #f5f5f5;
+
+    @media (max-width: 767px) {
+      font-size: 2.6rem;
+    }
   }
 `;
 
@@ -151,9 +160,8 @@ const Remove = styled.div`
   width: 4%;
 
   @media (max-width: 767px) {
-    justify-content: center;
-    position: absolute;
-    right: 3rem;
+    justify-content: end;
+    width: 33%;
   }
 
   svg {
@@ -255,7 +263,7 @@ const CartProduct = ({id, title, price, count, imageUrl}: CartItemProps) => {
                     </ButtonPlus>
                 </Count>
                 <Price>
-                    <div>{price * count} <span>₽</span></div>
+                    <h3>{price * count} <span>₽</span></h3>
                 </Price>
                 <Remove
                     onClick={onClickRemove}

@@ -25,7 +25,7 @@ const Container = styled.div`
 
 const Content = styled.div`
   max-width: 82rem;
-  margin: 9rem auto;
+  margin: 2rem auto;
 `;
 
 const Top = styled.div`
@@ -35,7 +35,7 @@ const Top = styled.div`
 
   @media (max-width: 767px) {
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
   }
 `;
 
@@ -82,7 +82,7 @@ const Clear = styled.div`
 const Items = styled.div``;
 
 const Bottom = styled.div`
-  margin: 5rem 0;
+  margin: 3rem 0;
 `;
 
 const Details = styled.div`
@@ -130,7 +130,8 @@ const CartButtons = styled.div`
   @media (max-width: 767px) {
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 5rem;
+    margin-top: 3rem;
   }
 `;
 
@@ -240,6 +241,11 @@ const Cart = () => {
                     </Details>
                     <CartButtons>
                         <Button>
+                            <Link to={'/payment'}>
+                                <span>Оплатить</span>
+                            </Link>
+                        </Button>
+                        <Button>
                             <Link to={`/${page}`}>
                                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -247,11 +253,6 @@ const Cart = () => {
                                           strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                                 <span onClick={onClickCategories}>Вернуться назад</span>
-                            </Link>
-                        </Button>
-                        <Button>
-                            <Link to={'/payment'}>
-                                <span>Оплатить</span>
                             </Link>
                         </Button>
                     </CartButtons>
