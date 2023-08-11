@@ -134,7 +134,7 @@ const Payment = () => {
             <FormContent name="payform-tinkoff" onSubmit={handleSubmit} ref={form}>
                 <Fields>
                     <input className="payform-tinkoff-row" type="hidden" name="terminalkey" value="1690797679440DEMO" />
-                    <input className="payform-tinkoff-row" type="hidden" name="frame" value="true" />
+                    <input className="payform-tinkoff-row" type="hidden" name="frame" value="false" />
                     <input className="payform-tinkoff-row" type="hidden" name="language" value="ru" />
                     <input
                         className="payform-tinkoff-row"
