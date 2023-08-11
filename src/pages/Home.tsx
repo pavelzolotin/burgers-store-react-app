@@ -21,7 +21,7 @@ const Content = styled.div`
   }
 
   @media (max-width: 767px) {
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
     margin: 0 auto;
   }
 `;

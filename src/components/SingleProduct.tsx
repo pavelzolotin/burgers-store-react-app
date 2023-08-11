@@ -19,7 +19,7 @@ const Container = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
-    margin-top: 7rem;
+    margin-top: 2rem;
   }
 
   img {
@@ -69,7 +69,7 @@ const H2 = styled.h2`
   font-size: 2.6rem;
   font-weight: 300;
   letter-spacing: 1.4px;
-  margin: 4rem 0 2rem 0;
+  margin: 2rem 0 1rem 0;
 `;
 
 const Description = styled.p`
@@ -119,7 +119,7 @@ const Price = styled.div`
 `;
 
 const Button = styled.button`
-  padding: 1.5rem 2.5rem;
+  height: 5.2rem;
   color: #f5f5f5;
   font-family: 'Helvetica Neue Medium';
   letter-spacing: 1.2px;
