@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
+import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import InputMask from 'comigo-tech-react-input-mask';
 
@@ -109,19 +110,26 @@ const Payment = () => {
     const {totalPrice} = useSelector(cartSelector);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
+    const form = useRef();
+
+    const w = window as any;
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        w.pay(form.current);
     };
 
     return (
         <Content>
+            <Helmet>
+                <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js" type="text/javascript" />
+            </Helmet>
             <Title>
                 <p>Подтверждение заказа</p>
             </Title>
-            <FormContent name="payform-tinkoff" onSubmit={handleSubmit}>
+            <FormContent name="payform-tinkoff" onSubmit={handleSubmit} ref={form}>
                 <Fields>
-                    <input className="payform-tinkoff-row" type="hidden" name="terminalkey" value="200000001042082" />
+                    <input className="payform-tinkoff-row" type="hidden" name="terminalkey" value="1690797679440DEMO" />
                     <input className="payform-tinkoff-row" type="hidden" name="frame" value="true" />
                     <input className="payform-tinkoff-row" type="hidden" name="language" value="ru" />
                     <input
@@ -138,7 +146,7 @@ const Payment = () => {
                         <input
                             className="payform-tinkoff-row"
                             type="text"
-                            placeholder="Ваше Имя"
+                            placeholder="Ваше имя"
                             name="name"
                             maxLength={25}
                             value={name}

@@ -23,11 +23,11 @@ const Container = styled.div`
   }
 
   img {
-    width: 45%;
+    width: 48%;
     border-radius: .5rem;
 
     @media (max-width: 1440px) {
-      width: 40%;
+      width: 42%;
     }
     
     @media (max-width: 767px) {
@@ -51,12 +51,16 @@ const About = styled.div`
     content: '';
     background-color: rgba(129, 129, 129, 0.2);
     border-radius: 1rem 0 0 1rem;
-    width: 50%;
+    width: 60%;
     height: 70%;
     position: absolute;
     right: 0;
     z-index: -1;
 
+    @media (max-width: 1440px) {
+      width: 68%;
+    }
+    
     @media (max-width: 767px) {
       display: none;
     }
