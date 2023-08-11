@@ -154,8 +154,10 @@ const CartButton = styled.button`
     -webkit-user-select: none;
     user-select: none;
 
-    &:hover {
-      background-color: #fbb040;
+    @media (hover: hover) {
+      &:hover {
+        background-color: #fbb040;
+      }
     }
   }
 `;

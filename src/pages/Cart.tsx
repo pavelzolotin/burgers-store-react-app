@@ -125,6 +125,7 @@ const CashCount = styled.div`
 const CartButtons = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
   margin-top: 7rem;
 
   @media (max-width: 767px) {
