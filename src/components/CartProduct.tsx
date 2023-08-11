@@ -30,11 +30,11 @@ const Image = styled.div`
   }
 
   img {
-    width: 15rem;
+    width: 18rem;
+    border-radius: .5rem;
 
     @media (max-width: 767px) {
       width: 60%;
-      border-radius: .5rem;
     }
   }
 `;
