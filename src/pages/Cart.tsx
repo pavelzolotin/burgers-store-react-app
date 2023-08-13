@@ -70,6 +70,12 @@ const Clear = styled.div`
     margin: .4rem 0 0 .7rem;
     font-size: 1.8rem;
     color: #f5f5f5;
+
+    @media (hover: hover) {
+      &:hover {
+        color: #ada9a9;
+      }
+    }
   }
 
   span,
@@ -241,21 +247,21 @@ const Cart = () => {
                         <CashCount>Сумма заказа:<span>{totalPrice}</span><span>₽</span></CashCount>
                     </Details>
                     <CartButtons>
-                        <Button>
-                            <Link to={'/payment'}>
+                        <Link to={'/payment'}>
+                            <Button>
                                 <span>Оплатить</span>
-                            </Link>
-                        </Button>
-                        <Button>
-                            <Link to={`/${page}`}>
+                            </Button>
+                        </Link>
+                        <Link to={`/${page}`}>
+                            <Button>
                                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5"
                                           strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                                 <span onClick={onClickCategories}>Вернуться назад</span>
-                            </Link>
-                        </Button>
+                            </Button>
+                        </Link>
                     </CartButtons>
                 </Bottom>
             </Content>
