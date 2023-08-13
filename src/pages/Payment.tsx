@@ -30,7 +30,6 @@ const FormContent = styled.form`
   font-size: 1.8rem;
   border-radius: .5rem;
   width: 75%;
-  height: 36rem;
   padding: 3rem;
   margin: 5rem auto 0 auto;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
@@ -84,16 +83,16 @@ const CustomField = styled.div`
 `;
 
 const Adress = styled.div`
-  input {
-    min-width: 35rem;
-    padding: 1rem;
-    border-radius: .5rem;
-    font-family: 'Play', sans-serif;
+  textarea {
+    padding: 2rem 1rem 0px;
+    min-width: 30rem;
+    border-radius: 0.5rem;
+    font-family: Play, sans-serif;
     font-weight: 300;
     font-size: 1.6rem;
     text-align: center;
-    background-color: #81818133;
-    color: #f5f5f5;
+    background-color: rgba(129, 129, 129, 0.2);
+    color: rgb(245, 245, 245);
     border: none;
 
     &:focus-visible {
@@ -105,6 +104,8 @@ const Adress = styled.div`
     }
   }
 `;
+
+const Comment = styled(Adress)``;
 
 const PhoneNumber = styled(CustomField)``;
 
@@ -135,6 +136,7 @@ const Payment = () => {
     const [surname, setSurname] = useState('');
     const [phone, setPhone] = useState('');
     const [adress, setAdress] = useState('');
+    const [comment, setComment] = useState('');
     const form = useRef();
 
     const w = window as any;
@@ -207,7 +209,7 @@ const Payment = () => {
                         />
                     </PhoneNumber>
                     <Adress>
-                        <input
+                        <textarea
                             className="payform-tinkoff-row"
                             placeholder="Адрес доставки"
                             name="description"
@@ -216,6 +218,15 @@ const Payment = () => {
                             required
                         />
                     </Adress>
+                    <Comment>
+                        <textarea
+                            className="payform-tinkoff-row"
+                            placeholder="Комментарий"
+                            name="comment"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value.replace(/[a-zA-Z]*$/, ''))}
+                        />
+                    </Comment>
                     <Button className="payform-tinkoff-row" type="submit" value="Оплатить" />
                 </Fields>
             </FormContent>
