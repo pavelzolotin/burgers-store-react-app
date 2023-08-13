@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
-import Loading from './UI/Loading';
+import Loading from './UI/Loading/MobileLoading';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Burgers from './pages/Home';
@@ -157,29 +157,19 @@ function App() {
                         <Drinks />
                     } />
                     <Route path="/burgers/:productId" element={
-                        <Suspense fallback={<Loading />}>
-                            <SingleProductPage />
-                        </Suspense>
+                        <SingleProductPage />
                     } />
                     <Route path="/salads/:productId" element={
-                        <Suspense fallback={<Loading />}>
-                            <SingleSalad />
-                        </Suspense>
+                        <SingleSalad />
                     } />
                     <Route path="/sauses/:productId" element={
-                        <Suspense fallback={<Loading />}>
-                            <SingleSause />
-                        </Suspense>
+                        <SingleSause />
                     } />
                     <Route path="/snacks/:productId" element={
-                        <Suspense fallback={<Loading />}>
-                            <SingleSnack />
-                        </Suspense>
+                        <SingleSnack />
                     } />
                     <Route path="/drinks/:productId" element={
-                        <Suspense fallback={<Loading />}>
-                            <SingleDrink />
-                        </Suspense>
+                        <SingleDrink />
                     } />
                     <Route path="/cart" element={
                         <Suspense fallback={<Loading />}>

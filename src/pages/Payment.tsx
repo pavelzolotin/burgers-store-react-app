@@ -29,8 +29,8 @@ const FormContent = styled.form`
   font-family: 'Play', sans-serif;
   font-size: 1.8rem;
   border-radius: .5rem;
-  width: 60%;
-  height: 24rem;
+  width: 75%;
+  height: 36rem;
   padding: 3rem;
   margin: 5rem auto 0 auto;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
@@ -63,7 +63,7 @@ const Fields = styled.div`
   gap: 2rem;
 `;
 
-const Name = styled.div`
+const CustomField = styled.div`
   input {
     padding: 1rem;
     min-width: 20rem;
@@ -83,7 +83,30 @@ const Name = styled.div`
   }
 `;
 
-const PhoneNumber = styled(Name)``;
+const Adress = styled.div`
+  input {
+    min-width: 35rem;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-family: 'Play', sans-serif;
+    font-weight: 300;
+    font-size: 1.6rem;
+    text-align: center;
+    background-color: #81818133;
+    color: #f5f5f5;
+    border: none;
+
+    &:focus-visible {
+      outline: .2rem solid #fbb040;
+    }
+
+    @media (max-width: 767px) {
+      min-width: 33rem;
+    }
+  }
+`;
+
+const PhoneNumber = styled(CustomField)``;
 
 const Button = styled.input`
   padding: .8rem 2.5rem;
@@ -109,7 +132,9 @@ const Button = styled.input`
 const Payment = () => {
     const {totalPrice} = useSelector(cartSelector);
     const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [phone, setPhone] = useState('');
+    const [adress, setAdress] = useState('');
     const form = useRef();
 
     const w = window as any;
@@ -133,7 +158,7 @@ const Payment = () => {
             </Title>
             <FormContent name="payform-tinkoff" onSubmit={handleSubmit} ref={form}>
                 <Fields>
-                    <input className="payform-tinkoff-row" type="hidden" name="terminalkey" value="1690797679440DEMO" />
+                    <input className="payform-tinkoff-row" type="hidden" name="terminalkey" value="1690797679440" />
                     <input className="payform-tinkoff-row" type="hidden" name="frame" value="false" />
                     <input className="payform-tinkoff-row" type="hidden" name="language" value="ru" />
                     <input
@@ -144,20 +169,30 @@ const Payment = () => {
                         value={totalPrice}
                     />
                     <input className="payform-tinkoff-row" type="hidden" placeholder="Номер заказа" name="order" />
-                    <input className="payform-tinkoff-row" type="hidden" placeholder="Описание заказа"
-                           name="description" />
-                    <Name>
+                    <CustomField>
                         <input
                             className="payform-tinkoff-row"
                             type="text"
-                            placeholder="Ваше имя"
+                            placeholder="Имя"
                             name="name"
-                            maxLength={25}
+                            maxLength={15}
                             value={name}
                             onChange={e => setName(e.target.value.replace(/[a-zA-Z0-9]*$/, ''))}
                             required
                         />
-                    </Name>
+                    </CustomField>
+                    <CustomField>
+                        <input
+                            className="payform-tinkoff-row"
+                            type="text"
+                            placeholder="Фамилия"
+                            name="surname"
+                            maxLength={20}
+                            value={surname}
+                            onChange={e => setSurname(e.target.value.replace(/[a-zA-Z0-9]*$/, ''))}
+                            required
+                        />
+                    </CustomField>
                     <input className="payform-tinkoff-row" type="hidden" placeholder="E-mail" name="email" />
                     <PhoneNumber>
                         <InputMask
@@ -171,6 +206,16 @@ const Payment = () => {
                             required
                         />
                     </PhoneNumber>
+                    <Adress>
+                        <input
+                            className="payform-tinkoff-row"
+                            placeholder="Адрес доставки"
+                            name="description"
+                            value={adress}
+                            onChange={(e) => setAdress(e.target.value.replace(/[a-zA-Z]*$/, ''))}
+                            required
+                        />
+                    </Adress>
                     <Button className="payform-tinkoff-row" type="submit" value="Оплатить" />
                 </Fields>
             </FormContent>

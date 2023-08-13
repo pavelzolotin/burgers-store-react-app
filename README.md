@@ -8,5 +8,5 @@ React\
 React Router v6\
 Redux-toolkit\
 TypeScript\
-Axios\
+Tinkoff Pay\
 Styled components

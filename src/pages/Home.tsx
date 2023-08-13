@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 
+import { burgers } from '../utils/data';
 import { categoriesSelector } from '../redux/categories/selectors';
 import { productSelector } from '../redux/product/selectors';
 import ProductBlock from '../components/ProductBlock';
-import { burgers } from '../utils/data';
 
 const Content = styled.div`
   display: flex;
@@ -79,18 +79,14 @@ const Home = () => {
     }, [categories, page]);
 
     return (
-        <>
-            <Content>
-                <>
-                    <Categories>
-                        <H1>{categories}</H1>
-                    </Categories>
-                    <Items>
-                        {items}
-                    </Items>
-                </>
-            </Content>
-        </>
+        <Content>
+            <Categories>
+                <H1>{categories}</H1>
+            </Categories>
+            <Items>
+                {items}
+            </Items>
+        </Content>
     );
 };
 
