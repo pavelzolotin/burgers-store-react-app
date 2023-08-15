@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 
 import useCheckMobileScreen from '../../hooks/useDeviceDetect';
-import CartSkeleton from '../Skeleton/CartSkeleton';
+import Skeleton from '../Skeleton';
 
 const Container = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ const Loading = () => {
     return (
         <Container>
             {
-                isMobile && <CartSkeleton />
+                isMobile && <Skeleton />
             }
         </Container>
     );

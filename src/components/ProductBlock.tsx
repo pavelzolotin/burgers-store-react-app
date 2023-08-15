@@ -239,8 +239,7 @@ const ProductBlock = ({id, title, imageUrl, descriptionFull, descriptionShort, p
                 </ProductBottom>
             </Info>
         </Product>
-    )
-        ;
+    );
 };
 
 export default ProductBlock;

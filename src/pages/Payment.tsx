@@ -9,7 +9,7 @@ import { cartSelector } from '../redux/cart/selectors';
 
 const Content = styled.div`
   width: 60rem;
-  height: 60vh;
+  height: 85vh;
   margin-top: 7rem;
 
   @media (max-width: 767px) {
@@ -133,7 +133,6 @@ const Button = styled.input`
 const Payment = () => {
     const {totalPrice} = useSelector(cartSelector);
     const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
     const [phone, setPhone] = useState('');
     const [adress, setAdress] = useState('');
     const [comment, setComment] = useState('');
@@ -180,18 +179,6 @@ const Payment = () => {
                             maxLength={15}
                             value={name}
                             onChange={e => setName(e.target.value.replace(/[a-zA-Z0-9]*$/, ''))}
-                            required
-                        />
-                    </CustomField>
-                    <CustomField>
-                        <input
-                            className="payform-tinkoff-row"
-                            type="text"
-                            placeholder="Фамилия"
-                            name="surname"
-                            maxLength={20}
-                            value={surname}
-                            onChange={e => setSurname(e.target.value.replace(/[a-zA-Z0-9]*$/, ''))}
                             required
                         />
                     </CustomField>

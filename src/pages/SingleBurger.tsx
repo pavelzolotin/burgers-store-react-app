@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import SingleProductBlock from '../components/SingleProduct';
 import {burgers} from '../utils/data';
 
-const SingleProductPage = () => {
+const SingleBurger = () => {
     const {productId} = useParams();
 
     const currentProduct = burgers.find(prod => prod.id?.toString() === productId);
@@ -26,4 +26,4 @@ const SingleProductPage = () => {
     );
 };
 
-export default SingleProductPage;
+export default SingleBurger;

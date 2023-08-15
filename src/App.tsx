@@ -5,15 +5,11 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
 import Loading from './UI/Loading/MobileLoading';
+import SkeletonArr from './UI/SkeletonArr';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Burgers from './pages/Home';
-import Snacks from './pages/Snacks';
-import Salads from './pages/Salads';
-import Sauses from './pages/Sauses';
-import Drinks from './pages/Drinks';
 import PageNotFound from './pages/PageNotFound';
-import SingleProductPage from './pages/SingleProductPage';
+import SingleBurger from './pages/SingleBurger';
 import SingleSalad from './pages/SingleSalad';
 import SingleSnack from './pages/SingleSnack';
 import SingleSause from './pages/SingleSause';
@@ -22,6 +18,11 @@ import QRPage from './pages/QR';
 import Payment from './pages/Payment';
 
 const Cart = lazy(() => import('./pages/Cart'));
+const Burgers = lazy(() => import('./pages/Burgers'));
+const Snacks = lazy(() => import('./pages/Snacks'));
+const Salads = lazy(() => import('./pages/Salads'));
+const Sauses = lazy(() => import('./pages/Sauses'));
+const Drinks = lazy(() => import('./pages/Drinks'));
 
 const GlobalStyle = createGlobalStyle`
   ${Fonts}
@@ -139,25 +140,37 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={
-                        <Burgers />
+                        <Suspense fallback={<SkeletonArr />}>
+                            <Burgers />
+                        </Suspense>
                     } />
                     <Route path="/burgers" element={
-                        <Burgers />
+                        <Suspense fallback={<SkeletonArr />}>
+                            <Burgers />
+                        </Suspense>
                     } />
                     <Route path="/salads" element={
-                        <Salads />
+                        <Suspense fallback={<SkeletonArr />}>
+                            <Salads />
+                        </Suspense>
                     } />
                     <Route path="/snacks" element={
-                        <Snacks />
+                        <Suspense fallback={<SkeletonArr />}>
+                            <Snacks />
+                        </Suspense>
                     } />
                     <Route path="/sauses" element={
-                        <Sauses />
+                        <Suspense fallback={<SkeletonArr />}>
+                            <Sauses />
+                        </Suspense>
                     } />
                     <Route path="/drinks" element={
-                        <Drinks />
+                        <Suspense fallback={<SkeletonArr />}>
+                            <Drinks />
+                        </Suspense>
                     } />
                     <Route path="/burgers/:productId" element={
-                        <SingleProductPage />
+                        <SingleBurger />
                     } />
                     <Route path="/salads/:productId" element={
                         <SingleSalad />

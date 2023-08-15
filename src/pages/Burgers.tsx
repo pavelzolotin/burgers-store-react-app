@@ -60,7 +60,7 @@ export type Product = {
     imageUrl: string[];
 };
 
-const Home = () => {
+const Burgers = () => {
     const {categories} = useSelector(categoriesSelector);
     const {page} = useSelector(productSelector);
 
@@ -90,4 +90,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Burgers;
