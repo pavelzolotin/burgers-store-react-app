@@ -188,7 +188,6 @@ const Payment = () => {
                             className="payform-tinkoff-row"
                             type="text"
                             mask="+7(\999) 999-99-99"
-                            maskChar={null}
                             placeholder='+7 (999) 999-99-99'
                             name="phone"
                             value={phone}
