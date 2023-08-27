@@ -33,7 +33,7 @@ const FormContent = styled.form`
   border-radius: .5rem;
   width: 75%;
   padding: 3rem;
-  margin: 5rem auto 0 auto;
+  margin: 3rem auto 0 auto;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   border: .2rem solid transparent;
   -webkit-user-select: none;
@@ -41,20 +41,17 @@ const FormContent = styled.form`
 
   @media (max-width: 767px) {
     width: 100%;
-    margin: 0 auto;
   }
 `;
 
 const Title = styled.div`
-  margin-bottom: 3rem;
-
   p {
     color: #f5f5f5;
     font-size: 1.8rem;
     white-space: pre-line;
     text-align: center;
     opacity: .4;
-    margin: 1rem 0 3rem 0;
+    margin-top: 1rem;
   }
 `;
 
@@ -148,8 +145,12 @@ const Button = styled.input`
   margin-top: 2rem;
   background-color: #81818133;
   color: #ffffff;
-  border: .2rem solid #fbb040;
+  font-family: 'Helvetica Neue Medium';
+  font-weight: 300;
+  font-size: 1.8rem;
+  letter-spacing: 1.2px;
   line-height: 2.3rem;
+  border: .2rem solid #fbb040;
   border-radius: .5rem;
   text-align: center;
   cursor: pointer;
