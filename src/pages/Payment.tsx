@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Helmet } from 'react-helmet';
@@ -147,7 +148,7 @@ const Button = styled.input`
   color: #ffffff;
   font-family: 'Helvetica Neue Medium';
   font-weight: 300;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   letter-spacing: 1.2px;
   line-height: 2.3rem;
   border: .2rem solid #fbb040;
@@ -163,6 +164,42 @@ const Button = styled.input`
       background-color: #fbb040;
     }
   }
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  
+  svg {
+    margin-right: .7rem;
+  }
+  
+ button {
+   padding: 1.2rem 2.5rem;
+   margin-top: 2rem;
+   background-color: #81818133;
+   color: #ffffff;
+   font-family: 'Helvetica Neue Medium';
+   font-weight: 300;
+   font-size: 1.6rem;
+   letter-spacing: 1.2px;
+   line-height: 2.3rem;
+   border: .2rem solid #fbb040;
+   border-radius: .5rem;
+   text-align: center;
+   cursor: pointer;
+   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+   -webkit-user-select: none;
+   user-select: none;
+
+   @media (hover: hover) {
+     &:hover {
+       background-color: #fbb040;
+     }
+   }
+ }
 `;
 
 const Payment = () => {
@@ -254,6 +291,18 @@ const Payment = () => {
                     <Button className="payform-tinkoff-row" type="submit" value="Оплатить" />
                 </Fields>
             </FormContent>
+            <Bottom>
+                <Link to="/cart">
+                    <button>
+                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5"
+                                  strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span>Вернуться в корзину</span>
+                    </button>
+                </Link>
+            </Bottom>
         </Content>
     );
 };

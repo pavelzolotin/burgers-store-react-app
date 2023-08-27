@@ -22,7 +22,8 @@ const Container = styled.div`
     flex-direction: column-reverse;
     justify-content: center;
     gap: 2rem;
-    padding: 4rem 0 2rem 0;
+    padding: 2rem 0 2rem 0;
+    margin-top: 5rem;
   }
 `;
 
