@@ -122,6 +122,24 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     transition: all .7s;
   }
+
+  .react-dadata__input {
+    padding: 1rem;
+    min-width: 30rem;
+    border-radius: .5rem;
+    font-family: 'Play', sans-serif;
+    font-weight: 300;
+    font-size: 1.6rem;
+    text-align: center;
+    background-color: #81818133;
+    color: #f5f5f5;
+    outline: none;
+    border: none;
+
+    &:focus-visible {
+      outline: .2rem solid #fbb040;
+    }
+  }
 `;
 
 const Container = styled.div`

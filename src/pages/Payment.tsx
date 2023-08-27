@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import InputMask from 'comigo-tech-react-input-mask';
+import { AddressSuggestions, DaDataSuggestion, DaDataAddress } from 'react-dadata';
+import 'react-dadata/dist/react-dadata.css';
 
 import { cartSelector } from '../redux/cart/selectors';
 
@@ -48,10 +50,19 @@ const Title = styled.div`
 
   p {
     color: #f5f5f5;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     white-space: pre-line;
     text-align: center;
+    opacity: .4;
+    margin: 1rem 0 3rem 0;
   }
+`;
+
+const Text = styled.h3`
+  color: #f5f5f5;
+  font-size: 2.2rem;
+  font-weight: 100;
+  text-align: center;
 `;
 
 const Fields = styled.div`
@@ -62,7 +73,19 @@ const Fields = styled.div`
   gap: 2rem;
 `;
 
-const CustomField = styled.div`
+const Name = styled.div`
+  position: relative;
+  
+  &:before {
+    content: '*';
+    position: absolute;
+    top: 1.3rem;
+    left: -2rem;
+    font-size: 1.6rem;
+    color: #f5f5f5;
+    opacity: .4;
+  }
+  
   input {
     padding: 1rem;
     min-width: 20rem;
@@ -75,7 +98,6 @@ const CustomField = styled.div`
     color: #f5f5f5;
     border: none;
 
-
     &:focus-visible {
       outline: .2rem solid #fbb040;
     }
@@ -83,8 +105,22 @@ const CustomField = styled.div`
 `;
 
 const Adress = styled.div`
+  position: relative;
+
+  &:before {
+    content: '*';
+    position: absolute;
+    top: 1.3rem;
+    left: -2rem;
+    font-size: 1.6rem;
+    color: #f5f5f5;
+    opacity: .4;
+  }
+`;
+
+const Comment = styled.div`
   textarea {
-    padding: 2rem 1rem 0px;
+    padding: 2rem 1rem 0;
     min-width: 30rem;
     border-radius: 0.5rem;
     font-family: Play, sans-serif;
@@ -105,9 +141,7 @@ const Adress = styled.div`
   }
 `;
 
-const Comment = styled(Adress)``;
-
-const PhoneNumber = styled(CustomField)``;
+const PhoneNumber = styled(Name)``;
 
 const Button = styled.input`
   padding: .8rem 2.5rem;
@@ -134,7 +168,7 @@ const Payment = () => {
     const {totalPrice} = useSelector(cartSelector);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
-    const [adress, setAdress] = useState('');
+    const [adress, setAdress] = useState<DaDataSuggestion<DaDataAddress> | undefined>();
     const [comment, setComment] = useState('');
     const form = useRef();
 
@@ -155,7 +189,8 @@ const Payment = () => {
                 <script src="https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js" type="text/javascript" />
             </Helmet>
             <Title>
-                <p>Подтверждение заказа</p>
+                <Text>Подтверждение заказа</Text>
+                <p>* - обязательное поле</p>
             </Title>
             <FormContent name="payform-tinkoff" onSubmit={handleSubmit} ref={form}>
                 <Fields>
@@ -170,7 +205,7 @@ const Payment = () => {
                         value={totalPrice}
                     />
                     <input className="payform-tinkoff-row" type="hidden" placeholder="Номер заказа" name="order" />
-                    <CustomField>
+                    <Name>
                         <input
                             className="payform-tinkoff-row"
                             type="text"
@@ -181,7 +216,7 @@ const Payment = () => {
                             onChange={e => setName(e.target.value.replace(/[a-zA-Z0-9]*$/, ''))}
                             required
                         />
-                    </CustomField>
+                    </Name>
                     <input className="payform-tinkoff-row" type="hidden" placeholder="E-mail" name="email" />
                     <PhoneNumber>
                         <InputMask
@@ -196,13 +231,14 @@ const Payment = () => {
                         />
                     </PhoneNumber>
                     <Adress>
-                        <textarea
-                            className="payform-tinkoff-row"
-                            placeholder="Адрес доставки"
-                            name="description"
+                        <AddressSuggestions
+                            token="393b12bfd037ce56fd23d0554fd0304be0de2787"
                             value={adress}
-                            onChange={(e) => setAdress(e.target.value.replace(/[a-zA-Z]*$/, ''))}
-                            required
+                            onChange={setAdress}
+                            inputProps={{
+                                'placeholder': 'Адрес доставки',
+                                'name': 'description'
+                            }}
                         />
                     </Adress>
                     <Comment>
