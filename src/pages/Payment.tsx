@@ -275,7 +275,8 @@ const Payment = () => {
                             onChange={setAdress}
                             inputProps={{
                                 'placeholder': 'Адрес доставки',
-                                'name': 'description'
+                                'name': 'description',
+                                'required': true
                             }}
                         />
                     </Adress>
