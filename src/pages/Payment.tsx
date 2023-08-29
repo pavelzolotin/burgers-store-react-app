@@ -73,7 +73,7 @@ const Fields = styled.div`
 
 const Name = styled.div`
   position: relative;
-  
+
   &:before {
     content: '*';
     position: absolute;
@@ -83,7 +83,7 @@ const Name = styled.div`
     color: #f5f5f5;
     opacity: .4;
   }
-  
+
   input {
     padding: 1rem;
     min-width: 20rem;
@@ -171,35 +171,35 @@ const Bottom = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 3rem;
-  
+
   svg {
     margin-right: .7rem;
   }
-  
- button {
-   padding: 1.2rem 2.5rem;
-   margin-top: 2rem;
-   background-color: #81818133;
-   color: #ffffff;
-   font-family: 'Helvetica Neue Medium';
-   font-weight: 300;
-   font-size: 1.6rem;
-   letter-spacing: 1.2px;
-   line-height: 2.3rem;
-   border: .2rem solid #fbb040;
-   border-radius: .5rem;
-   text-align: center;
-   cursor: pointer;
-   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-   -webkit-user-select: none;
-   user-select: none;
 
-   @media (hover: hover) {
-     &:hover {
-       background-color: #fbb040;
-     }
-   }
- }
+  button {
+    padding: 1.2rem 2.5rem;
+    margin-top: 2rem;
+    background-color: #81818133;
+    color: #ffffff;
+    font-family: 'Helvetica Neue Medium';
+    font-weight: 300;
+    font-size: 1.6rem;
+    letter-spacing: 1.2px;
+    line-height: 2.3rem;
+    border: .2rem solid #fbb040;
+    border-radius: .5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    -webkit-user-select: none;
+    user-select: none;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: #fbb040;
+      }
+    }
+  }
 `;
 
 const Payment = () => {
@@ -211,6 +211,14 @@ const Payment = () => {
     const form = useRef();
 
     const w = window as any;
+
+    const handleOnInput = (e) => {
+        e.target.setCustomValidity('');
+    };
+
+    const handleOnInvalid = (e) => {
+        e.target.setCustomValidity('Адрес доставки');
+    };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -253,6 +261,8 @@ const Payment = () => {
                             value={name}
                             onChange={e => setName(e.target.value.replace(/[a-zA-Z0-9]*$/, ''))}
                             required
+                            onInvalid={e => (e.target as HTMLInputElement).setCustomValidity('Ваше имя')}
+                            onInput={e => (e.target as HTMLInputElement).setCustomValidity('')}
                         />
                     </Name>
                     <input className="payform-tinkoff-row" type="hidden" placeholder="E-mail" name="email" />
@@ -266,6 +276,8 @@ const Payment = () => {
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             required
+                            onInvalid={e => (e.target as HTMLInputElement).setCustomValidity('Номер телефона')}
+                            onInput={e => (e.target as HTMLInputElement).setCustomValidity('')}
                         />
                     </PhoneNumber>
                     <Adress>
@@ -273,10 +285,13 @@ const Payment = () => {
                             token="393b12bfd037ce56fd23d0554fd0304be0de2787"
                             value={adress}
                             onChange={setAdress}
+                            filterLanguage='ru'
                             inputProps={{
                                 'placeholder': 'Адрес доставки',
                                 'name': 'description',
-                                'required': true
+                                'required': true,
+                                'onInvalid': handleOnInvalid,
+                                'onInput': handleOnInput
                             }}
                         />
                     </Adress>
