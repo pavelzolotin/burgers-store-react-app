@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import PrivacyPolicy from '../assets/privacy-policy.pdf';
 import DataAgreement from '../assets/agreement-to-personal-data.pdf';
-import { iconsNav } from '../utils/icons';
 
 const Container = styled.div`
   display: flex;
@@ -12,7 +11,7 @@ const Container = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  padding: 8rem 4rem 0;
+  padding: 8rem 4rem 2.5rem 4rem;
 
   @media (max-width: 1440px) {
     padding: 6rem 0 3rem 2rem;
@@ -44,43 +43,10 @@ const Links = styled.div`
 
     @media (hover: hover) {
       &:hover {
+        color: #fbb040;
         opacity: 1;
-        color: #ada9a9;
         transition: all .3s;
       }
-    }
-  }
-`;
-
-const Icons = styled.div`
-  display: flex;
-  margin-bottom: 3rem;
-
-  @media (max-width: 767px) {
-    justify-content: center;
-  }
-`;
-
-const NavIconImg = styled.img`
-  width: 100%;
-  border-radius: 1.2rem;
-  transition: background-color .3s;
-`;
-
-const NavIcon = styled.button`
-  display: flex;
-  align-items: center;
-  min-width: 5rem;
-  width: 5rem;
-  height: 5rem;
-  margin: 0 2rem 0 1.5rem;
-  padding: 0;
-  background-color: transparent;
-
-  &:hover {
-    ${NavIconImg} {
-      background-color: #81818133;
-      transition: background-color .3s;
     }
   }
 `;
@@ -102,8 +68,7 @@ const Copyright = styled.div`
 
   @media (min-width: 1200px) {
     position: absolute;
-    width: 100%;
-    bottom: 1rem;
+    bottom: .7rem;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -178,20 +143,6 @@ const Footer = () => {
                     </LinkDev>
                 </Copyright>
             </LinksCopyrightBox>
-            <Icons>
-                {
-                    iconsNav.map(icon => (
-                        <Link to={icon.link} key={icon.id} target="_blank">
-                            <NavIcon key={icon.id}>
-                                <NavIconImg
-                                    src={icon.imageLight}
-                                    alt={icon.alt}
-                                />
-                            </NavIcon>
-                        </Link>
-                    ))
-                }
-            </Icons>
         </Container>
     );
 };
