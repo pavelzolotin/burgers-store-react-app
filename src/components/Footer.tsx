@@ -68,7 +68,7 @@ const Copyright = styled.div`
 
   @media (min-width: 1200px) {
     position: absolute;
-    bottom: .7rem;
+    bottom: 1.8rem;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -87,32 +87,6 @@ const Text = styled.div`
   span:last-child {
     opacity: .4;
     transition: opacity .3s;
-  }
-`;
-
-const LinkDev = styled.div`
-  display: flex;
-  gap: .7rem;
-
-  span {
-    font-size: 1.6rem;
-    color: #f5f5f5;
-    opacity: .4;
-  }
-
-  a {
-    font-size: 1.6rem;
-    color: #f5f5f5;
-    opacity: .4;
-    transition: all .3s;
-
-    @media (hover: hover) {
-      &:hover {
-        color: #fbb040;
-        opacity: 1;
-        transition: all .3s;
-      }
-    }
   }
 `;
 
@@ -135,12 +109,6 @@ const Footer = () => {
                     <Text>
                         <CopyDescription>© 2023 Jazz&Burg's</CopyDescription>
                     </Text>
-                    <LinkDev>
-                        <span>
-                            разработано
-                        </span>
-                        <a href="https://pashadev.ru/" target="_blank" rel="noreferrer">PASHADEV</a>
-                    </LinkDev>
                 </Copyright>
             </LinksCopyrightBox>
         </Container>
