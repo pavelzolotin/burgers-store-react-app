@@ -4,10 +4,10 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+import { isMobile } from 'react-device-detect';
 import { setPage } from '../redux/product/slice';
 import { cartSelector } from '../redux/cart/selectors';
 import { setCategories } from '../redux/categories/slice';
-import useCheckMobileScreen from '../hooks/useDeviceDetect';
 import LogoLight from '../assets/img/logo-dark-theme.png';
 import { headerLinks } from '../utils/links';
 
@@ -196,7 +196,6 @@ const Header = () => {
     const {pathname} = useLocation();
     const isMounted = useRef(false);
     const [logoMobile] = useState<string | boolean>(true);
-    const {isMobile} = useCheckMobileScreen();
 
     const itemsTotalCount = items.reduce((sum, item) => sum + item.count, 0);
 
@@ -225,7 +224,7 @@ const Header = () => {
                 <LeftPart>
                     <LogoBox>
                         <NavLink
-                            to="/"
+                            to="/burgers"
                             onClick={() => onClickLogo()}
                         >
                             <LogoImage
@@ -239,7 +238,7 @@ const Header = () => {
             <RightPart>
                 <Pages>
                     <NavLink
-                        to="/"
+                        to="/burgers"
                         onClick={() => onClickLogo()}
                     >
                         Бургеры

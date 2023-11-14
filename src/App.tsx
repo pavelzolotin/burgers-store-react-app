@@ -1,28 +1,22 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import styled, { createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
-import Loading from './UI/Loading/MobileLoading';
-import SkeletonArr from './UI/SkeletonArr';
+import Loading from './UI/Loading/';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import PageNotFound from './pages/PageNotFound';
-import SingleBurger from './pages/SingleBurger';
-import SingleSalad from './pages/SingleSalad';
-import SingleSnack from './pages/SingleSnack';
-import SingleSause from './pages/SingleSause';
-import SingleDrink from './pages/SingleDrink';
-import QRPage from './pages/QR';
+import Burgers from './pages/Burgers';
+import Snacks from './pages/Snacks';
+import Salads from './pages/Salads';
+import Sauses from './pages/Sauses';
+import Drinks from './pages/Drinks';
+import SingleProduct from './pages/SingleProduct';
 import Payment from './pages/Payment';
+import PageNotFound from './pages/PageNotFound';
 
 const Cart = lazy(() => import('./pages/Cart'));
-const Burgers = lazy(() => import('./pages/Burgers'));
-const Snacks = lazy(() => import('./pages/Snacks'));
-const Salads = lazy(() => import('./pages/Salads'));
-const Sauses = lazy(() => import('./pages/Sauses'));
-const Drinks = lazy(() => import('./pages/Drinks'));
 
 const GlobalStyle = createGlobalStyle`
   ${Fonts}
@@ -158,49 +152,25 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={
-                        <Suspense fallback={<SkeletonArr />}>
-                            <Burgers />
-                        </Suspense>
+                        <Navigate to="/burgers" replace />
                     } />
                     <Route path="/burgers" element={
-                        <Suspense fallback={<SkeletonArr />}>
-                            <Burgers />
-                        </Suspense>
+                        <Burgers />
                     } />
                     <Route path="/salads" element={
-                        <Suspense fallback={<SkeletonArr />}>
-                            <Salads />
-                        </Suspense>
+                        <Salads />
                     } />
                     <Route path="/snacks" element={
-                        <Suspense fallback={<SkeletonArr />}>
-                            <Snacks />
-                        </Suspense>
+                        <Snacks />
                     } />
                     <Route path="/sauses" element={
-                        <Suspense fallback={<SkeletonArr />}>
-                            <Sauses />
-                        </Suspense>
+                        <Sauses />
                     } />
                     <Route path="/drinks" element={
-                        <Suspense fallback={<SkeletonArr />}>
-                            <Drinks />
-                        </Suspense>
+                        <Drinks />
                     } />
-                    <Route path="/burgers/:productId" element={
-                        <SingleBurger />
-                    } />
-                    <Route path="/salads/:productId" element={
-                        <SingleSalad />
-                    } />
-                    <Route path="/sauses/:productId" element={
-                        <SingleSause />
-                    } />
-                    <Route path="/snacks/:productId" element={
-                        <SingleSnack />
-                    } />
-                    <Route path="/drinks/:productId" element={
-                        <SingleDrink />
+                    <Route path="/:prod/:id" element={
+                        <SingleProduct />
                     } />
                     <Route path="/cart" element={
                         <Suspense fallback={<Loading />}>
@@ -209,9 +179,6 @@ function App() {
                     } />
                     <Route path="/payment" element={
                         <Payment />
-                    } />
-                    <Route path="/qr" element={
-                        <QRPage />
                     } />
                     <Route path="*" element={
                         <PageNotFound />

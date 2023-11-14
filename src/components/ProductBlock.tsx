@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 
+import { isMobile } from 'react-device-detect';
 import { addItem } from '../redux/cart/slice';
 import { cartItemSelectorById } from '../redux/cart/selectors';
-import { productSelector } from '../redux/product/selectors';
-import useCheckMobileScreen from '../hooks/useDeviceDetect';
 
 const Product = styled.div`
   display: flex;
@@ -171,11 +170,9 @@ const ProductBottom = styled.div`
   }
 `;
 
-const ProductBlock = ({id, title, imageUrl, descriptionFull, descriptionShort, price, weight}) => {
+const ProductBlock = ({prod, id, title, imageUrl, descriptionFull, descriptionShort, price, weight}) => {
     const dispatch = useDispatch();
-    const {page} = useSelector(productSelector);
     const cartItem = useSelector(cartItemSelectorById(id));
-    const {isMobile} = useCheckMobileScreen();
 
     const addedCount = cartItem ? cartItem.count : 0;
 
@@ -195,16 +192,16 @@ const ProductBlock = ({id, title, imageUrl, descriptionFull, descriptionShort, p
     return (
         <Product>
             <ImageBox>
-                <Link to={`/${page}/${id}`}>
+                <NavLink to={`/${prod.product}/${id}`}>
                     <Img
                         src={imageUrl}
                         alt="product"
                     />
-                </Link>
+                </NavLink>
             </ImageBox>
             <Info>
                 <TextBox style={!isMobile ? {height: '17rem'} : {}}>
-                    <Link to={`/${page}/${id}`}>
+                    <NavLink to={`/${prod.product}/${id}`}>
                         <H3>{title}</H3>
                         {
                             isMobile
@@ -212,7 +209,7 @@ const ProductBlock = ({id, title, imageUrl, descriptionFull, descriptionShort, p
                                 : <H4>{descriptionShort}</H4>
                         }
                         <Span>{weight}</Span>
-                    </Link>
+                    </NavLink>
                 </TextBox>
                 <ProductBottom>
                     <Price>{price} <span>₽</span></Price>

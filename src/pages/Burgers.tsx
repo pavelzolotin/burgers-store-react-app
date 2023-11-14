@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 
-import { burgers } from '../utils/data';
+import { products } from '../utils/data';
 import { categoriesSelector } from '../redux/categories/selectors';
 import { productSelector } from '../redux/product/selectors';
 import ProductBlock from '../components/ProductBlock';
@@ -53,6 +53,7 @@ const H1 = styled.h1`
 
 export type Product = {
     id: string;
+    prod: string,
     title: string;
     descriptionShort: string;
     price: number;
@@ -63,10 +64,10 @@ export type Product = {
 const Burgers = () => {
     const {categories} = useSelector(categoriesSelector);
     const {page} = useSelector(productSelector);
-
-    const items = burgers.map(item => (
+    const items = products[0].products.map(item => (
         <ProductBlock
             key={item.id}
+            prod={item}
             {...item}
         />
     ));
