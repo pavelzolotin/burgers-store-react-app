@@ -146,7 +146,7 @@ const Button = styled.input`
   margin-top: 2rem;
   background-color: #81818133;
   color: #ffffff;
-  font-family: 'Helvetica Neue Medium';
+  font-family: 'Helvetica Neue Medium', sans-serif;
   font-weight: 300;
   font-size: 1.6rem;
   letter-spacing: 1.2px;
@@ -181,7 +181,7 @@ const Bottom = styled.div`
     margin-top: 2rem;
     background-color: #81818133;
     color: #ffffff;
-    font-family: 'Helvetica Neue Medium';
+    font-family: 'Helvetica Neue Medium', sans-serif;
     font-weight: 300;
     font-size: 1.6rem;
     letter-spacing: 1.2px;

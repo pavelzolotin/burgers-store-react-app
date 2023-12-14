@@ -62,7 +62,7 @@ const H3 = styled.h3`
 
 const H4 = styled.h4`
   color: #f5f5f5;
-  font-family: 'Helvetica Neue Light';
+  font-family: 'Helvetica Neue Light', sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
   white-space: pre-line;
@@ -91,7 +91,7 @@ const Info = styled.div`
 
 const Price = styled.div`
   color: #f5f5f5;
-  font-family: 'Helvetica Neue Medium';
+  font-family: 'Helvetica Neue Medium', sans-serif;
   font-weight: 300;
   font-size: 2.6rem;
   letter-spacing: 1.2px;
@@ -109,7 +109,7 @@ const Price = styled.div`
 const Button = styled.button`
   height: 5.2rem;
   color: #f5f5f5;
-  font-family: 'Helvetica Neue Medium';
+  font-family: 'Helvetica Neue Medium', sans-serif;
   letter-spacing: 1.2px;
   border: .2rem solid #fbb040;
   transition: all .3s;

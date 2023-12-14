@@ -38,19 +38,6 @@ const Items = styled.div`
   }
 `;
 
-const H1 = styled.h1`
-  font-family: 'Helvetica Neue Light';
-  font-size: 6.2rem;
-  letter-spacing: 1.4px;
-  color: #f5f5f5;
-  margin-bottom: 5rem;
-
-  @media (max-width: 767px) {
-    font-size: 4.2rem;
-    margin-bottom: 2rem;
-  }
-`;
-
 export type Product = {
     id: string;
     prod: string,
@@ -85,7 +72,7 @@ const Drinks = () => {
             <Content>
                 <>
                     <Categories>
-                        <H1>{categories}</H1>
+                        <h1>{categories}</h1>
                     </Categories>
                     <Items>
                         {items}

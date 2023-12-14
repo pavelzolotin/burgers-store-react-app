@@ -5,8 +5,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
 import Loading from './UI/Loading/';
-import Header from './components/Header';
-import Footer from './components/Footer';
+//import Header from './components/Header';
+//import Footer from './components/Footer';
 import Burgers from './pages/Burgers';
 import Snacks from './pages/Snacks';
 import Salads from './pages/Salads';
@@ -15,11 +15,13 @@ import Drinks from './pages/Drinks';
 import SingleProduct from './pages/SingleProduct';
 import Payment from './pages/Payment';
 import PageNotFound from './pages/PageNotFound';
+import DummyPage from './pages/DummyPage';
 
 const Cart = lazy(() => import('./pages/Cart'));
 
 const GlobalStyle = createGlobalStyle`
   ${Fonts}
+  
   *,
   *::before,
   *::after {
@@ -34,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: #212426;
-    font-family: 'Helvetica Neue Medium';
+    font-family: 'Helvetica Neue Medium', sans-serif;
     font-weight: 300;
     transition: background-color .3s ease;
   }
@@ -65,6 +67,19 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  h1 {
+    font-family: 'Helvetica Neue Light', sans-serif;
+    font-size: 6.2rem;
+    letter-spacing: 1.4px;
+    color: #f5f5f5;
+    margin-bottom: 5rem;
+
+    @media (max-width: 767px) {
+      font-size: 4.2rem;
+      margin-bottom: 2rem;
+    }
+  }
+  
   button {
     display: inline-block;
     background-color: #81818133;
@@ -121,7 +136,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 1rem;
     min-width: 30rem;
     border-radius: .5rem;
-    font-family: 'Play', sans-serif;
+    font-family: 'Helvetica Neue Medium', sans-serif;
     font-weight: 300;
     font-size: 1.6rem;
     text-align: center;
@@ -149,10 +164,9 @@ function App() {
         <>
             <GlobalStyle />
             <Container>
-                <Header />
                 <Routes>
                     <Route path="/" element={
-                        <Navigate to="/burgers" replace />
+                        <DummyPage />
                     } />
                     <Route path="/burgers" element={
                         <Burgers />
@@ -184,7 +198,6 @@ function App() {
                         <PageNotFound />
                     } />
                 </Routes>
-                <Footer />
             </Container>
         </>
     );

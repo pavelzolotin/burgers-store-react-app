@@ -79,7 +79,7 @@ const H2 = styled.h2`
 const Description = styled.p`
   width: 80%;
   color: #f5f5f5;
-  font-family: 'Helvetica Neue Light';
+  font-family: 'Helvetica Neue Light', sans-serif;
   font-size: 1.8rem;
   font-weight: 300;
   white-space: pre-line;
@@ -125,7 +125,7 @@ const Price = styled.div`
 const Button = styled.button`
   height: 5.2rem;
   color: #f5f5f5;
-  font-family: 'Helvetica Neue Medium';
+  font-family: 'Helvetica Neue Medium', sans-serif;
   letter-spacing: 1.2px;
   border: .2rem solid #fbb040;
   transition: all .3s;

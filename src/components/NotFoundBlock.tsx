@@ -31,7 +31,7 @@ const Button = styled.button`
   padding: 1.5rem 2.5rem;
   margin-top: 5rem;
   color: #f5f5f5;
-  font-family: 'Helvetica Neue Medium';
+  font-family: 'Helvetica Neue Medium', sans-serif;
   letter-spacing: 1.2px;
   border: .2rem solid #fbb040;
   transition: all .3s;
