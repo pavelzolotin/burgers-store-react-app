@@ -5,8 +5,8 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import Fonts from './assets/fonts/fonts';
 import Loading from './UI/Loading/';
-//import Header from './components/Header';
-//import Footer from './components/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Burgers from './pages/Burgers';
 import Snacks from './pages/Snacks';
 import Salads from './pages/Salads';
@@ -15,7 +15,6 @@ import Drinks from './pages/Drinks';
 import SingleProduct from './pages/SingleProduct';
 import Payment from './pages/Payment';
 import PageNotFound from './pages/PageNotFound';
-import DummyPage from './pages/DummyPage';
 
 const Cart = lazy(() => import('./pages/Cart'));
 
@@ -164,9 +163,10 @@ function App() {
         <>
             <GlobalStyle />
             <Container>
+                <Header />
                 <Routes>
                     <Route path="/" element={
-                        <DummyPage />
+                        <Navigate to="/burgers" replace />
                     } />
                     <Route path="/burgers" element={
                         <Burgers />
@@ -198,6 +198,7 @@ function App() {
                         <PageNotFound />
                     } />
                 </Routes>
+                <Footer />
             </Container>
         </>
     );
