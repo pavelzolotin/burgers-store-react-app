@@ -107,7 +107,7 @@ const Footer = () => {
                 </Links>
                 <Copyright>
                     <Text>
-                        <CopyDescription>© 2023 Jazz&Burg's</CopyDescription>
+                        <CopyDescription>© 2024 Jazz&Burg's</CopyDescription>
                     </Text>
                 </Copyright>
             </LinksCopyrightBox>
